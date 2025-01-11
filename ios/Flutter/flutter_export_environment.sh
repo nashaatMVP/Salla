@@ -1,13 +1,13 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=C:\src\flutter"
-export "FLUTTER_APPLICATION_PATH=D:\APPS\SALLA\salla-app"
+export "FLUTTER_ROOT=/Users/mvp/Documents/Software/flutter"
+export "FLUTTER_APPLICATION_PATH=/Users/mvp/StudioProjects/salla"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
-export "FLUTTER_TARGET=lib\main.dart"
+export "FLUTTER_TARGET=/Users/mvp/StudioProjects/salla/lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=1.0.1"
 export "FLUTTER_BUILD_NUMBER=2"
 export "DART_OBFUSCATION=false"
 export "TRACK_WIDGET_CREATION=true"
 export "TREE_SHAKE_ICONS=false"
-export "PACKAGE_CONFIG=.dart_tool/package_config.json"
+export "PACKAGE_CONFIG=/Users/mvp/StudioProjects/salla/.dart_tool/package_config.json"
