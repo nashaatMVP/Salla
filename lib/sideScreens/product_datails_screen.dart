@@ -9,10 +9,9 @@ import 'package:smart_shop/MODELS/rating_model.dart';
 import 'package:smart_shop/PROVIDERS/cart_provider.dart';
 import 'package:smart_shop/PROVIDERS/products_provider.dart';
 import 'package:smart_shop/PROVIDERS/rating_provider.dart';
-import 'package:smart_shop/WIDGETS/heart_widget.dart';
-import 'package:smart_shop/WIDGETS/text_widget.dart';
-
+import '../WIDGETS/heart_widget.dart';
 import '../core/app_colors.dart';
+import '../core/text_widget.dart';
 import '../widgets/itemWidgets/also_widget.dart';
 
 class ProductDetailsScreen extends StatelessWidget {

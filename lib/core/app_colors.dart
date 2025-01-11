@@ -8,5 +8,6 @@ class AppColors {
   static const Color darkPrimary = Color.fromARGB(255, 94, 75, 236);
   static const Color goldenColor = Colors.deepPurple;
   static const Color blueColor = Color.fromARGB(255, 2, 43, 76);
+  static const Color goldColor = Color(0xffCBB26A);
   static const Color blackColor = Color.fromARGB(255, 0, 0, 0);
 }

@@ -7,8 +7,7 @@ import 'package:smart_shop/MODELS/product_model.dart';
 import 'package:smart_shop/PROVIDERS/cart_provider.dart';
 import 'package:smart_shop/PROVIDERS/viewed_product_provider.dart';
 import 'package:smart_shop/WIDGETS/heart_widget.dart';
-import 'package:smart_shop/WIDGETS/text_widget.dart';
-
+import '../../core/text_widget.dart';
 import '../../sideScreens/product_datails_screen.dart';
 
 class LastGridWidget extends StatelessWidget {
@@ -192,7 +191,6 @@ class LastGridWidget extends StatelessWidget {
             ),
           ),
 
-          ///////////////////////////////////////////  Offer //////////////////////////////////////
           Positioned(
             top: 3,
             left: 3,

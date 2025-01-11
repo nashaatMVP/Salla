@@ -7,10 +7,10 @@ import 'package:smart_shop/AUTH/forot_password_screen.dart';
 import 'package:smart_shop/SERVICES/my_app_functions.dart';
 import 'package:smart_shop/WIDGETS/circular_widget.dart';
 import 'package:smart_shop/WIDGETS/formfield_widget.dart';
-import 'package:smart_shop/WIDGETS/text_widget.dart';
 import 'package:smart_shop/core/constants.dart';
 import 'package:smart_shop/root_screen.dart';
 import '../core/app_colors.dart';
+import '../core/text_widget.dart';
 import '../core/validator.dart';
 import 'register.dart';
 

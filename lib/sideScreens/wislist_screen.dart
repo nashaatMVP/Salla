@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_shop/PROVIDERS/wishList_provider.dart';
 import 'package:smart_shop/WIDGETS/empty_widget.dart';
-import 'package:smart_shop/WIDGETS/text_widget.dart';
-
 import '../core/app_colors.dart';
+import '../core/text_widget.dart';
 import '../widgets/itemWidgets/product_widget.dart';
 
 class WishListScreen extends StatelessWidget {

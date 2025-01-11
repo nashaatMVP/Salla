@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_shop/WIDGETS/text_widget.dart';
+import '../core/text_widget.dart';
 
 class MyAppFunctions {
   ////////////////////////////////   App Message  /////////////////////////////////////////////////////////////////////////////

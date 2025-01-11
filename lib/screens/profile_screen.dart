@@ -11,10 +11,11 @@ import 'package:smart_shop/AUTH/register.dart';
 import 'package:smart_shop/MODELS/user-model.dart';
 import 'package:smart_shop/PROVIDERS/theme_provider.dart';
 import 'package:smart_shop/PROVIDERS/user_provider.dart';
-import 'package:smart_shop/WIDGETS/text_widget.dart';
+import 'package:smart_shop/core/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../WIDGETS/circular_widget.dart';
 import '../core/app_colors.dart';
+import '../core/text_widget.dart';
 import '../sideScreens/AddAddressScreen.dart';
 import '../sideScreens/order_screen.dart';
 import '../sideScreens/wislist_screen.dart';
@@ -76,15 +77,11 @@ class _ProfileScreenState extends State<ProfileScreen>
             physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
-                ////////////////////////////////////////////////////////////////
-
                 Visibility(
                   visible: user == null ? true : false,
                   child: Column(
                     children: [
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      kGap20,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -119,7 +116,7 @@ class _ProfileScreenState extends State<ProfileScreen>
 
                           Text(
                             "or",
-                            style: GoogleFonts.aldrich(color: Colors.white),
+                            style: GoogleFonts.alike(color: Colors.white),
                           ),
 
                           //// Login
@@ -154,99 +151,83 @@ class _ProfileScreenState extends State<ProfileScreen>
                     ],
                   ),
                 ),
-
                 user == null
                     ? const SizedBox.shrink()
-                    //////////////////////////////  User Information  ////////////////////////////////////////
                     : Container(
-                        padding: const EdgeInsets.only(bottom: 15),
+                        padding: const EdgeInsets.only(bottom: 15, right: 20),
                         decoration: BoxDecoration(
                           color: Colors.deepPurple.shade200,
                         ),
                         child: Column(
                           children: [
-                            const SizedBox(
-                              height: 25,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(
-                                  width: 70,
-                                  height: 70,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Theme.of(context).hoverColor,
-                                    // border: Border.all(
-                                    //   color: const Color.fromARGB(
-                                    //       255, 134, 58, 141),
-                                    //   width: 3,
-                                    // ),
-                                    image: DecorationImage(
-                                      image: NetworkImage(
-                                        userModel != null &&
-                                                userModel!.userImage != null &&
-                                                userModel!.userImage != ""
-                                            ? userModel!.userImage.toString()
-                                            : "https://media.raritysniper.com/hape-prime/4280-600.webp?cacheId=2",
+                            kGap25,
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 60,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Theme.of(context).hoverColor,
+                                      border: Border.all(
+                                        color: const Color.fromARGB(255, 134, 58, 141),
+                                        width: 3,
                                       ),
-                                      fit: BoxFit.cover,
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                          userModel != null &&
+                                                  userModel!.userImage !=
+                                                      null &&
+                                                  userModel!.userImage != ""
+                                              ? userModel!.userImage.toString()
+                                              : "https://media.raritysniper.com/hape-prime/4280-600.webp?cacheId=2",
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width: size.width * 0.7,
-                                      child: Text(
-                                        userModel != null
-                                            ? userModel!.userName.toString()
-                                            : "userId234948883",
-                                        maxLines: 1,
-                                        style: GoogleFonts.aldrich(
-                                          fontSize: 20,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          userModel != null
-                                              ? userModel!.userEmail.toString()
-                                              : "userId234948883",
-                                          style: GoogleFonts.aldrich(
-                                            fontSize: 12,
-                                            color: Colors.white,
+                                  kGap10,
+                                  Column(
+                                    crossAxisAlignment:CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                          width: size.width * 0.7,
+                                          child: TitlesTextWidget(
+                                            label: userModel != null
+                                                ? userModel!.userName.toString()
+                                                : "userId234948883",
+                                            fontWeight: FontWeight.w600,
+                                          ),),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          TitlesTextWidget(
+                                            label: userModel != null
+                                                ? userModel!.userEmail.toString()
+                                                : "nashaat@gmail.com",
+                                            fontSize: 17,
+
                                           ),
-                                        ),
-                                        const SizedBox(
-                                          width: 6,
-                                        ),
-                                        const Icon(
-                                          Icons.verified,
-                                          size: 14,
-                                          color: Colors.blue,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                          kGap5,
+                                          const Icon(
+                                            Icons.verified,
+                                            size: 14,
+                                            color: Colors.blue,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
                       ),
-                ////////////////////////////////////   InFo   ////////////////////////////////////////
                 Container(
                   decoration: BoxDecoration(
                     color: themeProvider.getIsDarkTheme
@@ -316,7 +297,6 @@ class _ProfileScreenState extends State<ProfileScreen>
                         ),
                       ),
 
-                      /////////////////////////////// Settings ////////////////////////////////////////////////////////////////////////////////////////////
                       CustomColumn(
                         text: "Settings",
                         widget: const Icon(
@@ -333,7 +313,6 @@ class _ProfileScreenState extends State<ProfileScreen>
                         },
                       ),
 
-                      //////////////////////////////// is visible Column ///////////////////////////////////////////////
                       Visibility(
                         visible: isVisible,
                         child: Column(
@@ -384,7 +363,6 @@ class _ProfileScreenState extends State<ProfileScreen>
                               ),
                               onTap: () {},
                             ),
-                            ////// Langauge
 
                             CustomColumn(
                               text: "ENGLISH",
@@ -414,7 +392,6 @@ class _ProfileScreenState extends State<ProfileScreen>
                         ),
                       ),
 
-                      /////////////////////////////// Help ////////////////////////////////////////////////////////////////////////////////////////////
                       CustomColumn(
                         text: "Help",
                         widget: const Icon(
@@ -424,7 +401,6 @@ class _ProfileScreenState extends State<ProfileScreen>
                         ),
                         onTap: () {},
                       ),
-                      /////////////////////////////// phone ////////////////////////////////////////////////////////////////////////////////////////////
                       CustomColumn(
                         text: "Contact us",
                         widget: const Icon(
@@ -442,7 +418,6 @@ class _ProfileScreenState extends State<ProfileScreen>
                           }
                         },
                       ),
-                      //////////////////////////////////////    Sign Out    //////////////////////////////////////////////////////////////////////////////
                       GestureDetector(
                         onTap: () async {
                           if (user == null) {
@@ -496,7 +471,6 @@ class _ProfileScreenState extends State<ProfileScreen>
                       const SizedBox(
                         height: 30,
                       ),
-                      ///////////////////////////////////  Information Terms / Terms of sale / Privacy Policy ////////////////////////////////////////////
                       const Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -594,9 +568,6 @@ class _ProfileScreenState extends State<ProfileScreen>
   }
 }
 
-/////////////////////////////////////////  Customize Widgets ///////////////////////////////////////////
-
-//////////////////////////////////////////// ROW ///////////////////////////////////////////////////////
 class CustomRow extends StatelessWidget {
   CustomRow({
     super.key,
@@ -628,8 +599,7 @@ class CustomRow extends StatelessWidget {
                 height: 10,
               ),
               Text(text,
-                  style:
-                      GoogleFonts.aldrich(color: Colors.white, fontSize: 13)),
+                  style:GoogleFonts.alike(color: Colors.white, fontSize: 13)),
             ],
           ),
         ),
@@ -638,7 +608,6 @@ class CustomRow extends StatelessWidget {
   }
 }
 
-////////////////////////////////// Column //////////////////////////////////////
 class CustomColumn extends StatelessWidget {
   CustomColumn({
     super.key,
@@ -673,7 +642,7 @@ class CustomColumn extends StatelessWidget {
             const SizedBox(
               width: 15,
             ),
-            Text(text, style: GoogleFonts.aldrich(fontWeight: FontWeight.bold)),
+            Text(text, style: GoogleFonts.alike(fontWeight: FontWeight.bold)),
             const Spacer(),
             Icon(
               icon,
@@ -685,5 +654,3 @@ class CustomColumn extends StatelessWidget {
     );
   }
 }
-
-////////////////////////////////////////////////////////////////////////////////

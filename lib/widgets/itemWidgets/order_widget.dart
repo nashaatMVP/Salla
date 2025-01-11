@@ -2,9 +2,8 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:smart_shop/MODELS/order_model.dart';
-import 'package:smart_shop/WIDGETS/text_widget.dart';
-
 import '../../core/app_colors.dart';
+import '../../core/text_widget.dart';
 import '../../sideScreens/RatingScreen.dart';
 
 class OrderWidget extends StatefulWidget {

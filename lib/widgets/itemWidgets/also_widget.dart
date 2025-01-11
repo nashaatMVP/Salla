@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_shop/MODELS/product_model.dart';
-import 'package:smart_shop/WIDGETS/text_widget.dart';
-
 import '../../core/app_colors.dart';
+import '../../core/text_widget.dart';
 import '../../sideScreens/product_datails_screen.dart';
 
 class AlsoProductList extends StatelessWidget {

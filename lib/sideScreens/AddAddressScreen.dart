@@ -4,11 +4,11 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_shop/SERVICES/my_app_functions.dart';
-import 'package:smart_shop/WIDGETS/text_widget.dart';
 import 'package:smart_shop/sideScreens/select_address_screen.dart';
 import '../PROVIDERS/address_provider.dart';
 import '../WIDGETS/circular_widget.dart';
 import '../core/app_colors.dart';
+import '../core/text_widget.dart';
 
 class AddressEditScreen extends StatefulWidget {
   const AddressEditScreen({super.key});
