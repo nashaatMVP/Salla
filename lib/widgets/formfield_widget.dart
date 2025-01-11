@@ -54,10 +54,13 @@ class CustomFormField extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(color: Colors.purple),
           ),
-          errorText: 'Must be Filled',
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: Colors.purple),
+          ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: Colors.red),
+            borderSide: const BorderSide(color: Colors.purple),
           ),
 
           fillColor: Colors.white,

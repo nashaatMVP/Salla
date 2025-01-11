@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_shop/AUTH/forot_password_screen.dart';
@@ -39,7 +40,7 @@ void main() {
           ),),);
   };
   WidgetsFlutterBinding.ensureInitialized();
-
+  Get.testMode = true;
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(const MyApp());
@@ -68,7 +69,7 @@ class _MyAppState extends State<MyApp> {
             ),
           );
         } else if (snapshot.hasError) {
-          return MaterialApp(
+          return GetMaterialApp(
             debugShowCheckedModeBanner: false,
             home: Scaffold(
               body: SelectableText(
@@ -134,7 +135,7 @@ class _MyAppState extends State<MyApp> {
                 isDarkTheme: themeProvider.getIsDarkTheme,
                 context: context,
               ),
-              home: const RegisterScreen(),
+              home: const LoginScreen(),
               routes: {
                 RootScreen.routeName: (context) => const RootScreen(),
                 ProductDetailsScreen.routName: (context) =>

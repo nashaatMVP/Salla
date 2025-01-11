@@ -49,8 +49,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   void initState() {
-    _nameController = TextEditingController();
-    _emailController = TextEditingController();
+    _nameController = TextEditingController(text: 'Salla');
+    _emailController = TextEditingController(text: "Salla@gmail.com");
     _passwordController = TextEditingController();
     _repeatPasswordController = TextEditingController();
     // Focus Nodes
@@ -76,10 +76,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
     super.dispose();
   }
+
   Future<void> _registerFCT() async {
     if (_pickedImage == null) {
-      MyAppFunctions()
-          .globalMassage(context: context, message: "Please Pick an Image");
+      MyAppFunctions().globalMassage(context: context, message: "Please Pick an Image");
       return;
     }
 
@@ -92,45 +92,94 @@ class _RegisterScreenState extends State<RegisterScreen> {
           isLoading = true;
         });
 
+        try {
+          await auth.createUserWithEmailAndPassword(
+            email: _emailController.text.trim(),
+            password: _passwordController.text.trim(),
+          );
+        } on FirebaseAuthException catch (authError) {
+          setState(() {
+            isLoading = false;
+          });
+          MyAppFunctions().globalMassage(
+            context: context,
+            message: "${authError.message}",
+          );
+          return;
+        }
 
-        await auth.createUserWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim(),
-        );
         final User? user = auth.currentUser;
         final String uid = user!.uid;
-        final ref = FirebaseStorage.instance
-            .ref()
-            .child("usersImage")
-            .child("${_emailController.text}.jpg");
-        await ref.putFile(File(_pickedImage!.path));
-        userImageUrl = await ref.getDownloadURL();
 
-        await FirebaseFirestore.instance.collection('users').doc(uid).set({
-          "userId": uid,
-          "userName": _nameController.text,
-          "userImage": userImageUrl,
-          "userEmail": _emailController.text.toLowerCase(),
-          "userCart": [],
-          "userWish": [],
-          "Address": [],
-          "createdAt": Timestamp.now(),
+        try {
+          final ref = FirebaseStorage.instance
+              .ref()
+              .child("usersImage")
+              .child("${_emailController.text}.jpg");
+          await ref.putFile(File(_pickedImage!.path));
+          userImageUrl = await ref.getDownloadURL();
+        } on FirebaseException catch (storageError) {
+          setState(() {
+            isLoading = false;
+          });
+          MyAppFunctions().globalMassage(
+            context: context,
+            message: "Image Upload Error: ${storageError.message}",
+          );
+          return;
+        }
+
+        try {
+          await FirebaseFirestore.instance.collection('users').doc(uid).set({
+            "userId": uid,
+            "userName": _nameController.text,
+            "userImage": userImageUrl,
+            "userEmail": _emailController.text.toLowerCase(),
+            "userCart": [],
+            "userWish": [],
+            "Address": [],
+            "createdAt": Timestamp.now(),
+          });
+        } on FirebaseException catch (error) {
+          setState(() {
+            isLoading = false;
+          });
+          MyAppFunctions().globalMassage(
+            context: context,
+            message: "FireStore Error: ${error.message}",
+          );
+          return;
+        }
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const RootScreen()),
+        );
+
+        MyAppFunctions().globalMassage(
+          context: context,
+          message: "Account Created Successfully",
+        );
+      } catch (e) {
+        setState(() {
+          isLoading = false;
         });
-
-        if (!mounted) return;
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: ((context) => const RootScreen())));
+        MyAppFunctions().globalMassage(
+          context: context,
+          message: "Error: $e",
+        );
+        print("Error: $e");
       } finally {
         setState(() {
           isLoading = false;
-          MyAppFunctions().globalMassage(
-            context: context,
-            message: "Account Created Successfully",
-          );
         });
       }
     }
   }
+
+
+
+
   Future<void> localImagePicker() async {
     final ImagePicker imagePicker = ImagePicker();
     await MyAppFunctions.imagePickerDialog(
@@ -150,7 +199,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       },
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -222,15 +270,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             obscureText: false,
                             keyboardType: TextInputType.emailAddress,
                             iconData: IconlyLight.message,
-                            onFieldSubmitted: (p0) => FocusScope.of(context)
-                                .requestFocus(_passwordFocusNode),
-                            validator: (value) =>
-                                MyValidators.emailValidator(value)),
+                            onFieldSubmitted: (p0) => FocusScope.of(context).requestFocus(_passwordFocusNode),
+                            validator: (value) =>MyValidators.emailValidator(value)),
 
                         const SizedBox(
                           height: 10.0,
                         ),
-                        /////////////////////////////////////////////////////////// Password Field ///////////////////////////////////////////////////////////////////
                         CustomFormField(
                           controller: _passwordController,
                           focusNode: _passwordFocusNode,
@@ -251,12 +296,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   : Icons.visibility_off,
                             ),
                           ),
-                          onFieldSubmitted: (p0) async {
-                            FocusScope.of(context)
-                                .requestFocus(_repeatPasswordFocusNode);
-                          },
-                          validator: (value) =>
-                              MyValidators.passwordValidator(value),
+                          onFieldSubmitted: (p0) async {FocusScope.of(context).requestFocus(_repeatPasswordFocusNode);},
+                          validator: (value) => MyValidators.passwordValidator(value),
                         ),
 
                         const SizedBox(
@@ -313,7 +354,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               backgroundColor: Colors.deepPurple,
                             ),
                             child: const Text(
-                              "Submit",
+                              "Done",
                               style: TextStyle(fontSize: 16,color: Colors.white),
                             ),
                           ),

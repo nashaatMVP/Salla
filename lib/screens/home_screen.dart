@@ -8,11 +8,11 @@ import 'package:smart_shop/PROVIDERS/products_provider.dart';
 import 'package:smart_shop/PROVIDERS/theme_provider.dart';
 import 'package:smart_shop/PROVIDERS/user_provider.dart';
 import 'package:smart_shop/SCREENS/search_screen.dart';
-import 'package:smart_shop/WIDGETS/ITEM%20WIDGETS/Last_Grid_widget.dart';
-import 'package:smart_shop/WIDGETS/ITEM%20WIDGETS/Latest_Arrival.dart';
 import 'package:smart_shop/WIDGETS/category_widget.dart';
 
 import '../core/app_constans.dart';
+import '../widgets/itemWidgets/Last_Grid_widget.dart';
+import '../widgets/itemWidgets/Latest_Arrival.dart';
 
 class HomePage extends StatefulWidget {
   static const routName = "/HomePage";

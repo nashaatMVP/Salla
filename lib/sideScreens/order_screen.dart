@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_shop/MODELS/order_model.dart';
 import 'package:smart_shop/PROVIDERS/order_provider.dart';
-import 'package:smart_shop/WIDGETS/ITEM%20WIDGETS/order_widget.dart';
 import 'package:smart_shop/WIDGETS/empty_widget.dart';
 import 'package:smart_shop/WIDGETS/text_widget.dart';
-
 import '../core/app_colors.dart';
+import '../widgets/itemWidgets/order_widget.dart';
 
 class OrdersScreenFree extends StatefulWidget {
   static const routeName = '/OrderScreen';

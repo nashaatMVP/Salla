@@ -26,7 +26,7 @@ class AppNameTextWidget extends StatelessWidget {
       // ignore: sort_child_properties_last
       child: Text(
         text,
-        style: GoogleFonts.aldrich(
+        style: GoogleFonts.alike(
           fontSize: fontSize,
           fontWeight: fontWeight,
         ),
@@ -60,8 +60,7 @@ class TitlesTextWidget extends StatelessWidget {
       label,
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,
-      // textAlign: TextAlign.justify,
-      style: GoogleFonts.aldrich(
+      style: GoogleFonts.alike(
         color: color,
         fontSize: fontSize,
         fontWeight: fontWeight,
@@ -99,7 +98,7 @@ class SubtitleTextWidget extends StatelessWidget {
       label,
       maxLines: maxLines,
       overflow: overflow,
-      style: GoogleFonts.aldrich(
+      style: GoogleFonts.alike(
         fontSize: fontSize,
         fontWeight: fontWeight,
         decoration: textDecoration,

@@ -1,11 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:smart_shop/AUTH/forot_password_screen.dart';
 import 'package:smart_shop/SERVICES/my_app_functions.dart';
 import 'package:smart_shop/WIDGETS/circular_widget.dart';
 import 'package:smart_shop/WIDGETS/formfield_widget.dart';
 import 'package:smart_shop/WIDGETS/text_widget.dart';
+import 'package:smart_shop/core/constants.dart';
 import 'package:smart_shop/root_screen.dart';
 import '../core/app_colors.dart';
 import '../core/validator.dart';
@@ -29,12 +32,13 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isLoading = false;
   final auth = FirebaseAuth.instance;
 
-  final _formkey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     super.initState();
-    _emailController = TextEditingController();
-    _passwordController = TextEditingController();
+    _emailController = TextEditingController(text: "nashaat@gmail.com");
+    _passwordController = TextEditingController(text: '123456');
     _emailFocusNode = FocusNode();
     _passwordFocusNode = FocusNode();
   }
@@ -51,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _loginFct() async {
-    final isValid = _formkey.currentState!.validate();
+    final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
 
     if (isValid) {
@@ -64,16 +68,20 @@ class _LoginScreenState extends State<LoginScreen> {
           email: _emailController.text.trim(),
           password: _passwordController.text.trim(),
         );
+
         if (!mounted) return;
-        Navigator.pushReplacementNamed(context, RootScreen.routeName);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const RootScreen()),
+        );
       } on FirebaseException catch (e) {
         if (e.code == 'invalid-credential') {
-          MyAppFunctions()
-              .globalMassage(context: context, message: "in-valid Email");
-          print("ERROR Login : ${e.toString()}");
+          MyAppFunctions().globalMassage(context: context, message: "IN-VALID EMAIL");
+          print("Login Error : ${e.toString()}");
         }
       } catch (error) {
-        print("ERROR Login : ${error.toString()}");
+        print("Login Error : ${error.toString()}");
+
       } finally {
         setState(() {
           isLoading = false;
@@ -101,8 +109,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
-
                     const Center(
                       child: Column(
                         children: [
@@ -110,23 +116,21 @@ class _LoginScreenState extends State<LoginScreen> {
                             label: "Login",
                             fontWeight: FontWeight.bold,
                             fontSize: 24,
-                            color: Colors.black,
+                            color: Colors.white,
                           ),
-                          SizedBox(
-                            height: 8,
-                          ),
+                          kGap5,
                           SubtitleTextWidget(
                             fontSize: 10,
                             label:
                                 "Fill real email & password, don't miss the destiny",
-                            color: Color.fromARGB(255, 55, 55, 55),
+                            color: Colors.white70,
                           ),
                         ],
                       ),
                     ),
                     SizedBox(height: size.height * 0.1),
                     Form(
-                      key: _formkey,
+                      key: _formKey,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -143,10 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             keyboardType: TextInputType.emailAddress,
                             obscureText: false,
                           ),
-
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          kGap10,
                           CustomFormField(
                             controller: _passwordController,
                             focusNode: _passwordFocusNode,
@@ -173,9 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             validator: (value) =>
                                 MyValidators.passwordValidator(value),
                           ),
-                          const SizedBox(
-                            height: 10.0,
-                          ),
+                          kGap10,
                           Align(
                             alignment: Alignment.centerRight,
                             child: TextButton(
@@ -191,10 +190,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            height: 10.0,
-                          ),
-                          /////////////////////////////////////////// LOGIN ///////////////////////////////////////////////////////////
+                          kGap10,
                           SizedBox(
                             width: double.infinity,
                             height: 50,
@@ -215,17 +211,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
+                          kGap20,
                           const SubtitleTextWidget(
                             label: "or",
                             fontSize: 15,
                           ),
-                          const SizedBox(
-                            height: 16.0,
-                          ),
-                          /////////////////////////////////////////  Guest /////////////////////////////////////////////////////////////
+                          kGap15,
                           SizedBox(
                             width: double.infinity,
                             height: 50,
@@ -254,9 +245,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               },
                             ),
                           ),
-                          const SizedBox(
-                            height: 12.0,
-                          ),
+                          kGap10,
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -280,7 +269,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 },
                               ),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),
