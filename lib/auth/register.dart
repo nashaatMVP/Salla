@@ -11,16 +11,15 @@ import 'package:smart_shop/SERVICES/my_app_functions.dart';
 import 'package:smart_shop/WIDGETS/circular_widget.dart';
 import 'package:smart_shop/WIDGETS/formfield_widget.dart';
 import 'package:smart_shop/WIDGETS/picker_widget.dart';
-import 'package:smart_shop/WIDGETS/text_widget.dart';
+import 'package:smart_shop/core/constants.dart';
 import 'package:smart_shop/root_screen.dart';
 import '../core/app_colors.dart';
+import '../core/text_widget.dart';
 import '../core/validator.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const routName = "/RegisterScreen";
-  const RegisterScreen({
-    super.key,
-  });
+  const RegisterScreen({super.key});
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -40,7 +39,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       _passwordFocusNode,
       _repeatPasswordFocusNode;
 
-  final _formkey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   XFile? _pickedImage;
   bool isLoading = false;
   final auth = FirebaseAuth.instance;
@@ -83,7 +82,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       return;
     }
 
-    final isValid = _formkey.currentState!.validate();
+    final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
 
     if (isValid) {
@@ -238,7 +237,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
 
                   Form(
-                    key: _formkey,
+                    key: _formKey,
                     child: Column(
                       children: [
                         const SizedBox(
@@ -258,9 +257,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           validator: (value) =>
                               MyValidators.displayNamevalidator(value),
                         ),
-                        const SizedBox(
-                          height: 10.0,
-                        ),
+                        kGap10,
 
                         CustomFormField(
                             controller: _emailController,
@@ -273,9 +270,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             onFieldSubmitted: (p0) => FocusScope.of(context).requestFocus(_passwordFocusNode),
                             validator: (value) =>MyValidators.emailValidator(value)),
 
-                        const SizedBox(
-                          height: 10.0,
-                        ),
+                        kGap10,
                         CustomFormField(
                           controller: _passwordController,
                           focusNode: _passwordFocusNode,
@@ -300,9 +295,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           validator: (value) => MyValidators.passwordValidator(value),
                         ),
 
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        kGap10,
                         CustomFormField(
                             controller: _repeatPasswordController,
                             focusNode: _repeatPasswordFocusNode,
@@ -336,9 +329,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 password: _passwordController.text,
                               );
                             }),
-                        const SizedBox(
-                          height: 20.0,
-                        ),
+                        kGap20,
 
                         SizedBox(
                           width: double.infinity,

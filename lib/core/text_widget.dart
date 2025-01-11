@@ -1,5 +1,3 @@
-///////////   App Name   ///////////////
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
@@ -37,7 +35,7 @@ class AppNameTextWidget extends StatelessWidget {
     );
   }
 }
-///////////   Title   ///////////////
+
 
 class TitlesTextWidget extends StatelessWidget {
   const TitlesTextWidget({
@@ -69,7 +67,7 @@ class TitlesTextWidget extends StatelessWidget {
     );
   }
 }
-///////////   Sub title   ///////////////
+
 
 class SubtitleTextWidget extends StatelessWidget {
   const SubtitleTextWidget({

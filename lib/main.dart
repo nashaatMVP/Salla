@@ -135,7 +135,7 @@ class _MyAppState extends State<MyApp> {
                 isDarkTheme: themeProvider.getIsDarkTheme,
                 context: context,
               ),
-              home: const LoginScreen(),
+              home: const RootScreen(),
               routes: {
                 RootScreen.routeName: (context) => const RootScreen(),
                 ProductDetailsScreen.routName: (context) =>

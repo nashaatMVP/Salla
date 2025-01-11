@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_shop/PROVIDERS/theme_provider.dart';
-import 'package:smart_shop/WIDGETS/text_widget.dart';
 import 'package:smart_shop/root_screen.dart';
+
+import '../core/text_widget.dart';
 
 class EmptyBagWidget extends StatelessWidget {
   const EmptyBagWidget({

@@ -9,7 +9,8 @@ import 'package:smart_shop/PROVIDERS/theme_provider.dart';
 import 'package:smart_shop/PROVIDERS/user_provider.dart';
 import 'package:smart_shop/SCREENS/search_screen.dart';
 import 'package:smart_shop/WIDGETS/category_widget.dart';
-
+import 'package:smart_shop/core/app_colors.dart';
+import 'package:smart_shop/core/constants.dart';
 import '../core/app_constans.dart';
 import '../widgets/itemWidgets/Last_Grid_widget.dart';
 import '../widgets/itemWidgets/Latest_Arrival.dart';
@@ -23,7 +24,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-////////////////////////////////// New User /////////////////////////////////////////////////////////////////
   User? user = FirebaseAuth.instance.currentUser;
   UserModel? userModel;
   bool isLoading = false;
@@ -51,7 +51,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
   @override
   Widget build(BuildContext context) {
     final productsProvider = Provider.of<ProductProvider>(context);
@@ -59,32 +58,28 @@ class _HomePageState extends State<HomePage> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      //////////////////////////////////////   B O D Y   /////////////////////////////////////////////////
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
+            kGap20,
             Container(
-              padding: const EdgeInsets.only(bottom: 10),
+              padding: const EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
                 color: Colors.deepPurple.shade200,
               ),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: size.height * 0.04,
-                  ),
-                  ////////////////////////////////////  User Info  //////////////////////////////////////////////
+                  kGap40,
+                  kGap40,
                   Padding(
-                    padding: const EdgeInsets.only(
-                        left: 0, top: 0, right: 10, bottom: 7),
+                    padding: const EdgeInsets.only(left: 0, top: 0, right: 20, bottom: 7),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
-                          width: size.width * 0.04,
+                          width: size.width * 0.05,
                         ),
 
                         Visibility(
@@ -92,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                           child: Text(
                             "SALLA",
                             maxLines: 1,
-                            style: GoogleFonts.aldrich(
+                            style: GoogleFonts.alike(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
                               color: Colors.white,
@@ -107,36 +102,33 @@ class _HomePageState extends State<HomePage> {
                               Text(
                                 "SALLA",
                                 maxLines: 1,
-                                style: GoogleFonts.aldrich(
+                                style: GoogleFonts.alike(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                 ),
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
+                              kGap10,
                               SizedBox(
                                 width: size.width * 0.7,
                                 child: Text(
                                   user == null
                                       ? ""
-                                      : "Hello, ${userModel!.userName.toString()}",
+                                      : "Hello, ${userModel?.userName.toString() ?? "Name"}",
                                   maxLines: 1,
-                                  style: GoogleFonts.aldrich(
+                                  style: GoogleFonts.alike(
                                       fontSize: user == null ? 25 : 16,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.white),
+                                      color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ),
                         const Spacer(),
-
-                        ////////   Image   /////////
                         Container(
-                          width: 45,
-                          height: 45,
+                          width: 50,
+                          height: 50,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: Theme.of(context).hoverColor,
@@ -158,7 +150,6 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(
                     height: size.height * 0.02,
                   ),
-                  ///////////////////////////////////////  Search text-field /////////////////////////////////////
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 6),
@@ -241,6 +232,7 @@ class _HomePageState extends State<HomePage> {
                     );
                   }),
             ),
+
             /// Swiper
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -259,36 +251,15 @@ class _HomePageState extends State<HomePage> {
                 ),
                 ),
               ),
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 15),
-            //   child: SizedBox(
-            //     height: size.height * 0.3,
-            //     child: ClipRRect(
-            //       borderRadius: BorderRadius.circular(20),
-            //       child: Swiper(
-            //         itemBuilder: (BuildContext context, int index) {
-            //           return Image.network(
-            //             AppConsts.bannerImages[index],
-            //             fit: BoxFit.fill,
-            //           );
-            //         },
-            //         itemCount: AppConsts.bannerImages.length,
-            //         autoplay: false,
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            const SizedBox(
-              height: 20,
-            ),
-            /// Recommended For You
 
+            kGap20,
+            /// Recommended For You
             const CustomizeListName(
               text: "Recommended For You",
             ),
 
             SizedBox(
-              height: size.height * 0.04,
+              height: size.height * 0.04
             ),
 
             Visibility( visible: productsProvider.getProductproductsHorizontal.isNotEmpty,
@@ -315,24 +286,17 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 15,
-            ),
+            kGap15,
 
             ///Latest Arrival
-            const SizedBox(
-              height: 5,
-            ),
+            kGap5,
             Visibility(
               visible:
                   productsProvider.getProductproductsHorizontal.isNotEmpty,
               child: const CustomizeListName(text: "Latest Arrivals"),
             ),
 
-            const SizedBox(
-              height: 15,
-            ),
-
+            kGap10,
             Visibility(
               visible: productsProvider
                   .productsproductsSecondHorizontal.isNotEmpty,
@@ -361,55 +325,42 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+            kGap10,
 
-            const SizedBox(
-              height: 15,
-            ),
-
-            ///Recommended For You
+            ///Best Sellers
             Visibility(
               visible: productsProvider.getproductsproductsVertical.isNotEmpty,
               child: Container(
-                color: const Color(0xffCBB26A),
+                color: AppColors.goldColor,
                 width: double.infinity,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    ///// List Name
-                    const Padding(
-                      padding: EdgeInsets.only(top: 20.0),
-                      child: CustomizeListName(text: "Best Sellers"),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    //// Grid view
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: GridView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 0,
-                          mainAxisSpacing: 0,
-                          childAspectRatio: 2 / 3.3,
-                        ),
-                        itemCount: productsProvider
-                                    .getproductsproductsVertical.length <
-                                10
-                            ? productsProvider
-                                .getproductsproductsVertical.length
-                            : 10,
-                        itemBuilder: (context, index) {
-                          return ChangeNotifierProvider.value(
-                            value: productsProvider
-                                .getproductsproductsVertical[index],
-                            child: const LastGridWidget(),
-                          );
-                        },
+                    kGap20,
+                    const CustomizeListName(text: "Best Sellers"),
+                    GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 0,
+                        mainAxisSpacing: 0,
+                        childAspectRatio: 2 / 3.3,
                       ),
+                      itemCount: productsProvider
+                                  .getproductsproductsVertical.length <
+                              10
+                          ? productsProvider
+                              .getproductsproductsVertical.length
+                          : 10,
+                      itemBuilder: (context, index) {
+                        return ChangeNotifierProvider.value(
+                          value: productsProvider
+                              .getproductsproductsVertical[index],
+                          child: const LastGridWidget(),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -422,7 +373,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-////////////////////////////////  Customize List Name  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 class CustomizeListName extends StatelessWidget {
   const CustomizeListName({super.key, required this.text});
@@ -436,7 +386,7 @@ class CustomizeListName extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: GoogleFonts.aldrich(fontSize: 18),
+          style: GoogleFonts.alike(fontSize: 18),
         ));
   }
 }

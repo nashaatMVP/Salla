@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_shop/SERVICES/my_app_functions.dart';
-import 'package:smart_shop/WIDGETS/text_widget.dart';
 import 'package:uuid/uuid.dart';
 import '../PROVIDERS/cart_provider.dart';
 import '../PROVIDERS/products_provider.dart';
 import '../PROVIDERS/user_provider.dart';
 import '../core/app_colors.dart';
+import '../core/text_widget.dart';
 
 class RatingScreen extends StatefulWidget {
   final String orderid;
