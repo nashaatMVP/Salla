@@ -1,7 +1,5 @@
 // ignore_for_file: use_build_context_synchronously, constant_pattern_never_matches_value_type
-
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -15,7 +13,7 @@ import 'package:smart_shop/WIDGETS/formfield_widget.dart';
 import 'package:smart_shop/WIDGETS/picker_widget.dart';
 import 'package:smart_shop/WIDGETS/text_widget.dart';
 import 'package:smart_shop/root_screen.dart';
-
+import '../core/app_colors.dart';
 import '../core/validator.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -78,9 +76,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
     super.dispose();
   }
-
-  /////////////////////  Sign In Button  \\\\\\\\\\\\\\\\\\\\\\\\
-
   Future<void> _registerFCT() async {
     if (_pickedImage == null) {
       MyAppFunctions()
@@ -96,7 +91,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         setState(() {
           isLoading = true;
         });
-        /////////////////////
+
 
         await auth.createUserWithEmailAndPassword(
           email: _emailController.text.trim(),
@@ -136,9 +131,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       }
     }
   }
-
-  //////////////////////////////////// Image Picker Method ////////////////////////////////////
-
   Future<void> localImagePicker() async {
     final ImagePicker imagePicker = ImagePicker();
     await MyAppFunctions.imagePickerDialog(
@@ -159,7 +151,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  ////////////////////////////////////////////////////////////////////////////////////////////////
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -168,44 +160,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: AppColors.lightPrimary,
         body: LoadingManager(
           isLoading: isLoading,
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Padding(
-              padding: const EdgeInsets.all(35),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: size.height * 0.1,
-                  ),
 
-                  const Center(
-                    child: Column(
-                      children: [
-                        TitlesTextWidget(
-                          label: "Create Account",
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        SubtitleTextWidget(
-                          label:
-                              "Fill real information, don't miss the destiny",
-                          fontSize: 10,
-                          color: Color.fromARGB(255, 30, 29, 29),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  /////////////////////////////////////////  Image Picker  ////////////////////////////////////////////////////
+                  SizedBox(height: size.height * 0.2),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -221,17 +188,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ],
                   ),
-                  /////////////////////////////////////  Form  Form  ///////////////////////////////////////////
 
                   Form(
                     key: _formkey,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const SizedBox(
                           height: 10,
                         ),
-                        //////////////////////////////////////////////////////// Name Field ////////////////////////////////////////////////////////////////////////
+
                         CustomFormField(
                           controller: _nameController,
                           focusNode: _nameFocusNode,
@@ -248,7 +213,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(
                           height: 10.0,
                         ),
-                        //////////////////////////////////////////////////////// Email Field ////////////////////////////////////////////////////////////////////////
 
                         CustomFormField(
                             controller: _emailController,
@@ -298,7 +262,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(
                           height: 10,
                         ),
-                        //////////////////////////////////////////////////////////// Repeat Password Field ////////////////////////////////////////////////////////////////
                         CustomFormField(
                             controller: _repeatPasswordController,
                             focusNode: _repeatPasswordFocusNode,
@@ -317,6 +280,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 obscureText
                                     ? Icons.visibility
                                     : Icons.visibility_off,
+
+                                color: obscureText
+                                ? Colors.grey
+                                : AppColors.goldenColor,
                               ),
                             ),
                             onFieldSubmitted: (p0) async {
@@ -328,12 +295,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 password: _passwordController.text,
                               );
                             }),
-                        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         const SizedBox(
                           height: 20.0,
                         ),
 
-                        /////////////////////////////////////////////////////// Register Button \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
                         SizedBox(
                           width: double.infinity,
                           height: 48,
@@ -343,7 +308,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             },
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
+                                borderRadius: BorderRadius.circular(10),
                               ),
                               backgroundColor: Colors.deepPurple,
                             ),
@@ -353,7 +318,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                           ),
                         ),
-                        //////////////////////////////////////////////////////////////////////////////////////////////////////////
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -379,8 +343,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 )),
                           ],
                         ),
-
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                       ],
                     ),
                   ),

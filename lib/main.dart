@@ -16,7 +16,6 @@ import 'package:smart_shop/PROVIDERS/viewed_product_provider.dart';
 import 'package:smart_shop/PROVIDERS/wishList_provider.dart';
 import 'package:smart_shop/SCREENS/home_screen.dart';
 import 'package:smart_shop/SCREENS/search_screen.dart';
-import 'package:smart_shop/SCREENS/splash_screen.dart';
 import 'package:smart_shop/root_screen.dart';
 import 'package:smart_shop/sideScreens/AddAddressScreen.dart';
 import 'package:smart_shop/sideScreens/order_screen.dart';
@@ -27,7 +26,6 @@ import 'PROVIDERS/address_provider.dart';
 import 'core/theme_data.dart';
 
 void main() {
-  //////////////////////////////////////////////////////
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(statusBarColor: Colors.deepPurple.shade200),
   );
@@ -136,7 +134,7 @@ class _MyAppState extends State<MyApp> {
                 isDarkTheme: themeProvider.getIsDarkTheme,
                 context: context,
               ),
-              home: const RootScreen(),
+              home: const RegisterScreen(),
               routes: {
                 RootScreen.routeName: (context) => const RootScreen(),
                 ProductDetailsScreen.routName: (context) =>

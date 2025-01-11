@@ -40,32 +40,38 @@ class CustomFormField extends StatelessWidget {
         style: const TextStyle(
           fontSize: 15,
           decorationThickness: 0,
-          color: Colors.black
+          color: Colors.black,
         ),
         textInputAction: textInputAction,
         keyboardType: keyboardType,
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(20),
+          contentPadding: const EdgeInsets.all(10),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
-            borderSide: const BorderSide(color: Colors.black),
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: Colors.white),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
-            borderSide: const BorderSide(color: Colors.black),
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: Colors.purple),
           ),
+          errorText: 'Must be Filled',
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: Colors.red),
+          ),
+
           fillColor: Colors.white,
           filled: true,
           hintText: hintName,
           hintStyle: const TextStyle(
-            color: Colors.black,
-            fontSize: 14,
+            color: Colors.grey,
+            fontSize: 12,
           ),
           icon: icon,
           suffixIcon: suffixIcon,
           prefixIcon: Icon(
             iconData,
-            color: Colors.deepPurple,
+            color: Colors.grey,
           ),
         ),
         onFieldSubmitted: onFieldSubmitted,

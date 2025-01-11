@@ -90,22 +90,19 @@ class _LoginScreenState extends State<LoginScreen> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: AppColors.lightPrimary,
         body: LoadingManager(
           isLoading: isLoading,
           child: Padding(
-            padding: const EdgeInsets.all(35.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Center(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: size.height * 0.1,
-                    ),
 
-                    //////////// LOGIN WORD
+
                     const Center(
                       child: Column(
                         children: [
@@ -127,15 +124,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 17,
-                    ),
+                    SizedBox(height: size.height * 0.1),
                     Form(
                       key: _formkey,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          /////////////////////////////////////////////////// Email ///////////////////////////////////////////////
                           CustomFormField(
                             controller: _emailController,
                             focusNode: _emailFocusNode,
@@ -153,7 +147,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           const SizedBox(
                             height: 15,
                           ),
-                          /////////////////////////////////////////////////  Password /////////////////////////////////////////////
                           CustomFormField(
                             controller: _passwordController,
                             focusNode: _passwordFocusNode,
@@ -183,7 +176,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           const SizedBox(
                             height: 10.0,
                           ),
-                          /////////////////////////////////////////// forgot password /////////////////////////////////////////////////
                           Align(
                             alignment: Alignment.centerRight,
                             child: TextButton(
@@ -213,7 +205,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               style: ElevatedButton.styleFrom(
                                 elevation: 10,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
+                                  borderRadius: BorderRadius.circular(12),
                                 ),
                                 backgroundColor: AppColors.goldenColor,
                               ),
@@ -245,7 +237,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 padding: const EdgeInsets.all(12.0),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(
-                                    30.0,
+                                    12,
                                   ),
                                 ),
                               ),

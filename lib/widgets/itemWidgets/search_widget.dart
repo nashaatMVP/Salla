@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_shop/PROVIDERS/products_provider.dart';
 import 'package:smart_shop/PROVIDERS/viewed_product_provider.dart';
-
 import '../../sideScreens/product_datails_screen.dart';
 
 class SearchWidget extends StatefulWidget {
@@ -45,7 +44,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //////////////////IMAGE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
                     SizedBox(
                       width: 70,
                       height: 70,
@@ -56,7 +55,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                     const SizedBox(
                       width: 20,
                     ),
-                    //////////////////////PRODUCT TITLE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
                     Flexible(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +72,6 @@ class _SearchWidgetState extends State<SearchWidget> {
                           const SizedBox(
                             height: 10,
                           ),
-                          ///////////////////////////PRICE////////////////////////////////////
                           Row(
                             children: [
                               Text(
@@ -95,8 +93,6 @@ class _SearchWidgetState extends State<SearchWidget> {
                         ],
                       ),
                     ),
-
-                    /////////////////// End Of Big Column \\\\\\\\\\\\\\\\\\
                   ],
                 ),
               ),
