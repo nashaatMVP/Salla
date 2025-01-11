@@ -11,14 +11,13 @@ import 'package:smart_shop/AUTH/register.dart';
 import 'package:smart_shop/MODELS/user-model.dart';
 import 'package:smart_shop/PROVIDERS/theme_provider.dart';
 import 'package:smart_shop/PROVIDERS/user_provider.dart';
-import 'package:smart_shop/SIDE%20SCREENS/order_screen.dart';
-import 'package:smart_shop/SIDE%20SCREENS/wislist_screen.dart';
 import 'package:smart_shop/WIDGETS/text_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../SIDE SCREENS/AddAddressScreen.dart';
 import '../WIDGETS/circular_widget.dart';
 import '../core/app_colors.dart';
+import '../sideScreens/AddAddressScreen.dart';
+import '../sideScreens/order_screen.dart';
+import '../sideScreens/wislist_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

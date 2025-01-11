@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:smart_shop/PROVIDERS/products_provider.dart';
 import 'package:smart_shop/PROVIDERS/viewed_product_provider.dart';
 
-import '../../SIDE SCREENS/product_datails_screen.dart';
+import '../../sideScreens/product_datails_screen.dart';
 
 class SearchWidget extends StatefulWidget {
   final String productId;

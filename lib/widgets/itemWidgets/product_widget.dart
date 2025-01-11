@@ -7,9 +7,8 @@ import 'package:smart_shop/PROVIDERS/products_provider.dart';
 import 'package:smart_shop/PROVIDERS/viewed_product_provider.dart';
 import 'package:smart_shop/WIDGETS/heart_widget.dart';
 import 'package:smart_shop/WIDGETS/text_widget.dart';
-
-import '../../SIDE SCREENS/product_datails_screen.dart';
 import '../../core/app_colors.dart';
+import '../../sideScreens/product_datails_screen.dart';
 
 class ProductWidget extends StatefulWidget {
   final String productId;

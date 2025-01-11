@@ -17,12 +17,12 @@ import 'package:smart_shop/PROVIDERS/wishList_provider.dart';
 import 'package:smart_shop/SCREENS/home_screen.dart';
 import 'package:smart_shop/SCREENS/search_screen.dart';
 import 'package:smart_shop/SCREENS/splash_screen.dart';
-import 'package:smart_shop/SIDE%20SCREENS/AddAddressScreen.dart';
-import 'package:smart_shop/SIDE%20SCREENS/order_screen.dart';
-import 'package:smart_shop/SIDE%20SCREENS/product_datails_screen.dart';
-import 'package:smart_shop/SIDE%20SCREENS/viewed_Recent_Screen.dart';
-import 'package:smart_shop/SIDE%20SCREENS/wislist_screen.dart';
 import 'package:smart_shop/root_screen.dart';
+import 'package:smart_shop/sideScreens/AddAddressScreen.dart';
+import 'package:smart_shop/sideScreens/order_screen.dart';
+import 'package:smart_shop/sideScreens/product_datails_screen.dart';
+import 'package:smart_shop/sideScreens/viewed_Recent_Screen.dart';
+import 'package:smart_shop/sideScreens/wislist_screen.dart';
 import 'PROVIDERS/address_provider.dart';
 import 'core/theme_data.dart';
 
