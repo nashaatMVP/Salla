@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_shop/MODELS/cart_model.dart';
+import 'package:smart_shop/core/constants.dart';
 import '../PROVIDERS/cart_provider.dart';
 import '../core/app_colors.dart';
 import '../core/text_widget.dart';
@@ -17,9 +18,7 @@ class QuentityBottomWidget extends StatelessWidget {
     final cartProvider = Provider.of<CartProvider>(context);
     return Column(
       children: [
-        const SizedBox(
-          height: 10,
-        ),
+        kGap10,
         Container(
           height: 6,
           width: 50,

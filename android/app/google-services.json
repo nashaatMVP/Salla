@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "758557610336",
+    "project_id": "advance-salla",
+    "storage_bucket": "advance-salla.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758557610336:android:6ad4390d8afdc37c824e05",
+        "android_client_info": {
+          "package_name": "com.Salla.Store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "758557610336-tel4jt30archhcb166e8nt51ht4q30q0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDB7mCY_PFbC9BfUBImE6S9eWLp2RAsYyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "758557610336-tel4jt30archhcb166e8nt51ht4q30q0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758557610336:android:6ef8bfcf8e49ac30824e05",
+        "android_client_info": {
+          "package_name": "com.example.admin_smart_shop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "758557610336-tel4jt30archhcb166e8nt51ht4q30q0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDB7mCY_PFbC9BfUBImE6S9eWLp2RAsYyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "758557610336-tel4jt30archhcb166e8nt51ht4q30q0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
