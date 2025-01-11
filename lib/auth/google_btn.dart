@@ -3,8 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:smart_shop/CONSTANTS/app_colors.dart';
 import 'package:smart_shop/root_screen.dart';
+
+import '../core/app_colors.dart';
 
 class GoogleButton extends StatefulWidget {
   const GoogleButton({super.key});

@@ -16,7 +16,7 @@ import 'package:smart_shop/WIDGETS/picker_widget.dart';
 import 'package:smart_shop/WIDGETS/text_widget.dart';
 import 'package:smart_shop/root_screen.dart';
 
-import '../CONSTANTS/validator.dart';
+import '../core/validator.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const routName = "/RegisterScreen";

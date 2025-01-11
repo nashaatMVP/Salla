@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/CONSTANTS/app_constans.dart';
 import 'package:smart_shop/MODELS/product_model.dart';
 import 'package:smart_shop/PROVIDERS/products_provider.dart';
 import 'package:smart_shop/WIDGETS/ITEM%20WIDGETS/search_widget.dart';
 import 'package:smart_shop/WIDGETS/category_widget.dart';
 import 'package:smart_shop/WIDGETS/text_widget.dart';
 
-import '../CONSTANTS/app_colors.dart';
+import '../core/app_colors.dart';
+import '../core/app_constans.dart';
 
 class SearchScreen extends StatefulWidget {
   static const routName = "/SearchScreen";

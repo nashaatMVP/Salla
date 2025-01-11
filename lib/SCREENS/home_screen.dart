@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/CONSTANTS/app_colors.dart';
 import 'package:smart_shop/MODELS/user-model.dart';
 import 'package:smart_shop/PROVIDERS/products_provider.dart';
 import 'package:smart_shop/PROVIDERS/theme_provider.dart';
@@ -13,7 +12,7 @@ import 'package:smart_shop/WIDGETS/ITEM%20WIDGETS/Last_Grid_widget.dart';
 import 'package:smart_shop/WIDGETS/ITEM%20WIDGETS/Latest_Arrival.dart';
 import 'package:smart_shop/WIDGETS/category_widget.dart';
 
-import '../CONSTANTS/app_constans.dart';
+import '../core/app_constans.dart';
 
 class HomePage extends StatefulWidget {
   static const routName = "/HomePage";
@@ -66,6 +65,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 20),
             Container(
               padding: const EdgeInsets.only(bottom: 10),
               decoration: BoxDecoration(
@@ -86,8 +86,7 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           width: size.width * 0.04,
                         ),
-                        ///////////////////  App Name  /////////////////
-                        //////////// without user
+
                         Visibility(
                           visible: user == null,
                           child: Text(
@@ -100,7 +99,6 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
-                        //////////////// user /////////
                         Visibility(
                           visible: user != null,
                           child: Column(
@@ -133,7 +131,6 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                         ),
-
                         const Spacer(),
 
                         ////////   Image   /////////
@@ -226,7 +223,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            //////////////////////////////////////  CATEGORIES  ///////////////////////////////////////////
+            ///CATEGORIES
             SizedBox(
               height: size.height * 0.01,
             ),
@@ -244,7 +241,7 @@ class _HomePageState extends State<HomePage> {
                     );
                   }),
             ),
-            ///////////////////////////////////// Swiper \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+            /// Swiper
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: SizedBox(
@@ -253,37 +250,15 @@ class _HomePageState extends State<HomePage> {
                   itemCount: 2,
                   itemBuilder: (context,index) => Container(
                     width: double.infinity,
-                    height: 200,
                     padding: const EdgeInsets.all(20),
                     decoration:  BoxDecoration(
+                      image: DecorationImage(image: AssetImage(AppConsts.bannerImg),fit: BoxFit.cover),
                       borderRadius: BorderRadius.circular(12),
-                      gradient:   const LinearGradient(colors: [
-                        AppColors.lightPrimary,
-                        AppColors.lightCardColor,
-                      ],
                       ),
                     ),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(height: 10,),
-                        Text("The Best Offer In The World",style: TextStyle(
-                           fontWeight: FontWeight.bold,
-                           fontSize: 26,
-                          color: Colors.black,
-                        ),),
-
-                        Text("50 %",style: TextStyle(
-                           fontWeight: FontWeight.bold,
-                           fontSize: 50,
-                          color: Colors.white,
-                        ),),
-                      ],
-                    ),
-                  ),
+                ),
                 ),
               ),
-            ),
             // Padding(
             //   padding: const EdgeInsets.symmetric(horizontal: 15),
             //   child: SizedBox(
@@ -306,17 +281,17 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 20,
             ),
-            //////////////////////////////// Recommended For You ////////////////////////////////////
+            /// Recommended For You
 
             const CustomizeListName(
               text: "Recommended For You",
             ),
+
             SizedBox(
               height: size.height * 0.04,
             ),
-            Visibility(
-              visible:
-                  productsProvider.getProductproductsHorizontal.isNotEmpty,
+
+            Visibility( visible: productsProvider.getProductproductsHorizontal.isNotEmpty,
               child: SizedBox(
                 height: size.height * 0.40,
                 width: double.infinity,
@@ -343,8 +318,8 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 15,
             ),
-            //////////////////////////  Latest Arrival   ///////////////////////
 
+            ///Latest Arrival
             const SizedBox(
               height: 5,
             ),
@@ -353,11 +328,10 @@ class _HomePageState extends State<HomePage> {
                   productsProvider.getProductproductsHorizontal.isNotEmpty,
               child: const CustomizeListName(text: "Latest Arrivals"),
             ),
+
             const SizedBox(
               height: 15,
             ),
-
-            ////////////////////////////////////////////////////////////////////
 
             Visibility(
               visible: productsProvider
@@ -387,14 +361,14 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+
             const SizedBox(
               height: 15,
             ),
 
-            ////////////////      Recommended For You      //////////////////////
+            ///Recommended For You
             Visibility(
-              visible:
-                  productsProvider.getproductsproductsVertical.isNotEmpty,
+              visible: productsProvider.getproductsproductsVertical.isNotEmpty,
               child: Container(
                 color: const Color(0xffCBB26A),
                 width: double.infinity,
@@ -441,7 +415,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            /////////////////////////////////////////////////////////////////////////////
           ],
         ),
       ),

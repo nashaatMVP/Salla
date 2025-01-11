@@ -5,9 +5,8 @@ import 'package:smart_shop/WIDGETS/checkout_widget.dart';
 import 'package:smart_shop/WIDGETS/circular_widget.dart';
 import 'package:smart_shop/WIDGETS/empty_widget.dart';
 import 'package:smart_shop/WIDGETS/text_widget.dart';
-
-import '../CONSTANTS/app_colors.dart';
 import '../PROVIDERS/cart_provider.dart';
+import '../core/app_colors.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({

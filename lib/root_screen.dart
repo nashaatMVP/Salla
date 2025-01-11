@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/CONSTANTS/app_colors.dart';
 import 'package:smart_shop/PROVIDERS/address_provider.dart';
 import 'package:smart_shop/PROVIDERS/cart_provider.dart';
 import 'package:smart_shop/PROVIDERS/products_provider.dart';
@@ -12,6 +11,7 @@ import 'package:smart_shop/SCREENS/cart_screen.dart';
 import 'SCREENS/home_screen.dart';
 import 'SCREENS/profile_screen.dart';
 import 'SCREENS/search_screen.dart';
+import 'core/app_colors.dart';
 
 
 
@@ -28,6 +28,7 @@ class _RootScreenState extends State<RootScreen> {
   int currentScreen = 0;
   late PageController controller;
   bool isLoadingProd = true;
+
   @override
   void initState() {
     super.initState();
@@ -94,8 +95,7 @@ class _RootScreenState extends State<RootScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentScreen,
         selectedItemColor: AppColors.goldenColor,
-        backgroundColor:
-            themeProvider.getIsDarkTheme ? Colors.black : Colors.white,
+        backgroundColor:themeProvider.getIsDarkTheme ? Colors.black : Colors.white,
         onTap: (index) {
           setState(() {
             currentScreen = index;
@@ -112,7 +112,6 @@ class _RootScreenState extends State<RootScreen> {
               color: themeProvider.getIsDarkTheme ? Colors.white : Colors.black,
             ),
           ),
-
           // Search
           BottomNavigationBarItem(
             label: "Search",

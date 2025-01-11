@@ -8,7 +8,6 @@ import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_shop/AUTH/login.dart';
 import 'package:smart_shop/AUTH/register.dart';
-import 'package:smart_shop/CONSTANTS/app_colors.dart';
 import 'package:smart_shop/MODELS/user-model.dart';
 import 'package:smart_shop/PROVIDERS/theme_provider.dart';
 import 'package:smart_shop/PROVIDERS/user_provider.dart';
@@ -19,6 +18,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../SIDE SCREENS/AddAddressScreen.dart';
 import '../WIDGETS/circular_widget.dart';
+import '../core/app_colors.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

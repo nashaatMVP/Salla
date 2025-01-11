@@ -2,7 +2,6 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/CONSTANTS/app_colors.dart';
 import 'package:smart_shop/PROVIDERS/cart_provider.dart';
 import 'package:smart_shop/PROVIDERS/products_provider.dart';
 import 'package:smart_shop/PROVIDERS/viewed_product_provider.dart';
@@ -10,6 +9,7 @@ import 'package:smart_shop/WIDGETS/heart_widget.dart';
 import 'package:smart_shop/WIDGETS/text_widget.dart';
 
 import '../../SIDE SCREENS/product_datails_screen.dart';
+import '../../core/app_colors.dart';
 
 class ProductWidget extends StatefulWidget {
   final String productId;

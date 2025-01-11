@@ -2,14 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:smart_shop/AUTH/forot_password_screen.dart';
-import 'package:smart_shop/CONSTANTS/app_colors.dart';
 import 'package:smart_shop/SERVICES/my_app_functions.dart';
 import 'package:smart_shop/WIDGETS/circular_widget.dart';
 import 'package:smart_shop/WIDGETS/formfield_widget.dart';
 import 'package:smart_shop/WIDGETS/text_widget.dart';
 import 'package:smart_shop/root_screen.dart';
-
-import '../CONSTANTS/validator.dart';
+import '../core/app_colors.dart';
+import '../core/validator.dart';
 import 'register.dart';
 
 class LoginScreen extends StatefulWidget {

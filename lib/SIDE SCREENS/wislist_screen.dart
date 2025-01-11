@@ -6,7 +6,7 @@ import 'package:smart_shop/WIDGETS/ITEM%20WIDGETS/product_widget.dart';
 import 'package:smart_shop/WIDGETS/empty_widget.dart';
 import 'package:smart_shop/WIDGETS/text_widget.dart';
 
-import '../CONSTANTS/app_colors.dart';
+import '../core/app_colors.dart';
 
 class WishListScreen extends StatelessWidget {
   const WishListScreen({super.key});

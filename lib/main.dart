@@ -23,8 +23,8 @@ import 'package:smart_shop/SIDE%20SCREENS/product_datails_screen.dart';
 import 'package:smart_shop/SIDE%20SCREENS/viewed_Recent_Screen.dart';
 import 'package:smart_shop/SIDE%20SCREENS/wislist_screen.dart';
 import 'package:smart_shop/root_screen.dart';
-import 'CONSTANTS/theme_data.dart';
 import 'PROVIDERS/address_provider.dart';
+import 'core/theme_data.dart';
 
 void main() {
   //////////////////////////////////////////////////////
@@ -59,8 +59,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Firebase.initializeApp(
-          // options: DefaultFirebaseOptions.currentPlatform,
+      future: Firebase.initializeApp( // options: DefaultFirebaseOptions.currentPlatform,
           ),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -137,7 +136,7 @@ class _MyAppState extends State<MyApp> {
                 isDarkTheme: themeProvider.getIsDarkTheme,
                 context: context,
               ),
-              home: const RootScreen(), ////  start  \\\\\
+              home: const RootScreen(),
               routes: {
                 RootScreen.routeName: (context) => const RootScreen(),
                 ProductDetailsScreen.routName: (context) =>

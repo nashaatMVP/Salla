@@ -8,14 +8,13 @@ import 'package:smart_shop/PROVIDERS/address_provider.dart';
 import 'package:smart_shop/SIDE%20SCREENS/order_screen.dart';
 import 'package:smart_shop/WIDGETS/text_widget.dart';
 import 'package:uuid/uuid.dart';
-
-import '../CONSTANTS/app_colors.dart';
 import '../PROVIDERS/cart_provider.dart';
 import '../PROVIDERS/products_provider.dart';
 import '../PROVIDERS/user_provider.dart';
 import '../WIDGETS/ITEM WIDGETS/cart_widget.dart';
 import '../WIDGETS/circular_widget.dart';
 import '../WIDGETS/empty_widget.dart';
+import '../core/app_colors.dart';
 import 'AddAddressScreen.dart';
 
 List<AddressModel> address = [];

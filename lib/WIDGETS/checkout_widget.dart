@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/CONSTANTS/app_colors.dart';
 import 'package:smart_shop/PROVIDERS/cart_provider.dart';
 import 'package:smart_shop/WIDGETS/text_widget.dart';
 
 import '../PROVIDERS/products_provider.dart';
 import '../SIDE SCREENS/select_address_screen.dart';
+import '../core/app_colors.dart';
 
 class CartBottomSheetWidget extends StatelessWidget {
   const CartBottomSheetWidget({

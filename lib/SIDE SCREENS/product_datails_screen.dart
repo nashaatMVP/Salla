@@ -13,7 +13,7 @@ import 'package:smart_shop/WIDGETS/ITEM%20WIDGETS/also_widget.dart';
 import 'package:smart_shop/WIDGETS/heart_widget.dart';
 import 'package:smart_shop/WIDGETS/text_widget.dart';
 
-import '../CONSTANTS/app_colors.dart';
+import '../core/app_colors.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   const ProductDetailsScreen({

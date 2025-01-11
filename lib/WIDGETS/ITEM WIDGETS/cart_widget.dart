@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/CONSTANTS/app_colors.dart';
 import 'package:smart_shop/MODELS/cart_model.dart';
 import 'package:smart_shop/PROVIDERS/products_provider.dart';
 import 'package:smart_shop/WIDGETS/qty_widget.dart';
 import 'package:smart_shop/WIDGETS/text_widget.dart';
 
 import '../../PROVIDERS/cart_provider.dart';
+import '../../core/app_colors.dart';
 
 class CartWidget extends StatelessWidget {
   const CartWidget({super.key});

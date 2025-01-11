@@ -5,6 +5,9 @@ class AppConsts {
     "https://img.freepik.com/free-vector/fashion-sale-landing-page-template_23-2148575476.jpg?size=626&ext=jpg&ga=GA1.2.881006302.1698402771&semt=ais", // 50%
   ];
 
+
+  static String bannerImg = 'IMG/bannerImage.png';
+
   static List<CategoryModel> categoryList = [
     CategoryModel(
       id: "1",

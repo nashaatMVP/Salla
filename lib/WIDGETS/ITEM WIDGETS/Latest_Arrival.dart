@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/CONSTANTS/app_colors.dart';
 import 'package:smart_shop/MODELS/product_model.dart';
 import 'package:smart_shop/PROVIDERS/cart_provider.dart';
 import 'package:smart_shop/PROVIDERS/viewed_product_provider.dart';
 import 'package:smart_shop/SIDE%20SCREENS/product_datails_screen.dart';
 import 'package:smart_shop/WIDGETS/heart_widget.dart';
 import 'package:smart_shop/WIDGETS/text_widget.dart';
+
+import '../../core/app_colors.dart';
 
 class LatestArrivalProductWidget extends StatelessWidget {
   const LatestArrivalProductWidget({super.key});
@@ -20,6 +21,7 @@ class LatestArrivalProductWidget extends StatelessWidget {
     final productModel = Provider.of<ProductModel>(context);
     final viwedProductProvider = Provider.of<ViewedProductProvider>(context);
     final cartProvider = Provider.of<CartProvider>(context);
+
     return GestureDetector(
       onTap: () async {
         viwedProductProvider.addViewedProduct(
