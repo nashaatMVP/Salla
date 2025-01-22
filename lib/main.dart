@@ -125,8 +125,7 @@ class _MyAppState extends State<MyApp> {
               },
             ),
           ],
-          child:
-              Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
+          child: Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
             return MaterialApp(
               title: 'SALLA',
               debugShowCheckedModeBanner: false,
@@ -157,7 +156,6 @@ class _MyAppState extends State<MyApp> {
           }),
         );
       },
-
     );
   }
 }
