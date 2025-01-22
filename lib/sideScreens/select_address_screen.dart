@@ -46,7 +46,7 @@ class _AddressScreenState extends State<SelectAddressScreen> {
             addressProvider.getaddress.isEmpty
         ? const Scaffold(
             body: EmptyBagWidget(
-              image: "IMG/bag/emptyCart.png",
+              image: "assets/bag/emptyCart.png",
               title: "Your Shopping cart looks empty.",
               subTitle: "what are you waiting for !!",
               buttonTitle: "Shop Now",

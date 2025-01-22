@@ -18,7 +18,7 @@ class LoadingManager extends StatelessWidget {
           height: 100,
           width: 100,
           child: LottieBuilder.asset(
-                    "IMG/Lottie/Loading.json",
+                    "assets/Lottie/Loading.json",
                   ),
                     ),
                     ),

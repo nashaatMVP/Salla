@@ -36,7 +36,7 @@ void main() {
         height: 100,
         width: 100,
         child: LottieBuilder.asset(
-          "IMG/Lottie/Loading.json",
+          "assets/Lottie/Loading.json",
           ),),);
   };
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,8 +58,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Firebase.initializeApp( // options: DefaultFirebaseOptions.currentPlatform,
-          ),
+      future: Firebase.initializeApp( /* options: DefaultFirebaseOptions.currentPlatform, */ ),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const MaterialApp(

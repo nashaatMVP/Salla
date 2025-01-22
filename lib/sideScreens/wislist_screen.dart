@@ -18,7 +18,7 @@ class WishListScreen extends StatelessWidget {
     return wishListProvider.getWishListItems.isEmpty
         ? const Scaffold(
             body: EmptyBagWidget(
-              image: "IMG/bag/emptyCart.png",
+              image: "assets/bag/emptyCart.png",
               title: "Your WishList looks empty.",
               subTitle: "what are you waiting for !!",
               buttonTitle: "Shop Now",

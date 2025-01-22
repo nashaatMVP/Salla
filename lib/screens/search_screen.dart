@@ -57,7 +57,7 @@ class _SearchScreenState extends State<SearchScreen> {
           height: 150,
           width: 150,
           child: LottieBuilder.asset(
-                    "IMG/Lottie/Loading.json",
+                    "assets/Lottie/Loading.json",
                   ),
                     ),
                         

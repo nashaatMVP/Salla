@@ -6,78 +6,78 @@ class AppConsts {
   ];
 
 
-  static String bannerImg = 'IMG/bannerImage.png';
+  static String bannerImg = 'assets/bannerImage.png';
 
   static List<CategoryModel> categoryList = [
     CategoryModel(
       id: "1",
-      image: "IMG/categories/visualhunter-1fbe8131b5.png",
+      image: "assets/categories/visualhunter-1fbe8131b5.png",
       name: "Phones",
     ),
     CategoryModel(
       id: "1",
-      image: "IMG/categories/HeadPhones.png",
+      image: "assets/categories/HeadPhones.png",
       name: "HeadPhones",
     ),
     CategoryModel(
       id: "1",
-      image: "IMG/categories/AirPods.png",
+      image: "assets/categories/AirPods.png",
       name: "Air Pods",
     ),
     CategoryModel(
       id: "1",
-      image: "IMG/categories/smartWatch.png",
+      image: "assets/categories/smartWatch.png",
       name: "Watches",
     ),
     CategoryModel(
       id: "1",
-      image: "IMG/categories/Elctronics.png",
+      image: "assets/categories/Elctronics.png",
       name: "Accessories",
     ),
     CategoryModel(
       id: "1",
-      image: "IMG/categories/Camera.png",
+      image: "assets/categories/Camera.png",
       name: "Cameras",
     ),
     CategoryModel(
       id: "1",
-      image: "IMG/categories/Gaming.png",
+      image: "assets/categories/Gaming.png",
       name: "Gaming",
     ),
     CategoryModel(
       id: "1",
-      image: "IMG/categories/Laptpos.png",
+      image: "assets/categories/Laptpos.png",
       name: "Laptops",
     ),
     CategoryModel(
       id: "1",
-      image: "IMG/categories/Tools.png",
+      image: "assets/categories/Tools.png",
       name: "Tools",
     ),
     CategoryModel(
       id: "1",
-      image: "IMG/categories/Drones.png",
+      image: "assets/categories/Drones.png",
       name: "Drones",
     ),
     CategoryModel(
       id: "1",
-      image: "IMG/categories/sport.png",
+      image: "assets/categories/sport.png",
       name: "Sports",
     ),
     CategoryModel(
       id: "1",
-      image: "IMG/categories/Kitchen.png",
+      image: "assets/categories/Kitchen.png",
       name: "Kitchen",
     ),
     CategoryModel(
       id: "1",
-      image: "IMG/categories/Furniture.png",
+      image: "assets/categories/Furniture.png",
       name: "Furniture",
     ),
   ];
 
   //////////////////////  Rebeated Images  //////////////////////
-  static String popImage = "IMG/pop.png";
-  static String trueImage = "IMG/True.png";
-  static String wrongImage = "IMG/Wrong.png";
+  static String popImage = "assets/pop.png";
+  static String trueImage = "assets/True.png";
+  static String wrongImage = "assets/Wrong.png";
 }

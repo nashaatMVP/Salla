@@ -58,7 +58,7 @@ class _OrdersScreenFreeState extends State<OrdersScreenFree> {
             );
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return const EmptyBagWidget(
-              image: "IMG/bag/empty_order.png",
+              image: "assets/bag/empty_order.png",
               buttonTitle: "shop now",
               title: "Empty Orders",
               subTitle: "select order and enjoy the quality",

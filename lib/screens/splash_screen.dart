@@ -31,7 +31,7 @@ class _SpalshScreenState extends State<SpalshScreen> {
               height: 130,
               width: 130,
               child: LottieBuilder.asset(
-                        "IMG/Lottie/Animation - 1709874915551.json",
+                        "assets/Lottie/Animation - 1709874915551.json",
                       ),
             )));
   }
