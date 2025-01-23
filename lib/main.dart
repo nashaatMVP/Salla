@@ -18,6 +18,7 @@ import 'package:smart_shop/PROVIDERS/wishList_provider.dart';
 import 'package:smart_shop/SCREENS/home_screen.dart';
 import 'package:smart_shop/SCREENS/search_screen.dart';
 import 'package:smart_shop/root_screen.dart';
+import 'package:smart_shop/screens/splash_screen.dart';
 import 'package:smart_shop/sideScreens/AddAddressScreen.dart';
 import 'package:smart_shop/sideScreens/order_screen.dart';
 import 'package:smart_shop/sideScreens/product_datails_screen.dart';
@@ -52,8 +53,6 @@ class MyApp extends StatefulWidget {
 
   @override
   State<MyApp> createState() => _MyAppState();
-
-
 }
 
 class _MyAppState extends State<MyApp> {
@@ -70,7 +69,7 @@ class _MyAppState extends State<MyApp> {
             ),
           );
         } else if (snapshot.hasError) {
-          return GetMaterialApp(
+          return MaterialApp(
             debugShowCheckedModeBanner: false,
             home: Scaffold(
               body: SelectableText(
@@ -135,7 +134,7 @@ class _MyAppState extends State<MyApp> {
                 isDarkTheme: themeProvider.getIsDarkTheme,
                 context: context,
               ),
-              home: const RootScreen(),
+              home: const SpalshScreen(),
               routes: {
                 RootScreen.routeName: (context) => const RootScreen(),
                 ProductDetailsScreen.routName: (context) =>

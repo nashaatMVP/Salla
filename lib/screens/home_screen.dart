@@ -63,7 +63,6 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            kGap20,
             Container(
               padding: const EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(

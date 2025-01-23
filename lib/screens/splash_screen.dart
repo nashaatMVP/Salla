@@ -16,7 +16,7 @@ class _SpalshScreenState extends State<SpalshScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 6), () {
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder: ((context) => const RootScreen())));
     });
