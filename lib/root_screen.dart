@@ -13,8 +13,6 @@ import 'SCREENS/profile_screen.dart';
 import 'SCREENS/search_screen.dart';
 import 'core/app_colors.dart';
 
-
-
 class RootScreen extends StatefulWidget {
   static const routeName = "/RootScreen";
   const RootScreen({super.key});
@@ -42,13 +40,10 @@ class _RootScreenState extends State<RootScreen> {
   }
 
   Future<void> fetchFCT() async {
-    final productsProvider =
-        Provider.of<ProductProvider>(context, listen: false);
+    final productsProvider = Provider.of<ProductProvider>(context, listen: false);
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
-    final addressProvider =
-        Provider.of<AddressProvider>(context, listen: false);
-    final wishListProvider =
-        Provider.of<WishListProvider>(context, listen: false);
+    final addressProvider = Provider.of<AddressProvider>(context, listen: false);
+    final wishListProvider = Provider.of<WishListProvider>(context, listen: false);
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     try {
@@ -78,24 +73,23 @@ class _RootScreenState extends State<RootScreen> {
     if (isLoadingProd) {
       fetchFCT();
     }
-
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: true);
+
     return Scaffold(
       body: PageView(
-        physics: const NeverScrollableScrollPhysics(),
         controller: controller,
+        physics: const NeverScrollableScrollPhysics(),
         children: screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentScreen,
         selectedItemColor: AppColors.goldenColor,
-        backgroundColor:themeProvider.getIsDarkTheme ? Colors.black : Colors.white,
         onTap: (index) {
           setState(() {
             currentScreen = index;
@@ -103,7 +97,6 @@ class _RootScreenState extends State<RootScreen> {
           controller.jumpToPage(currentScreen);
         },
         items: [
-          // Home
           BottomNavigationBarItem(
             label: "Home",
             activeIcon: const Icon(IconlyBold.home),
@@ -112,7 +105,6 @@ class _RootScreenState extends State<RootScreen> {
               color: themeProvider.getIsDarkTheme ? Colors.white : Colors.black,
             ),
           ),
-          // Search
           BottomNavigationBarItem(
             label: "Search",
             activeIcon: const Icon(IconlyBold.search),
@@ -121,7 +113,6 @@ class _RootScreenState extends State<RootScreen> {
               color: themeProvider.getIsDarkTheme ? Colors.white : Colors.black,
             ),
           ),
-          // Cart
           BottomNavigationBarItem(
             label: "Cart",
             activeIcon: const Icon(IconlyBold.bag),
@@ -138,7 +129,6 @@ class _RootScreenState extends State<RootScreen> {
               ),
             ),
           ),
-          // Profile
           BottomNavigationBarItem(
             label: "Profile",
             activeIcon: const Icon(IconlyBold.profile),

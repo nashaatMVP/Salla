@@ -14,7 +14,6 @@ class MyAppFunctions {
   }
 
   /////////////////////////////////////////////  IMAGE PICKER   //////////////////////////////////////////////////////////////////
-
   static Future<void> imagePickerDialog({
     required BuildContext context,
     required Function cameraFCT,
