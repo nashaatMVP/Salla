@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_shop/SCREENS/search_screen.dart';
+import 'package:smart_shop/shared/constants.dart';
+import 'package:smart_shop/shared/custom_text.dart';
+import '../screens/search_screen.dart';
+import '../shared/theme/app_colors.dart';
 
 class CategoryRoundedWidget extends StatelessWidget {
   const CategoryRoundedWidget({
@@ -14,6 +18,7 @@ class CategoryRoundedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(
@@ -24,38 +29,36 @@ class CategoryRoundedWidget extends StatelessWidget {
       },
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Container(
-              width: 70,
-              height: 70,
-              decoration: BoxDecoration(
-                color: Colors.deepPurple.shade200,
-                shape: BoxShape.circle,
-              ),
-              child: Image.asset(
-                image,
-                width: 150,
-                height: 150,
+          Material(
+            elevation: 2,
+            borderRadius: BorderRadius.circular(400),
+            shadowColor: Colors.grey.shade50,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+              child: Container(
+                width: 70,
+                height: 70,
+                decoration: BoxDecoration(
+                  color: Colors.lightGreen.shade100,
+                  shape: BoxShape.circle,
+                ),
+                child: Image.asset(
+                  image,
+                  width: 150,
+                  height: 150,
+                ),
               ),
             ),
           ),
-          const SizedBox(
-            height: 5,
-          ),
-          //abel
-          Text(name,
-              style: GoogleFonts.alatsi(
-                // fontWeight: FontWeight.bold,
-                fontSize: 13,
-              )),
+          Gap(5),
+          TextWidgets.bodyText1(name,fontWeight: FontWeight.w600,color: appColors.primaryColor,fontSize: 10),
         ],
       ),
     );
   }
 }
 
-//////////////////////////////////////// Search Category ///////////////////////////////////////////////////////////////
+
 class CategorySearchWidget extends StatelessWidget {
   const CategorySearchWidget({
     super.key,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/MODELS/cart_model.dart';
-import 'package:smart_shop/core/constants.dart';
 import '../PROVIDERS/cart_provider.dart';
-import '../core/app_colors.dart';
-import '../core/text_widget.dart';
+import '../models/cart_model.dart';
+import '../shared/constants.dart';
+import '../shared/custom_text.dart';
+import '../shared/theme/app_colors.dart';
 
 class QuentityBottomWidget extends StatelessWidget {
   const QuentityBottomWidget({
@@ -16,6 +16,7 @@ class QuentityBottomWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context);
+    final appColors = Theme.of(context).extension<AppColors>()!;
     return Column(
       children: [
         kGap10,
@@ -24,7 +25,7 @@ class QuentityBottomWidget extends StatelessWidget {
           width: 50,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color: AppColors.goldenColor,
+            color: appColors.primaryColor,
           ),
         ),
         Expanded(
@@ -43,7 +44,7 @@ class QuentityBottomWidget extends StatelessWidget {
                   child: Center(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: SubtitleTextWidget(label: "${index + 1}"),
+                      child: TextWidgets.bodyText1( "${index + 1}"),
                     ),
                   ),
                 );

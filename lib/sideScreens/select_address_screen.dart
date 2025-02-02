@@ -3,16 +3,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/MODELS/address_model.dart';
-import 'package:smart_shop/PROVIDERS/address_provider.dart';
 import 'package:uuid/uuid.dart';
-import '../PROVIDERS/cart_provider.dart';
-import '../PROVIDERS/products_provider.dart';
-import '../PROVIDERS/user_provider.dart';
-import '../WIDGETS/circular_widget.dart';
-import '../WIDGETS/empty_widget.dart';
-import '../core/app_colors.dart';
-import '../core/text_widget.dart';
+import '../models/address_model.dart';
+import '../providers/address_provider.dart';
+import '../providers/cart_provider.dart';
+import '../providers/products_provider.dart';
+import '../providers/user_provider.dart';
+import '../shared/custom_text.dart';
+import '../shared/theme/app_colors.dart';
+import '../shared/circular_widget.dart';
+import '../shared/custom_empty_widget.dart';
 import '../widgets/itemWidgets/cart_widget.dart';
 import 'AddAddressScreen.dart';
 import 'order_screen.dart';
@@ -33,6 +33,8 @@ class _AddressScreenState extends State<SelectAddressScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
+
     final cartProvider = Provider.of<CartProvider>(context);
     final productProvider =
         Provider.of<ProductProvider>(context, listen: false);
@@ -41,7 +43,6 @@ class _AddressScreenState extends State<SelectAddressScreen> {
     // ignore: non_constant_identifier_names
     final double Total =
         cartProvider.getTotal(productProvider: productProvider) + shippingFee;
-
     return cartProvider.getCartItems.isEmpty &&
             addressProvider.getaddress.isEmpty
         ? const Scaffold(
@@ -57,14 +58,10 @@ class _AddressScreenState extends State<SelectAddressScreen> {
               appBar: AppBar(
                 centerTitle: true,
                 toolbarHeight: 35,
-                title: const Padding(
+                title:  Padding(
                   padding: EdgeInsets.only(top: 20.0),
-                  child: TitlesTextWidget(
-                    label: "Check Out",
-                    fontSize: 20,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  child: TextWidgets.bodyText1("CheckOut"),
+
                 ),
                 actions: [
                   IconButton(
@@ -73,9 +70,9 @@ class _AddressScreenState extends State<SelectAddressScreen> {
                           context: context);
                       cartProvider.clearLocalCart();
                     },
-                    icon: const Icon(
+                    icon:  Icon(
                       Icons.clear_all,
-                      color: AppColors.blackColor,
+                      color: appColors.primaryColor,
                     ),
                   ),
                 ],
@@ -130,27 +127,24 @@ class _AddressScreenState extends State<SelectAddressScreen> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(12),
                                     border: Border.all(
-                                        color: AppColors.goldenColor, width: 2),
+                                        color: appColors.primaryColor, width: 2),
                                   ),
-                                  child: const Row(
+                                  child:  Row(
                                     children: [
                                       Icon(
                                         Ionicons.location,
-                                        color: AppColors.goldenColor,
+                                        color: appColors.primaryColor
+                                        ,
                                       ),
                                       SizedBox(
                                         width: 10,
                                       ),
-                                      TitlesTextWidget(
-                                        label:
-                                            "Please Add Your Address Information",
-                                        color: AppColors.goldenColor,
-                                        fontSize: 12,
-                                      ),
+                                      TextWidgets.bodyText1("Please Add Your Address Information"),
+
                                       Spacer(),
                                       Icon(
                                         Icons.arrow_forward_ios,
-                                        color: AppColors.goldenColor,
+                                        color: appColors.primaryColor,
                                       ),
                                     ],
                                   ),
@@ -190,11 +184,8 @@ class _AddressScreenState extends State<SelectAddressScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               // ignore: prefer_const_constructors
-                              TitlesTextWidget(
-                                label: "Order Details",
-                                fontWeight: FontWeight.bold,
-                                fontSize: 19,
-                              ),
+                              TextWidgets.bodyText1("Order Details"),
+
                               const SizedBox(
                                 height: 14,
                               ),
@@ -202,16 +193,10 @@ class _AddressScreenState extends State<SelectAddressScreen> {
                               ///Subtotal
                               Row(
                                 children: [
-                                  const TitlesTextWidget(
-                                    label: "Subtotal : ",
-                                    fontSize: 15,
-                                  ),
+                                  TextWidgets.bodyText1("Subtotal : "),
                                   const Spacer(),
-                                  TitlesTextWidget(
-                                    label:
-                                        "${cartProvider.getTotal(productProvider: productProvider).toStringAsFixed(2)} AED",
-                                    fontSize: 15,
-                                  ),
+                                  TextWidgets.bodyText1("${cartProvider.getTotal(productProvider: productProvider).toStringAsFixed(2)} AED"),
+
                                 ],
                               ),
                               const SizedBox(
@@ -221,15 +206,9 @@ class _AddressScreenState extends State<SelectAddressScreen> {
                               ///Shipping Fee
                               Row(
                                 children: [
-                                  const TitlesTextWidget(
-                                    label: "Shipping Fee : ",
-                                    fontSize: 15,
-                                  ),
+                                  TextWidgets.bodyText1("Shipping Fee : "),
                                   const Spacer(),
-                                  TitlesTextWidget(
-                                    label: " ${shippingFee.toString()} AED",
-                                    fontSize: 15,
-                                  ),
+                                  TextWidgets.bodyText1("${shippingFee.toString()} AED"),
                                 ],
                               ),
                               const SizedBox(
@@ -239,17 +218,13 @@ class _AddressScreenState extends State<SelectAddressScreen> {
                               ///// Total
                               Row(
                                 children: [
-                                  const TitlesTextWidget(
-                                    label: "Total : ",
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  TextWidgets.bodyText1("Total :"),
+
+
                                   const Spacer(),
-                                  TitlesTextWidget(
-                                    label: " ${Total.toStringAsFixed(2)} AED",
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  TextWidgets.bodyText1("${Total.toStringAsFixed(2)} AED"),
+
+
                                 ],
                               ),
                             ],
@@ -268,6 +243,7 @@ class _AddressScreenState extends State<SelectAddressScreen> {
                                 productProvider: productProvider,
                                 userProvider: userProvider,
                                 addressModel: addressProvider.SelectedAddresses,
+                                appColors: appColors,
                               ).then((value) => Navigator.pushNamed(
                                   context, OrdersScreenFree.routeName));
                             } else {
@@ -288,7 +264,7 @@ class _AddressScreenState extends State<SelectAddressScreen> {
                                   width: 320,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: AppColors.goldenColor,
+                                    color: appColors.primaryColor,
                                   ),
                                   child: const FittedBox(
                                     child: Text(
@@ -323,6 +299,8 @@ class _AddressScreenState extends State<SelectAddressScreen> {
     required ProductProvider productProvider,
     required UserProvider userProvider,
     required String addressModel,
+    required AppColors appColors,
+
   }) async {
     final auth = FirebaseAuth.instance;
     User? user = auth.currentUser;
@@ -384,14 +362,14 @@ class _AddressWidgetState extends State<AddressWidget> {
   Widget build(BuildContext context) {
     final addressModel = Provider.of<AddressModel>(context);
     final addressProvider = Provider.of<AddressProvider>(context);
-
+    final appColors = Theme.of(context).extension<AppColors>()!;
     return ListTile(
       leading: SizedBox(
         width: 20,
         // margin: const EdgeInsets.only(bottom: 40, left: 10),
         child: Radio<AddressModel>(
           fillColor:
-              MaterialStateColor.resolveWith((states) => AppColors.goldenColor),
+              MaterialStateColor.resolveWith((states) => appColors.primaryColor),
           value: addressModel,
           groupValue: addressProvider.getSelectedAddress(),
           onChanged: (AddressModel? selectedAddress) {
@@ -407,9 +385,9 @@ class _AddressWidgetState extends State<AddressWidget> {
                   builder: (context) => const AddressEditScreen(),
                 ));
           },
-          child: const Text(
+          child:  Text(
             "Edit",
-            style: TextStyle(color: AppColors.goldenColor),
+            style: TextStyle(color: appColors.primaryColor),
           )),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -431,9 +409,9 @@ class _AddressWidgetState extends State<AddressWidget> {
               const SizedBox(
                 width: 5,
               ),
-              const Icon(
+               Icon(
                 Icons.verified,
-                color: AppColors.goldenColor,
+                color: appColors.primaryColor,
                 size: 14,
               ),
             ],

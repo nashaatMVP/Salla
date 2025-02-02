@@ -1,17 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:smart_shop/AUTH/forot_password_screen.dart';
-import 'package:smart_shop/SERVICES/my_app_functions.dart';
-import 'package:smart_shop/WIDGETS/circular_widget.dart';
-import 'package:smart_shop/WIDGETS/formfield_widget.dart';
-import 'package:smart_shop/core/constants.dart';
 import 'package:smart_shop/root_screen.dart';
-import '../core/app_colors.dart';
-import '../core/text_widget.dart';
+import '../core/my_app_functions.dart';
+import '../shared/circular_widget.dart';
+import '../shared/constants.dart';
+import '../shared/custom_text.dart';
+import '../shared/custom_text_field.dart';
+import '../shared/theme/app_colors.dart';
 import '../core/validator.dart';
+import 'forot_password_screen.dart';
 import 'register.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -93,12 +91,13 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final appColors = Theme.of(context).extension<AppColors>()!;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        backgroundColor: AppColors.lightPrimary,
+        backgroundColor: appColors.primaryColor,
         body: LoadingManager(
           isLoading: isLoading,
           child: Padding(
@@ -109,22 +108,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Center(
+                    Center(
                       child: Column(
                         children: [
-                          TitlesTextWidget(
-                            label: "Login",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24,
-                            color: Colors.white,
-                          ),
+                          TextWidgets.bodyText1('Login'),
                           kGap5,
-                          SubtitleTextWidget(
-                            fontSize: 10,
-                            label:
-                                "Fill real email & password, don't miss the destiny",
-                            color: Colors.white70,
-                          ),
+                          TextWidgets.bodyText1('Fill real email & password, don\'t miss the destiny'),
+
                         ],
                       ),
                     ),
@@ -182,12 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Navigator.pushNamed(
                                     context, ForgotPasswordScreen.routeName);
                               },
-                              child: const SubtitleTextWidget(
-                                label: "Forgot password?",
-                                textDecoration: TextDecoration.underline,
-                                color: AppColors.goldenColor,
-                                fontSize: 10,
-                              ),
+                              child:  TextWidgets.bodyText1('Forgot Password'),
                             ),
                           ),
                           kGap10,
@@ -203,7 +188,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                backgroundColor: AppColors.goldenColor,
+                                backgroundColor: appColors.primaryColor,
                               ),
                               child: const Text(
                                 "Login",
@@ -212,10 +197,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           kGap20,
-                          const SubtitleTextWidget(
-                            label: "or",
-                            fontSize: 15,
-                          ),
+                          TextWidgets.bodyText1('or'),
                           kGap15,
                           SizedBox(
                             width: double.infinity,
@@ -232,10 +214,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ),
                               ),
-                              child: const Text(
+                              child:  Text(
                                 " Guest ?",
                                 style: TextStyle(
-                                    fontSize: 15, color: AppColors.goldenColor),
+                                    fontSize: 15, color: appColors.primaryColor),
                               ),
                               onPressed: () async {
                                 Navigator.pushNamed(
@@ -249,20 +231,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const SubtitleTextWidget(
-                                label: "Don't have an account ?",
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                                fontSize: 13,
-                              ),
+                              TextWidgets.bodyText1('Dont Have account'),
                               TextButton(
-                                child: const SubtitleTextWidget(
-                                  label: "Sign up",
-                                  fontWeight: FontWeight.normal,
-                                  color: AppColors.goldenColor,
-                                  textDecoration: TextDecoration.underline,
-                                  fontSize: 13,
-                                ),
+                                child:  TextWidgets.bodyText1('Sign Up'),
                                 onPressed: () {
                                   Navigator.of(context)
                                       .pushNamed(RegisterScreen.routName);

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/PROVIDERS/address_provider.dart';
-import 'package:smart_shop/PROVIDERS/cart_provider.dart';
-import 'package:smart_shop/PROVIDERS/products_provider.dart';
-import 'package:smart_shop/PROVIDERS/theme_provider.dart';
-import 'package:smart_shop/PROVIDERS/user_provider.dart';
-import 'package:smart_shop/PROVIDERS/wishList_provider.dart';
-import 'package:smart_shop/SCREENS/cart_screen.dart';
-import 'SCREENS/home_screen.dart';
-import 'SCREENS/profile_screen.dart';
-import 'SCREENS/search_screen.dart';
-import 'core/app_colors.dart';
+import 'providers/address_provider.dart';
+import 'providers/cart_provider.dart';
+import 'providers/products_provider.dart';
+import 'providers/theme_provider.dart';
+import 'providers/user_provider.dart';
+import 'providers/wishList_provider.dart';
+import 'screens/cart_screen.dart';
+import 'screens/home/home_screen.dart';
+import 'screens/profile_screen.dart';
+import 'screens/search_screen.dart';
+import 'shared/theme/app_colors.dart';
 
 class RootScreen extends StatefulWidget {
   static const routeName = "/RootScreen";
@@ -80,6 +80,7 @@ class _RootScreenState extends State<RootScreen> {
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: true);
+    final appColors = Theme.of(context).extension<AppColors>()!;
 
     return Scaffold(
       body: PageView(
@@ -89,7 +90,7 @@ class _RootScreenState extends State<RootScreen> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentScreen,
-        selectedItemColor: AppColors.goldenColor,
+        selectedItemColor: appColors.primaryColor,
         onTap: (index) {
           setState(() {
             currentScreen = index;
@@ -102,7 +103,7 @@ class _RootScreenState extends State<RootScreen> {
             activeIcon: const Icon(IconlyBold.home),
             icon: Icon(
               IconlyLight.home,
-              color: themeProvider.getIsDarkTheme ? Colors.white : Colors.black,
+              color: appColors.primaryColor,
             ),
           ),
           BottomNavigationBarItem(
@@ -110,7 +111,7 @@ class _RootScreenState extends State<RootScreen> {
             activeIcon: const Icon(IconlyBold.search),
             icon: Icon(
               IconlyLight.search,
-              color: themeProvider.getIsDarkTheme ? Colors.white : Colors.black,
+              color: appColors.primaryColor,
             ),
           ),
           BottomNavigationBarItem(
@@ -121,11 +122,11 @@ class _RootScreenState extends State<RootScreen> {
                 "${cartProvider.getCartItems.length}",
                 style: const TextStyle(color: Colors.white),
               ),
-              backgroundColor: AppColors.goldenColor,
+              backgroundColor: appColors.primaryColor,
               child: Icon(
                 IconlyLight.bag,
                 color:
-                    themeProvider.getIsDarkTheme ? Colors.white : Colors.black,
+                appColors.primaryColor,
               ),
             ),
           ),
@@ -134,7 +135,7 @@ class _RootScreenState extends State<RootScreen> {
             activeIcon: const Icon(IconlyBold.profile),
             icon: Icon(
               IconlyLight.profile,
-              color: themeProvider.getIsDarkTheme ? Colors.white : Colors.black,
+              color: appColors.primaryColor,
             ),
           ),
         ],

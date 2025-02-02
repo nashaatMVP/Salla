@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/MODELS/order_model.dart';
-import 'package:smart_shop/PROVIDERS/order_provider.dart';
-import 'package:smart_shop/WIDGETS/empty_widget.dart';
-import '../core/app_colors.dart';
-import '../core/text_widget.dart';
+import '../models/order_model.dart';
+import '../providers/order_provider.dart';
+import '../shared/custom_text.dart';
+import '../shared/theme/app_colors.dart';
+import '../shared/custom_empty_widget.dart';
 import '../widgets/itemWidgets/order_widget.dart';
 
 class OrdersScreenFree extends StatefulWidget {
@@ -19,34 +19,30 @@ class OrdersScreenFree extends StatefulWidget {
 class _OrdersScreenFreeState extends State<OrdersScreenFree> {
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
     final orderProvider = Provider.of<OrderProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         toolbarHeight: 50,
-        title: const Padding(
+        title:  Padding(
           padding: EdgeInsets.only(top: 20.0),
-          child: TitlesTextWidget(
-            label: "My Orders",
-            fontSize: 18,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
+          child: TextWidgets.bodyText1("My Orders"),
+
         ),
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(
+            icon:  Icon(
               Icons.clear_all,
-              color: AppColors.goldenColor,
+              color: appColors.primaryColor,
             ),
           ),
         ],
       ),
       body: StreamBuilder<List<OrderModelAdvanced>>(
-        stream: orderProvider
-            .fetchOrdersStream(), // Assuming this method returns a Stream<List<OrderModelAdvanced>>
+        stream: orderProvider.fetchOrdersStream(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             print(snapshot.connectionState);
@@ -77,11 +73,11 @@ class _OrdersScreenFreeState extends State<OrdersScreenFree> {
               );
             },
             separatorBuilder: (BuildContext context, int index) {
-              return const Divider(
+              return  Divider(
                 endIndent: 10,
                 indent: 10,
                 thickness: 1,
-                color: AppColors.goldenColor,
+                color: appColors.primaryColor,
               );
             },
           );

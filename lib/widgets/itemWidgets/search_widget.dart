@@ -2,8 +2,8 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/PROVIDERS/products_provider.dart';
-import 'package:smart_shop/PROVIDERS/viewed_product_provider.dart';
+import '../../providers/products_provider.dart';
+import '../../providers/viewed_product_provider.dart';
 import '../../sideScreens/product_datails_screen.dart';
 
 class SearchWidget extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import '../core/app_colors.dart';
-import '../core/text_widget.dart';
+import 'package:smart_shop/shared/custom_text.dart';
+import '../shared/theme/app_colors.dart';
 import '../core/validator.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
@@ -51,6 +51,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final appColors = Theme.of(context).extension<AppColors>()!;
     return Scaffold(
       body: GestureDetector(
         onTap: () {
@@ -73,15 +74,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               const SizedBox(
                 height: 10,
               ),
-              const TitlesTextWidget(
-                label: 'Forgot password',
-                fontSize: 22,
-              ),
-              const SubtitleTextWidget(
-                label:
-                    'Please enter the email address you\'d like your  \n password reset information sent to',
-                fontSize: 14,
-              ),
+              TextWidgets.bodyText1('Forgot password'),
+              TextWidgets.bodyText3('Please enter the email address you\'d like your  \n password reset information sent to'),
+
               const SizedBox(
                 height: 40,
               ),
@@ -99,20 +94,20 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide: const BorderSide(
-                                  color: AppColors.goldenColor)),
+                              borderSide:  BorderSide(
+                                  color: appColors.primaryColor)),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
-                              borderSide: const BorderSide(
-                                  color: AppColors.goldenColor)),
+                              borderSide:  BorderSide(
+                                  color: appColors.primaryColor)),
                           labelText: 'Enter Email',
                           labelStyle:
-                              const TextStyle(color: AppColors.goldenColor),
+                               TextStyle(color: appColors.primaryColor),
                           prefixIcon: Container(
                             padding: const EdgeInsets.all(12),
-                            child: const Icon(
+                            child:  Icon(
                               IconlyLight.message,
-                              color: AppColors.goldenColor,
+                              color: appColors.primaryColor,
                             ),
                           ),
                           hintStyle: const TextStyle(fontSize: 15),
@@ -142,7 +137,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     elevation: 40,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    backgroundColor: AppColors.goldenColor,
+                    backgroundColor: appColors.primaryColor,
                   ),
                   label: const Text("Request Link"),
                   icon: const Icon(Icons.email),

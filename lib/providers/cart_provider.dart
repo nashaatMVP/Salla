@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_shop/MODELS/cart_model.dart';
-import 'package:smart_shop/PROVIDERS/products_provider.dart';
-import 'package:smart_shop/SERVICES/my_app_functions.dart';
+import 'package:smart_shop/providers/products_provider.dart';
 import 'package:uuid/uuid.dart';
+import '../models/cart_model.dart';
+import '../core/my_app_functions.dart';
 
 class CartProvider with ChangeNotifier {
   final Map<String, CartModel> _cartItems = {};

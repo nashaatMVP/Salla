@@ -1,9 +1,9 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:smart_shop/MODELS/order_model.dart';
-import '../../core/app_colors.dart';
-import '../../core/text_widget.dart';
+import '../../models/order_model.dart';
+import '../../shared/custom_text.dart';
+import '../../shared/theme/app_colors.dart';
 import '../../sideScreens/RatingScreen.dart';
 
 class OrderWidget extends StatefulWidget {
@@ -19,6 +19,8 @@ class _OrderWidgetState extends State<OrderWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
+
     Size size = MediaQuery.of(context).size;
     getdate(String input) {
       DateTime parsedDate = DateTime.parse(input);
@@ -68,11 +70,8 @@ class _OrderWidgetState extends State<OrderWidget> {
                           children: [
                             SizedBox(
                               width: size.width * 0.8,
-                              child: TitlesTextWidget(
-                                label: widget.orderModelAdvanced.prductTitle,
-                                maxLines: 2,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
+                              child: TextWidgets.bodyText1(
+                                 widget.orderModelAdvanced.prductTitle,
                               ),
                             ),
                           ],
@@ -80,23 +79,22 @@ class _OrderWidgetState extends State<OrderWidget> {
                         const SizedBox(
                           height: 10,
                         ),
-                        SubtitleTextWidget(
-                          label: "AED ${widget.orderModelAdvanced.price}",
-                          fontSize: 15,
+                        TextWidgets.bodyText1(
+                         "AED ${widget.orderModelAdvanced.price}",
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        SubtitleTextWidget(
-                          label: "Qty : x ${widget.orderModelAdvanced.quntity}",
+                        TextWidgets.bodyText1(
+                       "Qty : x ${widget.orderModelAdvanced.quntity}",
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        SubtitleTextWidget(
-                          label:
+                        TextWidgets.bodyText1(
+
                               "Order Date : ${widget.orderModelAdvanced.orderDate.toDate().day} / ${widget.orderModelAdvanced.orderDate.toDate().month} / ${widget.orderModelAdvanced.orderDate.toDate().year}",
-                          color: const Color.fromARGB(255, 138, 106, 9),
+
                         ),
                       ],
                     ),
@@ -117,26 +115,20 @@ class _OrderWidgetState extends State<OrderWidget> {
               },
               child: Container(
                 margin: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                child: const SubtitleTextWidget(
-                  color: AppColors.goldenColor,
-                  label: "See more..",
-                  fontWeight: FontWeight.bold,
-                  fontSize: 13,
+                child:  TextWidgets.bodyText1(
+                   "See more..",
                 ),
               ),
             ),
             Container(
               margin: const EdgeInsets.fromLTRB(10, 10, 20, 0),
-              child: SubtitleTextWidget(
-                color: AppColors.goldenColor,
-                label: widget.orderModelAdvanced.orderStatus == "1"
+              child: TextWidgets.bodyText1(
+               widget.orderModelAdvanced.orderStatus == "1"
                     ? "Shipping"
                     : widget.orderModelAdvanced.orderStatus == "2" ||
                             widget.orderModelAdvanced.orderStatus == "3"
                         ? "Delivered"
                         : "Preparing",
-                fontWeight: FontWeight.bold,
-                fontSize: 13,
               ),
             ),
           ],
@@ -168,20 +160,15 @@ class _OrderWidgetState extends State<OrderWidget> {
                     // ),
 
                     //////////////////// PAYMRNT METHOD ////////////////////////
-                    const Row(
+                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SubtitleTextWidget(
-                          label: "Payment Method: ",
+                        TextWidgets.bodyText1(
+                          "Payment Method: ",
                           fontWeight: FontWeight.bold,
-                          fontSize: 13,
-                          color: Colors.white,
                         ),
-                        SubtitleTextWidget(
-                          color: Colors.white,
-                          label: "Cash On Delivery",
-                          fontWeight: FontWeight.bold,
-                          fontSize: 13,
+                        TextWidgets.bodyText1(
+                          "Cash On Delivery",
                         ),
                       ],
                     ),
@@ -191,11 +178,8 @@ class _OrderWidgetState extends State<OrderWidget> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        const SubtitleTextWidget(
-                          label: "Delivery Status :  ",
-                          fontWeight: FontWeight.bold,
-                          fontSize: 13,
-                          color: Colors.white,
+                         TextWidgets.bodyText1(
+                     "Delivery Status :  ",
                         ),
                         Row(
                           children: [
@@ -206,9 +190,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                             const SizedBox(
                               width: 8,
                             ),
-                            SubtitleTextWidget(
-                              color: Colors.white,
-                              label:
+                            TextWidgets.bodyText1(
                                   widget.orderModelAdvanced.orderStatus == "1"
                                       ? "shipping"
                                       : widget.orderModelAdvanced.orderStatus ==
@@ -218,8 +200,6 @@ class _OrderWidgetState extends State<OrderWidget> {
                                                   "3"
                                           ? "Delivered"
                                           : "preparing",
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13,
                             ),
                           ],
                         ),
@@ -237,19 +217,13 @@ class _OrderWidgetState extends State<OrderWidget> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                const SubtitleTextWidget(
-                                  label: "Estimated Delivery Date: ",
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.goldenColor,
-                                  fontSize: 13,
+                                TextWidgets.bodyText1(
+                             "Estimated Delivery Date: ",
                                 ),
-                                SubtitleTextWidget(
-                                  label: getdate(widget
+                                TextWidgets.bodyText1(
+                    getdate(widget
                                       .orderModelAdvanced.deliverydate
                                       .toString()),
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.goldenColor,
-                                  fontSize: 13,
                                 ),
                               ],
                             ),
@@ -271,11 +245,8 @@ class _OrderWidgetState extends State<OrderWidget> {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                       color: Colors.white),
-                                  child: const SubtitleTextWidget(
-                                    color: AppColors.goldenColor,
-                                    label: "Write Review",
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
+                                  child:  TextWidgets.bodyText1(
+                                   "Write Review",
                                   ),
                                 ),
                               )
@@ -285,25 +256,21 @@ class _OrderWidgetState extends State<OrderWidget> {
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         color: Colors.white),
-                                    child: const Row(
+                                    child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Icon(
+                                        const Icon(
                                           Icons.check_circle,
                                           color: Colors.green,
                                           size: 16,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 7,
                                         ),
-                                        SubtitleTextWidget(
-                                          color: AppColors.goldenColor,
-                                          label:
+                                        TextWidgets.bodyText1(
                                               "Review Added Succesfully , thanks",
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 13,
                                         ),
                                       ],
                                     ),

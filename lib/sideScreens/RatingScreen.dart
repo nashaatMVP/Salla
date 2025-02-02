@@ -3,13 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/SERVICES/my_app_functions.dart';
 import 'package:uuid/uuid.dart';
 import '../PROVIDERS/cart_provider.dart';
 import '../PROVIDERS/products_provider.dart';
 import '../PROVIDERS/user_provider.dart';
-import '../core/app_colors.dart';
-import '../core/text_widget.dart';
+import '../core/my_app_functions.dart';
+import '../shared/custom_text.dart';
+import '../shared/theme/app_colors.dart';
 
 class RatingScreen extends StatefulWidget {
   final String orderid;
@@ -27,8 +27,9 @@ class _RatingScreenState extends State<RatingScreen> {
   final TextEditingController _reviewController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final cartProvider = Provider.of<CartProvider>(context);
 
+    final appColors = Theme.of(context).extension<AppColors>()!;
+    final cartProvider = Provider.of<CartProvider>(context);
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     final productProvider =
         Provider.of<ProductProvider>(context, listen: false);
@@ -43,13 +44,9 @@ class _RatingScreenState extends State<RatingScreen> {
               color: Colors.white,
             )),
         elevation: 0,
-        backgroundColor: AppColors.goldenColor,
+        backgroundColor: appColors.primaryColor,
         centerTitle: true,
-        title: const TitlesTextWidget(
-          label: "Your Feedback",
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-        ),
+        title: TextWidgets.bodyText1("Your FeedBack"),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -88,9 +85,9 @@ class _RatingScreenState extends State<RatingScreen> {
                     allowHalfRating: true,
                     itemCount: 5,
                     itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    itemBuilder: (context, _) => const Icon(
+                    itemBuilder: (context, _) =>  Icon(
                       Icons.star,
-                      color: AppColors.goldenColor,
+                      color:  appColors.primaryColor,
                     ),
                     onRatingUpdate: (rating) {
                       setState(() {
@@ -196,7 +193,7 @@ class _RatingScreenState extends State<RatingScreen> {
                       width: 330,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: AppColors.goldenColor,
+                        color: appColors.primaryColor,
                       ),
                       child: const Text(
                         "Submit",

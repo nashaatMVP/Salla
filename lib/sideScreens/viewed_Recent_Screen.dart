@@ -1,11 +1,11 @@
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/PROVIDERS/viewed_product_provider.dart';
-import 'package:smart_shop/WIDGETS/empty_widget.dart';
 
-import '../core/app_colors.dart';
-import '../core/text_widget.dart';
+import '../providers/viewed_product_provider.dart';
+import '../shared/custom_empty_widget.dart';
+import '../shared/custom_text.dart';
+import '../shared/theme/app_colors.dart';
 import '../widgets/itemWidgets/product_widget.dart';
 
 class ViewedRecentScreen extends StatelessWidget {
@@ -16,6 +16,7 @@ class ViewedRecentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viwedProductProvider = Provider.of<ViewedProductProvider>(context);
+    final appColors = Theme.of(context).extension<AppColors>()!;
     return viwedProductProvider.getViewedProductItems.isEmpty
         ? const Scaffold(
             body: EmptyBagWidget(
@@ -32,17 +33,14 @@ class ViewedRecentScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: const Icon(
+                  icon:  Icon(
                     Icons.cancel,
-                    color: AppColors.goldenColor,
+                    color: appColors.primaryColor
+                    ,
                   )),
               centerTitle: true,
-              title: AppNameTextWidget(
-                fontSize: 14,
-                fontWeight: FontWeight.normal,
-                text:
-                    "[ ${viwedProductProvider.getViewedProductItems.length} ] Items",
-              ),
+              title: TextWidgets.bodyText1("[ ${viwedProductProvider.getViewedProductItems.length} ] Items"),
+
               actions: [
                 TextButton(
                     onPressed: () {

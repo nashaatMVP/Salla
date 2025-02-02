@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_shop/MODELS/product_model.dart';
+import 'package:smart_shop/models/product_model.dart';
 
 class ProductProvider with ChangeNotifier {
   late ProductModel productModel;

@@ -5,13 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:readmore/readmore.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:smart_shop/MODELS/rating_model.dart';
-import 'package:smart_shop/PROVIDERS/cart_provider.dart';
-import 'package:smart_shop/PROVIDERS/products_provider.dart';
-import 'package:smart_shop/PROVIDERS/rating_provider.dart';
-import '../WIDGETS/heart_widget.dart';
-import '../core/app_colors.dart';
-import '../core/text_widget.dart';
+import '../models/rating_model.dart';
+import '../providers/cart_provider.dart';
+import '../providers/products_provider.dart';
+import '../providers/rating_provider.dart';
+import '../shared/custom_text.dart';
+import '../shared/theme/app_colors.dart';
+import '../shared/heart_widget.dart';
 import '../widgets/itemWidgets/also_widget.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
@@ -22,6 +22,7 @@ class ProductDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
     final productsProvider = Provider.of<ProductProvider>(context);
     final ratingProvider = Provider.of<RatingProvider>(context);
     final cartProvider = Provider.of<CartProvider>(context);
@@ -40,11 +41,8 @@ class ProductDetailsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const AppNameTextWidget(
-          text: "SALLA",
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
+        title: TextWidgets.heading("Salla"),
+
       ),
       body: getCurrentProduct == null
           ? const SizedBox.shrink()
@@ -75,7 +73,7 @@ class ProductDetailsScreen extends StatelessWidget {
                           ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(17),
-                            color: AppColors.goldenColor,
+                            color: appColors.primaryColor,
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -146,7 +144,7 @@ class ProductDetailsScreen extends StatelessWidget {
                               child: HeartButton(
                                 productID: getCurrentProduct.productID,
                                 size: 20,
-                                colorDisable: AppColors.goldenColor,
+                                colorDisable: appColors.primaryColor,
                               ),
                             ),
                           ),
@@ -222,10 +220,10 @@ class ProductDetailsScreen extends StatelessWidget {
                                     color: Colors.grey.shade200,
                                   ),
                                 ),
-                                child: const Icon(
+                                child:  Icon(
                                   Icons.share,
                                   size: 20,
-                                  color: AppColors.goldenColor,
+                                  color: appColors.primaryColor,
                                 ),
                               ),
                             ),
@@ -264,9 +262,9 @@ class ProductDetailsScreen extends StatelessWidget {
                     /////////////////////// Rating ///////////////////////////////
                     RatingBarIndicator(
                       rating: getCurrentProduct.productrating!.toDouble(),
-                      itemBuilder: (context, index) => const Icon(
+                      itemBuilder: (context, index) => Icon(
                         Icons.star,
-                        color: AppColors.goldenColor,
+                        color: appColors.primaryColor,
                       ),
                       unratedColor: Colors.grey.shade600,
                       itemCount: 5,
@@ -279,20 +277,16 @@ class ProductDetailsScreen extends StatelessWidget {
                     /////////////////////// only in Stock ///////////////////////
                     Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.shopping_bag,
                           size: 16,
-                          color: AppColors.goldenColor,
+                          color: appColors.primaryColor,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 5.0),
-                          child: SubtitleTextWidget(
-                            label:
-                                "  Only ${getCurrentProduct.productQty} in Stock",
-                            fontWeight: FontWeight.normal,
-                            fontSize: 13,
-                            color: AppColors.goldenColor,
-                          ),
+                          padding:  EdgeInsets.only(top: 5.0),
+                          child :TextWidgets.bodyText1("  Only ${getCurrentProduct.productQty} in Stock",),
+
+
                         ),
                       ],
                     ),
@@ -313,12 +307,12 @@ class ProductDetailsScreen extends StatelessWidget {
                             trimMode: TrimMode.Line,
                             trimCollapsedText: "  see more ",
                             trimExpandedText: "  see less ",
-                            lessStyle: const TextStyle(
+                            lessStyle: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: AppColors.goldenColor),
-                            moreStyle: const TextStyle(
+                                color: appColors.primaryColor,),
+                            moreStyle: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: AppColors.goldenColor),
+                                color: appColors.primaryColor),
                             style: GoogleFonts.abel(),
                           ),
                         ),
@@ -429,10 +423,10 @@ class ProductDetailsScreen extends StatelessWidget {
                                                     const SizedBox(
                                                       width: 10,
                                                     ),
-                                                    const Icon(
+                                                    Icon(
                                                       Icons.star,
                                                       color:
-                                                          AppColors.goldenColor,
+                                                      appColors.primaryColor,
                                                     ),
                                                     const SizedBox(
                                                       width: 10,
@@ -449,13 +443,10 @@ class ProductDetailsScreen extends StatelessWidget {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 ///////////////////// Title Review /////////////////////////
-                                                TitlesTextWidget(
-                                                  label: review.titlereview
-                                                          .toString() ??
-                                                      "Awsome",
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
+                                                TextWidgets.bodyText1(review.titlereview
+                                                    .toString() ??
+                                                    "Awsome"),
+
                                                 const SizedBox(
                                                   height: 3,
                                                 ),
@@ -474,9 +465,9 @@ class ProductDetailsScreen extends StatelessWidget {
                                 },
                                 separatorBuilder:
                                     (BuildContext context, int index) {
-                                  return const Divider(
+                                  return Divider(
                                     thickness: 1,
-                                    color: AppColors.goldenColor,
+                                    color: appColors.primaryColor,
                                   );
                                 },
                               ),

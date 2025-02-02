@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_shop/MODELS/order_model.dart';
+
+import '../models/order_model.dart';
 
 class OrderProvider with ChangeNotifier {
   final List<OrderModelAdvanced> orders = [];

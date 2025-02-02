@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/SERVICES/my_app_functions.dart';
 import 'package:smart_shop/sideScreens/select_address_screen.dart';
-import '../PROVIDERS/address_provider.dart';
-import '../WIDGETS/circular_widget.dart';
-import '../core/app_colors.dart';
-import '../core/text_widget.dart';
+import '../providers/address_provider.dart';
+import '../core/my_app_functions.dart';
+import '../shared/custom_text.dart';
+import '../shared/theme/app_colors.dart';
+import '../shared/circular_widget.dart';
 
 class AddressEditScreen extends StatefulWidget {
   const AddressEditScreen({super.key});
@@ -84,6 +84,7 @@ class _AddressEditScreenState extends State<AddressEditScreen> {
   @override
   Widget build(BuildContext context) {
     final addressProvider = Provider.of<AddressProvider>(context);
+    final appColors = Theme.of(context).extension<AppColors>()!;
     return GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -102,7 +103,7 @@ class _AddressEditScreenState extends State<AddressEditScreen> {
                         const SizedBox(
                           height: 40,
                         ),
-                        const Padding(
+                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -116,11 +117,8 @@ class _AddressEditScreenState extends State<AddressEditScreen> {
                                   SizedBox(
                                     width: 10,
                                   ),
-                                  AppNameTextWidget(
-                                    text: "Location Information",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  TextWidgets.bodyText1("Location Information"),
+
                                 ],
                               ),
                             ],
@@ -380,7 +378,7 @@ class _AddressEditScreenState extends State<AddressEditScreen> {
                                           0.9,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
-                                        color: AppColors.goldenColor,
+                                        color: appColors.primaryColor,
                                       ),
                                       child: const Text(
                                         " Submit ",

@@ -2,9 +2,9 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/MODELS/product_model.dart';
-import '../../core/app_colors.dart';
-import '../../core/text_widget.dart';
+import '../../models/product_model.dart';
+import '../../shared/custom_text.dart';
+import '../../shared/theme/app_colors.dart';
 import '../../sideScreens/product_datails_screen.dart';
 
 class AlsoProductList extends StatelessWidget {
@@ -12,6 +12,7 @@ class AlsoProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
     Size size = MediaQuery.of(context).size;
     final productModel = Provider.of<ProductModel>(context);
 
@@ -74,11 +75,9 @@ class AlsoProductList extends StatelessWidget {
                       style: GoogleFonts.alatsi(
                           fontSize: 15, color: Colors.black87),
                     ),
-                    SubtitleTextWidget(
-                      label: "only ${productModel.productQty} left in stock",
-                      fontSize: 10,
-                      color: AppColors.goldenColor,
-                    ),
+                    TextWidgets.bodyText1("only ${productModel.productQty} left in stock"),
+
+
                   ],
                 ),
               ),
