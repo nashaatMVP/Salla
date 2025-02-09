@@ -133,6 +133,7 @@ class ProductCard extends StatelessWidget {
                             ),
                           ],
                         ),
+                        kGap10,
                       ],
                     ),
                   ),
@@ -140,8 +141,6 @@ class ProductCard extends StatelessWidget {
               ),
             ),
           ),
-
-
 
           /// offer
           if(isOffer)
@@ -151,7 +150,7 @@ class ProductCard extends StatelessWidget {
             child: Visibility(
               visible: productModel.productOldPrice!.isNotEmpty,
               child: Container(
-                padding: const EdgeInsets.all(7),
+                padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
                   color: offerBgColor,
                   borderRadius: const BorderRadius.only(
@@ -161,6 +160,7 @@ class ProductCard extends StatelessWidget {
                 child:  TextWidgets.bodyText1(
                   "Offer %",
                   color: Colors.white,
+                  fontSize: 10,
                   fontWeight: FontWeight.bold,
                 ),
               ),
