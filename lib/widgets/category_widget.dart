@@ -29,28 +29,23 @@ class CategoryRoundedWidget extends StatelessWidget {
       },
       child: Column(
         children: [
-          Material(
-            elevation: 2,
-            borderRadius: BorderRadius.circular(400),
-            shadowColor: Colors.grey.shade50,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5.0),
-              child: Container(
-                width: 70,
-                height: 70,
-                decoration: BoxDecoration(
-                  color: Colors.lightGreen.shade100,
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset(
-                  image,
-                  width: 150,
-                  height: 150,
-                ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
+            child: Container(
+              width: 70,
+              height: 70,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                shape: BoxShape.circle,
+              ),
+              child: Image.asset(
+                image,
+                width: 150,
+                height: 150,
               ),
             ),
           ),
-          Gap(5),
+          const Gap(5),
           TextWidgets.bodyText1(name,fontWeight: FontWeight.w600,color: appColors.primaryColor,fontSize: 10),
         ],
       ),

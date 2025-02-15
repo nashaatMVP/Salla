@@ -21,7 +21,7 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final appColors = Theme.of(context).extension<AppColors>()!;
     return AppBar(
-      backgroundColor: Colors.white.withAlpha(300),
+      backgroundColor: appColors.secondaryColor.withAlpha(450),
       scrolledUnderElevation: 0,
       toolbarHeight: 130,
       flexibleSpace: ClipRect(
@@ -54,6 +54,10 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
             placeholderStyle: TextStyle(
               fontSize: 13,
               color: appColors.primaryColor,
+            ),
+            prefix: const Padding(
+              padding: EdgeInsets.only(left: 8.0),
+              child: Icon(CupertinoIcons.search,size: 21,),
             ),
             decoration: BoxDecoration(
               color: appColors.searchColor,

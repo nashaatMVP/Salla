@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
@@ -64,7 +65,9 @@ class _RootScreenState extends State<RootScreen> {
         wishListProvider.fetchWishList(),
       });
     } catch (e) {
-      print(e.toString());
+      if (kDebugMode) {
+        print(e.toString());
+      }
     }
   }
 
@@ -78,9 +81,8 @@ class _RootScreenState extends State<RootScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cartProvider = Provider.of<CartProvider>(context, listen: false);
-    final themeProvider = Provider.of<ThemeProvider>(context, listen: true);
     final appColors = Theme.of(context).extension<AppColors>()!;
+    final cartProvider = Provider.of<CartProvider>(context, listen: false);
 
     return Scaffold(
       body: PageView(
@@ -88,6 +90,8 @@ class _RootScreenState extends State<RootScreen> {
         physics: const NeverScrollableScrollPhysics(),
         children: screens,
       ),
+
+
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentScreen,
         selectedItemColor: appColors.primaryColor,
@@ -98,6 +102,7 @@ class _RootScreenState extends State<RootScreen> {
           controller.jumpToPage(currentScreen);
         },
         items: [
+
           BottomNavigationBarItem(
             label: "Home",
             activeIcon: const Icon(IconlyBold.home),
@@ -138,6 +143,7 @@ class _RootScreenState extends State<RootScreen> {
               color: appColors.primaryColor,
             ),
           ),
+
         ],
       ),
     );

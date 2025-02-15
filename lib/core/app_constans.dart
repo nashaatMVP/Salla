@@ -1,12 +1,25 @@
 import 'package:smart_shop/MODELS/category_models.dart';
 
 class AppConsts {
+
   static List bannerImages = [
     "assets/banners/banner3.gif",
     "assets/banners/banner2.avif",
     "assets/banners/banner1.avif",
   ];
 
+  static List brandSvgs = [
+    "assets/svg/Adidas.svg",
+    "assets/svg/amazon-icon-logo-svgrepo-com.svg",
+    "assets/svg/android-5-logo-svgrepo-com.svg",
+    "assets/svg/Bench.svg",
+    "assets/svg/Dior.svg",
+    "assets/svg/Gucci-Logo.wine.svg",
+    "assets/svg/Kangol.svg",
+    "assets/svg/NewBalance.svg",
+    "assets/svg/Nike.svg",
+    "assets/svg/Samsung.svg",
+  ];
 
   static List<CategoryModel> categoryList = [
     CategoryModel(

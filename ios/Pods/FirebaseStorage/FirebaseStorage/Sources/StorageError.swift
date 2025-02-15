@@ -55,14 +55,14 @@ public let StorageErrorDomain: String = "FIRStorageErrorDomain"
       errorDictionary[NSUnderlyingErrorKey] = serverError
 
       if let object = ref.path.object {
-          errorDictionary["object"] = object
+        errorDictionary["object"] = object
       }
       if let data = (errorDictionary["data"] as? Data) {
-          errorDictionary["ResponseBody"] = String(data: data, encoding: .utf8)
+        errorDictionary["ResponseBody"] = String(data: data, encoding: .utf8)
       }
 
-
-      var storageError: StorageError
+      // Corrected switch statement:
+      let storageError: StorageError
       switch serverError.code {
       case 400:
           storageError = StorageError.unknown(
@@ -96,6 +96,7 @@ public let StorageErrorDomain: String = "FIRStorageErrorDomain"
 
       return storageError as NSError
   }
+
 
   /** Creates a Firebase Storage error from an invalid request.
    *

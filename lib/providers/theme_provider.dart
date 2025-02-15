@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import '../shared/theme/theme_data.dart';
 
 class ThemeProvider with ChangeNotifier {
-  // Default theme is light
-  ThemeData _currentTheme = AppTheme.light;
 
+  /// Default theme is light
+  ThemeData _currentTheme = AppTheme.light;
   ThemeData get currentTheme => _currentTheme;
 
-  // Toggle between themes
+  /// Toggle between themes
   void toggleTheme() {
     if (_currentTheme == AppTheme.light) {
       _currentTheme = AppTheme.dark;
@@ -17,10 +17,11 @@ class ThemeProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  // Change to a specific theme
+  /// Change to a specific theme
   void setTheme(ThemeData theme) {
     _currentTheme = theme;
     notifyListeners();
   }
+
 }
 

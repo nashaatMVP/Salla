@@ -359,6 +359,13 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_svg">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flutter_svg-2.0.17/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_test">
           <value>
             <list>
@@ -650,6 +657,13 @@
           <value>
             <list>
               <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/path-1.9.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="path_parsing">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/path_parsing-1.1.0/lib" />
             </list>
           </value>
         </entry>
@@ -982,6 +996,27 @@
             </list>
           </value>
         </entry>
+        <entry key="vector_graphics">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/vector_graphics-1.1.18/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="vector_graphics_codec">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/vector_graphics_codec-1.1.13/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="vector_graphics_compiler">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/vector_graphics_compiler-1.1.16/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="vector_math">
           <value>
             <list>
@@ -1084,6 +1119,7 @@
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.24/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flutter_rating_bar-4.0.1/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flutter_slidable-3.1.2/lib" />
+      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flutter_svg-2.0.17/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/gap-3.0.1/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/get-4.6.6/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/get_it-8.0.3/lib" />
@@ -1124,6 +1160,7 @@
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/nested-1.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/octo_image-2.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/path-1.9.0/lib" />
+      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/path_parsing-1.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/path_provider-2.1.5/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/path_provider_android-2.2.15/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.1/lib" />
@@ -1170,6 +1207,9 @@
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/url_launcher_web-2.4.0/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.4/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/uuid-4.5.1/lib" />
+      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/vector_graphics-1.1.18/lib" />
+      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/vector_graphics_codec-1.1.13/lib" />
+      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/vector_graphics_compiler-1.1.16/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/vector_math-2.1.4/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/vm_service-14.3.0/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/web-1.1.0/lib" />
