@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/WIDGETS/checkout_widget.dart';
-import 'package:smart_shop/WIDGETS/circular_widget.dart';
-import 'package:smart_shop/WIDGETS/empty_widget.dart';
-import '../PROVIDERS/cart_provider.dart';
-import '../core/app_colors.dart';
-import '../core/text_widget.dart';
+import 'package:smart_shop/shared/circular_widget.dart';
+import 'package:smart_shop/shared/custom_empty_widget.dart';
+import '../providers/cart_provider.dart';
+import '../shared/custom_text.dart';
+import '../shared/theme/app_colors.dart';
+import '../widgets/checkout_widget.dart';
 import '../widgets/itemWidgets/cart_widget.dart';
 
 class CartScreen extends StatefulWidget {
@@ -21,6 +21,7 @@ class _CartScreenState extends State<CartScreen> {
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
     final cartProvider = Provider.of<CartProvider>(context);
     return cartProvider.getCartItems.isEmpty
         ? const Scaffold(
@@ -35,14 +36,9 @@ class _CartScreenState extends State<CartScreen> {
             appBar: AppBar(
               centerTitle: true,
               toolbarHeight: 35,
-              title: const Padding(
+              title:  Padding(
                 padding: EdgeInsets.only(top: 20.0),
-                child: TitlesTextWidget(
-                  label: "Your Cart",
-                  fontSize: 20,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
+                child: TextWidgets.bodyText1("You Cart"),
               ),
               actions: [
                 IconButton(
@@ -50,9 +46,9 @@ class _CartScreenState extends State<CartScreen> {
                     await cartProvider.clearCartFromFirestore(context: context);
                     cartProvider.clearLocalCart();
                   },
-                  icon: const Icon(
+                  icon:  Icon(
                     Icons.clear_all,
-                    color: AppColors.goldenColor,
+                    color: appColors.primaryColor,
                   ),
                 ),
               ],

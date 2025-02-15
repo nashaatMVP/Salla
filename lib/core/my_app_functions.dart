@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../core/text_widget.dart';
+
+import '../shared/custom_text.dart';
 
 class MyAppFunctions {
   ////////////////////////////////   App Message  /////////////////////////////////////////////////////////////////////////////
@@ -42,14 +43,10 @@ class MyAppFunctions {
                         Navigator.pop(context);
                       }
                     },
-                    child: const Row(
+                    child:  Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TitlesTextWidget(
-                          label: "Photo Library",
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
+                        TextWidgets.bodyText1("Photo Library"),
                         Icon(
                           Icons.my_library_add,
                           color: Colors.white,
@@ -72,14 +69,10 @@ class MyAppFunctions {
                         Navigator.pop(context);
                       }
                     },
-                    child: const Row(
+                    child:  Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TitlesTextWidget(
-                          label: "Take Selfie Photo",
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
+                        TextWidgets.bodyText1("Take Selfie Photo"),
                         Icon(
                           Icons.camera,
                           color: Colors.white,
@@ -101,14 +94,11 @@ class MyAppFunctions {
                         Navigator.pop(context);
                       }
                     },
-                    child: const Row(
+                    child:  Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TitlesTextWidget(
-                          label: "Delete Photo",
-                          fontSize: 16,
-                          color: Colors.white,
-                        ),
+                        TextWidgets.bodyText1("Delete Photo"),
+
                         Icon(
                           CupertinoIcons.delete,
                           color: Colors.white,

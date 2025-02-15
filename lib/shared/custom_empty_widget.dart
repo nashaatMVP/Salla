@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:smart_shop/PROVIDERS/theme_provider.dart';
 import 'package:smart_shop/root_screen.dart';
-
-import '../core/text_widget.dart';
+import 'custom_text.dart';
+import 'theme/app_colors.dart';
 
 class EmptyBagWidget extends StatelessWidget {
   const EmptyBagWidget({
@@ -18,24 +16,23 @@ class EmptyBagWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
+    final appColors = Theme.of(context).extension<AppColors>()!;
     return Center(
       child: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TitlesTextWidget(
-              label: title,
+            TextWidgets.bodyText1(
+        title,
               // color: Colors.black,
               fontSize: 15,
             ),
             const SizedBox(
               height: 10,
             ),
-            SubtitleTextWidget(
-              label: subTitle,
-              fontSize: 10,
+            TextWidgets.bodyText1(
+          subTitle,
             ),
             const SizedBox(
               height: 30,
@@ -51,9 +48,8 @@ class EmptyBagWidget extends StatelessWidget {
               width: 300,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: themeProvider.getIsDarkTheme
-                      ? Colors.white
-                      : Colors.black,
+                  backgroundColor: appColors.primaryColor
+
                 ),
                 onPressed: () {
                   Navigator.pushNamed(context, RootScreen.routeName);
@@ -62,9 +58,7 @@ class EmptyBagWidget extends StatelessWidget {
                   buttonTitle,
                   style: TextStyle(
                     fontSize: 15,
-                    color: themeProvider.getIsDarkTheme
-                        ? Colors.black
-                        : Colors.white,
+                    color: appColors.primaryColor
                   ),
                 ),
               ),

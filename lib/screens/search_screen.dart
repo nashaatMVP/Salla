@@ -1,16 +1,19 @@
 // ignore_for_file: unnecessary_const
+
+
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/MODELS/product_model.dart';
-import 'package:smart_shop/PROVIDERS/products_provider.dart';
-import 'package:smart_shop/WIDGETS/category_widget.dart';
-import '../core/app_colors.dart';
+import 'package:smart_shop/widgets/category_widget.dart';
+import 'package:smart_shop/widgets/itemWidgets/search_widget.dart';
+
 import '../core/app_constans.dart';
-import '../core/text_widget.dart';
-import '../widgets/itemWidgets/search_widget.dart';
+import '../models/product_model.dart';
+import '../providers/products_provider.dart';
+import '../shared/custom_text.dart';
+import '../shared/theme/app_colors.dart';
 
 class SearchScreen extends StatefulWidget {
   static const routName = "/SearchScreen";
@@ -27,6 +30,7 @@ class _SearchScreenState extends State<SearchScreen> {
   List<ProductModel> productListSearch = [];
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
     final productsProvider =
         Provider.of<ProductProvider>(context, listen: false);
     String? passedCategory =
@@ -41,12 +45,9 @@ class _SearchScreenState extends State<SearchScreen> {
       },
       child: Scaffold(
         body: productList.isEmpty
-            ? const Center(
-                child: AppNameTextWidget(
-                  text: "Unfortunately ,Not Found Products",
-                  fontSize: 17,
-                  fontWeight: FontWeight.normal,
-                ),
+            ?  Center(
+
+                child: TextWidgets.bodyText1("Unfortunately ,Not Found Products")
               )
             : StreamBuilder<List<ProductModel>>(
                 stream: productsProvider.fetchproductStream(),
@@ -171,6 +172,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             itemBuilder: (context, index) => previousSearchItem(
                               index: index,
                               productProvider: productsProvider,
+                              appcolors: appColors
                             ),
                           ),
                         ),
@@ -183,13 +185,9 @@ class _SearchScreenState extends State<SearchScreen> {
                         Visibility(
                           visible:
                               searchController.text.isNotEmpty ? false : true,
-                          child: const Padding(
+                          child:  Padding(
                             padding: EdgeInsets.only(bottom: 10.0),
-                            child: TitlesTextWidget(
-                              label: "Suggestions",
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            child: TextWidgets.bodyText1("Suggestions"),
                           ),
                         ),
                         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -215,12 +213,8 @@ class _SearchScreenState extends State<SearchScreen> {
 
                         if (searchController.text.isNotEmpty &&
                             productListSearch.isEmpty) ...[
-                          const Center(
-                            child: TitlesTextWidget(
-                              label: "Not Found.....",
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
+                           Center(
+                            child: TextWidgets.bodyText1("Not Found"),
                           ),
                         ],
                         Expanded(
@@ -254,7 +248,7 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   previousSearchItem(
-      {required int index, required ProductProvider productProvider}) {
+      {required int index, required ProductProvider productProvider , required AppColors appcolors}) {
     return InkWell(
       onTap: () {},
       child: Dismissible(
@@ -267,25 +261,20 @@ class _SearchScreenState extends State<SearchScreen> {
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
             decoration: BoxDecoration(
-                border: Border.all(color: AppColors.goldenColor),
+                border: Border.all(color:appcolors.primaryColor ),
                 borderRadius: BorderRadius.circular(20),
                 color: const Color.fromARGB(255, 191, 167, 231)),
             child: Row(
               children: [
-                const Icon(
+                 Icon(
                   IconlyLight.timeCircle,
                   size: 15,
-                  color: AppColors.goldenColor,
+                  color: appcolors.primaryColor,
                 ),
                 const SizedBox(
                   width: 8,
                 ),
-                TitlesTextWidget(
-                  label: perviousSerches[index],
-                  fontSize: 13,
-                  fontWeight: FontWeight.normal,
-                  color: const Color.fromARGB(255, 253, 252, 255),
-                ),
+                TextWidgets.bodyText1(perviousSerches[index]),
               ],
             ),
           ),

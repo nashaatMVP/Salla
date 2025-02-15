@@ -1,12 +1,25 @@
 import 'package:smart_shop/MODELS/category_models.dart';
 
 class AppConsts {
+
   static List bannerImages = [
-    "https://img.freepik.com/free-vector/fashion-sale-landing-page-template_23-2148575476.jpg?size=626&ext=jpg&ga=GA1.2.881006302.1698402771&semt=ais", // 50%
+    "assets/banners/banner3.gif",
+    "assets/banners/banner2.avif",
+    "assets/banners/banner1.avif",
   ];
 
-
-  static String bannerImg = 'assets/bannerImage.png';
+  static List brandSvgs = [
+    "assets/svg/Adidas.svg",
+    "assets/svg/amazon-icon-logo-svgrepo-com.svg",
+    "assets/svg/android-5-logo-svgrepo-com.svg",
+    "assets/svg/Bench.svg",
+    "assets/svg/Dior.svg",
+    "assets/svg/Gucci-Logo.wine.svg",
+    "assets/svg/Kangol.svg",
+    "assets/svg/NewBalance.svg",
+    "assets/svg/Nike.svg",
+    "assets/svg/Samsung.svg",
+  ];
 
   static List<CategoryModel> categoryList = [
     CategoryModel(
@@ -75,8 +88,8 @@ class AppConsts {
       name: "Furniture",
     ),
   ];
+  
 
-  //////////////////////  Rebeated Images  //////////////////////
   static String popImage = "assets/pop.png";
   static String trueImage = "assets/True.png";
   static String wrongImage = "assets/Wrong.png";

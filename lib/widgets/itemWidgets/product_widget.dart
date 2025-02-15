@@ -2,13 +2,13 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/PROVIDERS/cart_provider.dart';
-import 'package:smart_shop/PROVIDERS/products_provider.dart';
-import 'package:smart_shop/PROVIDERS/viewed_product_provider.dart';
-import 'package:smart_shop/WIDGETS/heart_widget.dart';
-import '../../core/app_colors.dart';
-import '../../core/text_widget.dart';
+import '../../providers/cart_provider.dart';
+import '../../providers/products_provider.dart';
+import '../../providers/viewed_product_provider.dart';
+import '../../shared/custom_text.dart';
+import '../../shared/theme/app_colors.dart';
 import '../../sideScreens/product_datails_screen.dart';
+import '../../shared/heart_widget.dart';
 
 class ProductWidget extends StatefulWidget {
   final String productId;
@@ -25,6 +25,7 @@ class ProductWidget extends StatefulWidget {
 class _ProductWidgetState extends State<ProductWidget> {
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
     final productsProvider = Provider.of<ProductProvider>(context);
     final cartProvider = Provider.of<CartProvider>(context);
     final getCurrentProduct = productsProvider.findById(widget.productId);
@@ -81,11 +82,8 @@ class _ProductWidgetState extends State<ProductWidget> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(top: 10.0),
-                            child: SubtitleTextWidget(
-                              label: getCurrentProduct.productTitle,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 14,
-                              color: Colors.black,
+                            child: TextWidgets.bodyText1(
+                              getCurrentProduct.productTitle,
                               maxLines: 1,
                             ),
                           ),
@@ -94,12 +92,9 @@ class _ProductWidgetState extends State<ProductWidget> {
                           ),
                           SizedBox(
                             height: 23,
-                            child: TitlesTextWidget(
-                              label: getCurrentProduct.productDescreption,
+                            child: TextWidgets.bodyText1(
+                  getCurrentProduct.productDescreption,
                               maxLines: 2,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 10,
-                              color: Colors.grey,
                             ),
                           ),
                         ],
@@ -146,23 +141,16 @@ class _ProductWidgetState extends State<ProductWidget> {
                               children: [
                                 Row(
                                   children: [
-                                    const TitlesTextWidget(
-                                      label: "AED",
+                                     TextWidgets.bodyText1(
+                             "AED",
                                       maxLines: 1,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 10,
-                                      color: Colors.grey,
                                     ),
                                     const SizedBox(
                                       width: 5,
                                     ),
-                                    TitlesTextWidget(
-                                      label:
+                                    TextWidgets.bodyText1(
                                           "${getCurrentProduct.productPrice} ",
                                       maxLines: 1,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                      color: Colors.black,
                                     ),
                                   ],
                                 ),
@@ -220,10 +208,9 @@ class _ProductWidgetState extends State<ProductWidget> {
                         ),
                       ),
                       /////////////////////////////////////////////       Only on Stock       //////////////////////////////////////////////////
-                      TitlesTextWidget(
-                        label: "Only ${getCurrentProduct.productQty} In Stock",
+                      TextWidgets.bodyText1(
+                  "Only ${getCurrentProduct.productQty} In Stock",
                         fontSize: 12,
-                        color: AppColors.goldenColor,
                       ),
 
                       ///////////////////////////////////////////                             //////////////////////////////////////////////////

@@ -3,19 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/MODELS/cart_model.dart';
-import 'package:smart_shop/PROVIDERS/products_provider.dart';
-import 'package:smart_shop/WIDGETS/qty_widget.dart';
-
-import '../../PROVIDERS/cart_provider.dart';
-import '../../core/app_colors.dart';
-import '../../core/text_widget.dart';
+import '../../models/cart_model.dart';
+import '../../providers/cart_provider.dart';
+import '../../providers/products_provider.dart';
+import '../../shared/custom_text.dart';
+import '../../shared/theme/app_colors.dart';
+import '../qty_widget.dart';
 
 class CartWidget extends StatelessWidget {
   const CartWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    color: final appColors = Theme.of(context).extension<AppColors>()!;
+
     final cartModel = Provider.of<CartModel>(context);
     final productsProvider = Provider.of<ProductProvider>(context);
     final getCurrentProduct = productsProvider.findById(cartModel.producttID);
@@ -95,12 +96,8 @@ class CartWidget extends StatelessWidget {
                             children: [
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * .55,
-                                child: TitlesTextWidget(
-                                  label: getCurrentProduct.productTitle,
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.normal,
-                                  maxLines: 2,
-                                  color: Colors.black,
+                                child:  TextWidgets.bodyText1(
+                                 getCurrentProduct.productTitle,
                                 ),
                               ),
                               const SizedBox(
@@ -109,17 +106,11 @@ class CartWidget extends StatelessWidget {
                               ////////////////////////////////PRICE/////////////////////////////////////////
                               Row(
                                 children: [
-                                  const SubtitleTextWidget(
-                                    label: "AED",
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
+                                  TextWidgets.bodyText1(
+                                   "AED",
                                   ),
-                                  SubtitleTextWidget(
-                                    label: " ${getCurrentProduct.productPrice}",
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
+                                  TextWidgets.bodyText1(
+                                   " ${getCurrentProduct.productPrice}",
                                   ),
                                 ],
                               ),
@@ -129,11 +120,8 @@ class CartWidget extends StatelessWidget {
                               ),
 
                               ////////////////////////////Only on Stock
-                              TitlesTextWidget(
-                                label:
+                              TextWidgets.bodyText1(
                                     "Only ${getCurrentProduct.productQty} In Stock",
-                                fontSize: 12,
-                                color: AppColors.goldenColor,
                               ),
 
                               const SizedBox(
@@ -176,9 +164,9 @@ class CartWidget extends StatelessWidget {
                                     ),
                                   ),
                                   style: OutlinedButton.styleFrom(
-                                    side: const BorderSide(
+                                    side:  BorderSide(
                                       width: 1,
-                                      color: AppColors.blackColor,
+                                      color: appColors.primaryColor,
                                     ),
                                   ),
                                 ),

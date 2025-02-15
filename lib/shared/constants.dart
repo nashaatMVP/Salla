@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import 'app_storage.dart';
+import '../core/app_storage.dart';
 
 AppStorage appStorage = AppStorage();
 

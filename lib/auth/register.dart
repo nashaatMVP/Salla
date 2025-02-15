@@ -6,16 +6,16 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:smart_shop/AUTH/login.dart';
-import 'package:smart_shop/SERVICES/my_app_functions.dart';
-import 'package:smart_shop/WIDGETS/circular_widget.dart';
-import 'package:smart_shop/WIDGETS/formfield_widget.dart';
-import 'package:smart_shop/WIDGETS/picker_widget.dart';
-import 'package:smart_shop/core/constants.dart';
+import 'package:smart_shop/auth/login.dart';
 import 'package:smart_shop/root_screen.dart';
-import '../core/app_colors.dart';
-import '../core/text_widget.dart';
+import '../core/my_app_functions.dart';
+import '../shared/circular_widget.dart';
+import '../shared/constants.dart';
+import '../shared/custom_text.dart';
+import '../shared/custom_text_field.dart';
+import '../shared/theme/app_colors.dart';
 import '../core/validator.dart';
+import '../widgets/picker_widget.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const routName = "/RegisterScreen";
@@ -202,12 +202,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final appColors = Theme.of(context).extension<AppColors>()!;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        backgroundColor: AppColors.lightPrimary,
+        backgroundColor: appColors.primaryColor,
         body: LoadingManager(
           isLoading: isLoading,
           child: SingleChildScrollView(
@@ -240,9 +241,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     key: _formKey,
                     child: Column(
                       children: [
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        kGap10,
 
                         CustomFormField(
                           controller: _nameController,
@@ -317,7 +316,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                                 color: obscureText
                                 ? Colors.grey
-                                : AppColors.goldenColor,
+                                : appColors.primaryColor,
                               ),
                             ),
                             onFieldSubmitted: (p0) async {
@@ -353,11 +352,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const SubtitleTextWidget(
-                              label: "Already have an account ?",
-                              fontSize: 13,
-                              color: Colors.black,
-                            ),
+                            TextWidgets.bodyText1(' Already Have An Account ?'),
                             TextButton(
                                 onPressed: () {
                                   Navigator.pushNamed(
@@ -365,14 +360,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     LoginScreen.routName,
                                   );
                                 },
-                                child: const Text(
-                                  "Log in",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Color.fromARGB(255, 57, 36, 146),
-                                    decoration: TextDecoration.underline,
-                                  ),
-                                )),
+                                child: TextWidgets.bodyText1('Log in'),
+                            ),
                           ],
                         ),
                       ],

@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_shop/MODELS/address_model.dart';
-import 'package:smart_shop/SERVICES/my_app_functions.dart';
 import 'package:uuid/uuid.dart';
+
+import '../models/address_model.dart';
+import '../core/my_app_functions.dart';
 
 class AddressProvider with ChangeNotifier {
   final Map<String, AddressModel> _address = {};

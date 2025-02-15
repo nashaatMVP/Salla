@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/PROVIDERS/wishList_provider.dart';
+import 'package:smart_shop/providers/wishList_provider.dart';
 
 class HeartButton extends StatefulWidget {
+
   const HeartButton({
     super.key,
     required this.productID,

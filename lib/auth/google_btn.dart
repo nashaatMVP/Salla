@@ -5,7 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:smart_shop/root_screen.dart';
 
-import '../core/app_colors.dart';
+import '../shared/theme/app_colors.dart';
 
 class GoogleButton extends StatefulWidget {
   const GoogleButton({super.key});
@@ -63,10 +63,11 @@ class _GoogleButtonState extends State<GoogleButton> {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
     return ElevatedButton.icon(
       style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(12.0),
-        backgroundColor: AppColors.goldenColor,
+        padding:  EdgeInsets.all(12.0),
+        backgroundColor: appColors.primaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
             10.0,
