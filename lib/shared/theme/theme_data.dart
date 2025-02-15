@@ -8,7 +8,6 @@ class AppTheme {
   AppTheme._();
 
   // LIGHT THEME
-
   static final ThemeData light = ThemeData(
     extensions:  const <ThemeExtension<AppColors>>[
       AppColors.light,
