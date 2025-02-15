@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/providers/cart_provider.dart';
+import 'package:smart_shop/screens/cart/provider/cart_provider.dart';
 import 'package:smart_shop/providers/viewed_product_provider.dart';
 import 'package:smart_shop/shared/constants.dart';
 import 'package:smart_shop/shared/custom_container.dart';

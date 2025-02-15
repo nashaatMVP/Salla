@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:readmore/readmore.dart';
 import 'package:share_plus/share_plus.dart';
 import '../models/rating_model.dart';
-import '../providers/cart_provider.dart';
+import '../screens/cart/provider/cart_provider.dart';
 import '../providers/products_provider.dart';
 import '../providers/rating_provider.dart';
 import '../shared/custom_text.dart';

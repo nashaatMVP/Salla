@@ -14,7 +14,7 @@ import 'AUTH/forot_password_screen.dart';
 import 'AUTH/login.dart';
 import 'AUTH/register.dart';
 import 'providers/address_provider.dart';
-import 'providers/cart_provider.dart';
+import 'screens/cart/provider/cart_provider.dart';
 import 'providers/order_provider.dart';
 import 'providers/products_provider.dart';
 import 'providers/rating_provider.dart';
@@ -50,8 +50,6 @@ void main() async {
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
-
-
 
   @override
   State<MyApp> createState() => _MyAppState();

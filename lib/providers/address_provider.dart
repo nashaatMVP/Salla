@@ -86,7 +86,7 @@ class AddressProvider with ChangeNotifier {
         return;
       }
       final leg = userDoc.get("Address").length;
-      print(leg);
+      // print(leg);
       for (int index = 0; index < leg; index++) {
         _address.putIfAbsent(
             userDoc.get("Address")[index]["addressId"],
@@ -99,7 +99,7 @@ class AddressProvider with ChangeNotifier {
                   town: userDoc.get("Address")[index]["town"],
                 ));
       }
-      print(_address);
+      // print(_address);
     } catch (e) {
       rethrow;
     }

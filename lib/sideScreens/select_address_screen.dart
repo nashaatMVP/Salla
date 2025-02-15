@@ -6,14 +6,14 @@ import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import '../models/address_model.dart';
 import '../providers/address_provider.dart';
-import '../providers/cart_provider.dart';
+import '../screens/cart/provider/cart_provider.dart';
 import '../providers/products_provider.dart';
 import '../providers/user_provider.dart';
 import '../shared/custom_text.dart';
 import '../shared/theme/app_colors.dart';
 import '../shared/circular_widget.dart';
 import '../shared/custom_empty_widget.dart';
-import '../widgets/itemWidgets/cart_widget.dart';
+import '../screens/cart/widgets/cart_widget.dart';
 import 'AddAddressScreen.dart';
 import 'order_screen.dart';
 
@@ -162,7 +162,7 @@ class _AddressScreenState extends State<SelectAddressScreen> {
                               return ChangeNotifierProvider.value(
                                 value: cartProvider.getCartItems.values
                                     .toList()[index],
-                                child: const CartWidget(),
+                                child:  CartWidget(),
                               );
                             }),
                       ),

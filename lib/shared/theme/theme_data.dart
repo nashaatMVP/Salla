@@ -29,11 +29,19 @@ class AppTheme {
       ),
     ),
     colorScheme: ColorScheme.fromSeed(seedColor: whiteColor),
-    bottomAppBarTheme: const BottomAppBarTheme(
-      color: whiteColor,
-      surfaceTintColor: whiteColor,
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedLabelStyle: TextStyle(
+        fontSize: 13,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'IBM Plex Sans',
+      ),
+      unselectedLabelStyle: TextStyle(
+        fontSize: 13,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'IBM Plex Sans',
+      ),
+      type: BottomNavigationBarType.fixed,
     ),
-    bottomSheetTheme: const BottomSheetThemeData(surfaceTintColor: whiteColor),
     textTheme: GoogleFonts.montserratTextTheme(),
     primaryColor: whiteColor,
     scaffoldBackgroundColor: whiteColor,
@@ -55,9 +63,24 @@ class AppTheme {
       shadowColor: whiteColor,
     ),
     bottomSheetTheme: const BottomSheetThemeData(surfaceTintColor: blackColor),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+      selectedLabelStyle: TextStyle(
+        fontSize: 13,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'IBM Plex Sans',
+        color: Colors.white
+      ),
+      unselectedLabelStyle: TextStyle(
+        fontSize: 13,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'IBM Plex Sans',
+          color: Colors.white
+      ),
+    ),
     textTheme: GoogleFonts.montserratTextTheme(),
-    primaryColor: blackColor,
-    scaffoldBackgroundColor: Colors.grey.withAlpha(200).withOpacity(0.4),
+    primaryColor: Colors.white,
+    scaffoldBackgroundColor: Colors.grey.withAlpha(100),
     appBarTheme: const AppBarTheme(
       backgroundColor: blackColor,
       elevation: 0,

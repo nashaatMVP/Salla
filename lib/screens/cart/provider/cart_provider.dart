@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_shop/providers/products_provider.dart';
+import 'package:smart_shop/screens/cart/model/cart_model.dart';
 import 'package:uuid/uuid.dart';
-import '../models/cart_model.dart';
-import '../core/my_app_functions.dart';
+import '../../../core/my_app_functions.dart';
 
 class CartProvider with ChangeNotifier {
   final Map<String, CartModel> _cartItems = {};
@@ -15,7 +15,9 @@ class CartProvider with ChangeNotifier {
 
   final userstDb = FirebaseFirestore.instance.collection("users");
   final _auth = FirebaseAuth.instance;
-////////////////////////////////////////////// Firebase \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+
   Future<void> addToCartFirebase({
     required String productId,
     required int qty,
@@ -92,8 +94,7 @@ class CartProvider with ChangeNotifier {
       });
       // await fetchCart();
       _cartItems.remove(productId);
-      MyAppFunctions().globalMassage(
-          context: context, message: "Item Removed Successfully");
+      MyAppFunctions().globalMassage(context: context, message: "Item Removed Successfully");
     } catch (e) {
       rethrow;
     }
@@ -125,6 +126,15 @@ class CartProvider with ChangeNotifier {
   }
 
   // ignore: non_constant_identifier_names
+
+  int getQty() {
+    int total = 0;
+    _cartItems.forEach((key, value) {
+      total += value.cartQty;
+    });
+    return total;
+  }
+
   void updateQty({required int Qty, required String productId}) {
     _cartItems.update(
       productId,
@@ -150,14 +160,6 @@ class CartProvider with ChangeNotifier {
       } else {
         total += double.parse(getCurrentProduct.productPrice) * value.cartQty;
       }
-    });
-    return total;
-  }
-
-  int getQty() {
-    int total = 0;
-    _cartItems.forEach((key, value) {
-      total += value.cartQty;
     });
     return total;
   }

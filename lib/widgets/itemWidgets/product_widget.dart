@@ -2,7 +2,7 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
-import '../../providers/cart_provider.dart';
+import '../../screens/cart/provider/cart_provider.dart';
 import '../../providers/products_provider.dart';
 import '../../providers/viewed_product_provider.dart';
 import '../../shared/custom_text.dart';

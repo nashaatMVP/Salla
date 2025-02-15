@@ -1,14 +1,17 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_shop/screens/offers/offers_screen.dart';
+import 'package:smart_shop/shared/photo_link.dart';
+import 'models/user-model.dart';
 import 'providers/address_provider.dart';
-import 'providers/cart_provider.dart';
+import 'screens/cart/provider/cart_provider.dart';
 import 'providers/products_provider.dart';
-import 'providers/theme_provider.dart';
 import 'providers/user_provider.dart';
 import 'providers/wishList_provider.dart';
-import 'screens/cart_screen.dart';
+import 'screens/cart/cart_screen.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/profile_screen.dart';
 import 'screens/search_screen.dart';
@@ -24,16 +27,39 @@ class RootScreen extends StatefulWidget {
 
 class _RootScreenState extends State<RootScreen> {
   late List<Widget> screens;
+  UserModel? userModel;
+  bool isLoading = false;
   int currentScreen = 0;
   late PageController controller;
   bool isLoadingProd = true;
+  late AppColors appColors;
+  late CartProvider cartProvider;
+
+  Future<void> fetchUserInfo() async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    try {
+      setState(() {
+        isLoading = true;
+      });
+      userModel = await userProvider.fetchUserInfo();
+    } catch (error) {
+      // ignore: use_build_context_synchronously
+      print(error.toString());
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   void initState() {
     super.initState();
+    fetchUserInfo();
     screens = const [
       HomePage(),
       SearchScreen(),
+      OffersScreen(),
       CartScreen(),
       ProfileScreen(),
     ];
@@ -82,19 +108,20 @@ class _RootScreenState extends State<RootScreen> {
   @override
   Widget build(BuildContext context) {
     final appColors = Theme.of(context).extension<AppColors>()!;
-    final cartProvider = Provider.of<CartProvider>(context, listen: false);
+    final cartProvider = Provider.of<CartProvider>(context, listen: true);
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
       body: PageView(
         controller: controller,
         physics: const NeverScrollableScrollPhysics(),
         children: screens,
       ),
-
-
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentScreen,
-        selectedItemColor: appColors.primaryColor,
+        iconSize: 20,
+        selectedItemColor:  appColors.primaryColor,
+        unselectedItemColor: appColors.primaryColor,
         onTap: (index) {
           setState(() {
             currentScreen = index;
@@ -102,48 +129,74 @@ class _RootScreenState extends State<RootScreen> {
           controller.jumpToPage(currentScreen);
         },
         items: [
-
           BottomNavigationBarItem(
             label: "Home",
-            activeIcon: const Icon(IconlyBold.home),
-            icon: Icon(
-              IconlyLight.home,
-              color: appColors.primaryColor,
+            activeIcon: Padding(
+              padding: const EdgeInsets.only(bottom: 2.0),
+              child: SvgPicture.asset(PhotoLink.homeFilledLink ,color: appColors.primaryColor,),
+            ),
+            icon: Padding(
+              padding: const EdgeInsets.only(bottom: 2.0),
+              child: SvgPicture.asset(PhotoLink.homeLink,color: appColors.primaryColor,),
             ),
           ),
           BottomNavigationBarItem(
             label: "Search",
-            activeIcon: const Icon(IconlyBold.search),
-            icon: Icon(
-              IconlyLight.search,
-              color: appColors.primaryColor,
+            activeIcon: Padding(
+              padding: const EdgeInsets.only(bottom: 2.0),
+              child: Icon(IconlyBold.search,color: appColors.primaryColor,),
+            ),
+            icon: Padding(
+              padding: const EdgeInsets.only(bottom: 2.0),
+              child: Icon(
+                IconlyLight.search,
+                color: appColors.primaryColor,
+              ),
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: "Offers",
+            activeIcon: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SvgPicture.asset(PhotoLink.offersLink,color: Colors.deepPurple),
+            ),
+            icon: Padding(
+              padding: const EdgeInsets.only(bottom: 2.0),
+              child: SvgPicture.asset(PhotoLink.offersLink,color: appColors.primaryColor),
             ),
           ),
           BottomNavigationBarItem(
             label: "Cart",
-            activeIcon: const Icon(IconlyBold.bag),
+            activeIcon:Padding(
+              padding: const EdgeInsets.only(bottom: 2.0),
+              child: SvgPicture.asset(PhotoLink.cartLink,color: appColors.primaryColor,),
+            ),
             icon: Badge(
               label: Text(
                 "${cartProvider.getCartItems.length}",
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white,fontSize: 12),
               ),
-              backgroundColor: appColors.primaryColor,
-              child: Icon(
-                IconlyLight.bag,
-                color:
-                appColors.primaryColor,
+              backgroundColor: blueColor,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 2.0),
+                child: SvgPicture.asset(PhotoLink.cartLink,color: appColors.primaryColor,),
               ),
             ),
           ),
           BottomNavigationBarItem(
             label: "Profile",
-            activeIcon: const Icon(IconlyBold.profile),
-            icon: Icon(
-              IconlyLight.profile,
-              color: appColors.primaryColor,
+            icon: Padding(
+              padding: const EdgeInsets.only(bottom: 2.0),
+              child: CircleAvatar(
+                radius: 13,
+                backgroundImage: NetworkImage(
+                  userModel != null && userModel!.userImage != null &&  userModel!.userImage != ""
+                      ? userModel!.userImage.toString()
+                      : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+                ),
+              ),
             ),
           ),
-
         ],
       ),
     );

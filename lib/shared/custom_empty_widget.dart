@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_shop/root_screen.dart';
+import 'package:smart_shop/shared/constants.dart';
+import 'package:smart_shop/shared/custom_button.dart';
 import 'custom_text.dart';
 import 'theme/app_colors.dart';
 
@@ -23,46 +25,28 @@ class EmptyBagWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextWidgets.bodyText1(
-        title,
-              // color: Colors.black,
+            TextWidgets.heading(
+               title,
+              fontSize: 18,
+              color: appColors.primaryColor
+            ),
+            kGap10,
+            TextWidgets.subHeading(
+             subTitle,
               fontSize: 15,
+              color: Colors.grey.shade600,
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextWidgets.bodyText1(
-          subTitle,
-            ),
-            const SizedBox(
-              height: 30,
-            ),
+            kGap30,
+
             Image.asset(
               image,
               height: 140,
             ),
-            const SizedBox(
-              height: 30,
-            ),
-            SizedBox(
-              width: 300,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: appColors.primaryColor
-
-                ),
-                onPressed: () {
-                  Navigator.pushNamed(context, RootScreen.routeName);
-                },
-                child: Text(
-                  buttonTitle,
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: appColors.primaryColor
-                  ),
-                ),
-              ),
-            ),
+            kGap30,
+           const Padding(
+             padding: EdgeInsets.symmetric(horizontal: 20.0),
+             child: CustomButton(text: "Go To Shopping", backgroundColor: Colors.black),
+           ),
           ],
         ),
       ),

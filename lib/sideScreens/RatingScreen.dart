@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
-import '../PROVIDERS/cart_provider.dart';
-import '../PROVIDERS/products_provider.dart';
-import '../PROVIDERS/user_provider.dart';
 import '../core/my_app_functions.dart';
+import '../providers/products_provider.dart';
+import '../providers/user_provider.dart';
+import '../screens/cart/provider/cart_provider.dart';
 import '../shared/custom_text.dart';
 import '../shared/theme/app_colors.dart';
 
@@ -31,8 +31,9 @@ class _RatingScreenState extends State<RatingScreen> {
     final appColors = Theme.of(context).extension<AppColors>()!;
     final cartProvider = Provider.of<CartProvider>(context);
     final userProvider = Provider.of<UserProvider>(context, listen: false);
-    final productProvider =
-        Provider.of<ProductProvider>(context, listen: false);
+    final productProvider =  Provider.of<ProductProvider>(context, listen: false);
+
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(

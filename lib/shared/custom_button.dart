@@ -9,7 +9,7 @@ class CustomButton extends StatelessWidget {
   final double? width;
   final double? height;
   final bool isLoading;
-  final Color? backgroundColor;
+  final Color backgroundColor;
   final Color? foregroundColor;
   final double? borderRadius;
   final double? fontSize;
@@ -25,7 +25,7 @@ class CustomButton extends StatelessWidget {
     this.width,
     this.height,
     this.isLoading = false,
-    this.backgroundColor,
+    required this.backgroundColor,
     this.foregroundColor,
     this.borderRadius,
     this.fontSize,
@@ -38,14 +38,13 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme = Theme.of(context).extension<AppTheme>();
     return SizedBox(
       width: width,
       height: height ?? 40,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor,
-          foregroundColor: foregroundColor,
+          backgroundColor: Colors.black,
+          foregroundColor: Colors.black,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(borderRadius ?? 0),
               side: borderColor != null

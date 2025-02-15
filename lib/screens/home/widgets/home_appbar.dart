@@ -15,7 +15,7 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize;
 
-  HomeAppbar({Key? key}): preferredSize = const Size.fromHeight(130), super(key: key);
+  const HomeAppbar({Key? key}): preferredSize = const Size.fromHeight(130), super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: appColors.secondaryColor.withAlpha(450),
       scrolledUnderElevation: 0,
-      toolbarHeight: 130,
+      toolbarHeight: preferredSize.height,
       flexibleSpace: ClipRect(
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 20,sigmaY : 20),
@@ -41,7 +41,8 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
                 TextWidgets.heading("Salla",color: appColors.primaryColor,fontSize: 17),
                  GestureDetector(
                     onTap: () => context.read<ThemeProvider>().toggleTheme(),
-                     child: Icon(Icons.light_mode_outlined,color: appColors.primaryColor)),
+                     child: Icon(Icons.light_mode_outlined,color: appColors.primaryColor,
+                     )),
               ],
             ),
           ),

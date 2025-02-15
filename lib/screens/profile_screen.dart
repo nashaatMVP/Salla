@@ -32,9 +32,9 @@ class _ProfileScreenState extends State<ProfileScreen> with AutomaticKeepAliveCl
   UserModel? userModel;
   bool isLoading = false;
   bool isVisible = false;
+  @override
   bool get wantKeepAlive => true;
   User? user = FirebaseAuth.instance.currentUser;
-  
 
   Future<void> fetchUserInfo() async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
