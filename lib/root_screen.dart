@@ -14,7 +14,7 @@ import 'providers/wishList_provider.dart';
 import 'screens/cart/cart_screen.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/profile/profile_screen.dart';
-import 'screens/search_screen.dart';
+import 'screens/search/search_screen.dart';
 import 'shared/theme/app_colors.dart';
 
 class RootScreen extends StatefulWidget {

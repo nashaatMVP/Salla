@@ -23,7 +23,7 @@ import 'screens/profile/provider/user_provider.dart';
 import 'providers/viewed_product_provider.dart';
 import 'providers/wishList_provider.dart';
 import 'screens/home/home_screen.dart';
-import 'screens/search_screen.dart';
+import 'screens/search/search_screen.dart';
 import 'sideScreens/AddAddressScreen.dart';
 
 void main() async {

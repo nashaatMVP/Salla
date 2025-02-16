@@ -327,153 +327,153 @@ class ProductDetailsScreen extends StatelessWidget {
                         ),
 
                         /////////////////////////////////   user rating  /////////////////////////////////////
-                        FutureBuilder<List<RatingModelAdvanced>>(
-                          future: ratingProvider.fetchproductreview(productId),
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.waiting) {
-                              return const Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            } else if (snapshot.hasError) {
-                              return SelectableText(
-                                snapshot.error.toString(),
-                              );
-                            } else if (!snapshot.hasData ||
-                                ratingProvider.getreviews.isEmpty) {}
-                            double totalListViewHeight = 0.0;
-                            if (snapshot.hasData) {
-                              for (var review in snapshot.data!) {
-                                totalListViewHeight +=
-                                    calculateHeightForItem(review);
-                              }
-                            }
-
-                            return SizedBox(
-                              height: totalListViewHeight,
-                              child: ListView.separated(
-                                physics: const BouncingScrollPhysics(),
-                                itemCount: snapshot.data!.length,
-                                itemBuilder: (ctx, index) {
-                                  final review = snapshot.data![index];
-                                  final userDetails = ratingProvider
-                                      .getUserDetails(review.userId);
-
-                                  return FutureBuilder(
-                                    future: userDetails,
-                                    builder: (BuildContext context,
-                                        AsyncSnapshot userSnapshot) {
-                                      if (userSnapshot.connectionState ==
-                                          ConnectionState.waiting) {
-                                        return const CircularProgressIndicator();
-                                      } else if (userSnapshot.hasError) {
-                                        return Text(
-                                            'Error: ${userSnapshot.error}');
-                                      } else if (!userSnapshot.hasData) {
-                                        return const SizedBox(); // Return an empty widget or handle as needed
-                                      }
-
-                                      final user = userSnapshot.data!;
-                                      return Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 2, vertical: 0),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    CircleAvatar(
-                                                      backgroundImage:
-                                                          NetworkImage(
-                                                        user["userImage"] ??
-                                                            "https://pbs.twimg.com/media/FBBFtDvVcAQrSAG.png",
-                                                      ), // User image fetched based on userId
-                                                      radius: 20,
-                                                    ),
-                                                    const SizedBox(width: 10),
-                                                    Column(
-                                                      children: [
-                                                        Text(
-                                                          user["userName"]
-                                                                  .toString() ??
-                                                              'user3223388222', // User name fetched based on userId
-                                                          style:
-                                                              const TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                        "${double.parse(review.rating)}" ??
-                                                            "5.0"),
-                                                    const SizedBox(
-                                                      width: 10,
-                                                    ),
-                                                    Icon(
-                                                      Icons.star,
-                                                      color:
-                                                      appColors.primaryColor,
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 10,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            const SizedBox(
-                                              height: 4,
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                ///////////////////// Title Review /////////////////////////
-                                                TextWidgets.bodyText1(review.titlereview
-                                                    .toString() ??
-                                                    "Awsome"),
-
-                                                const SizedBox(
-                                                  height: 3,
-                                                ),
-                                                ///////////////////// review /////////////////////////
-                                                Text(
-                                                  review.review.toString(),
-                                                  style: GoogleFonts.akatab(),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
-                                separatorBuilder:
-                                    (BuildContext context, int index) {
-                                  return Divider(
-                                    thickness: 1,
-                                    color: appColors.primaryColor,
-                                  );
-                                },
-                              ),
-                            );
-                          },
-                        ),
+                        // FutureBuilder<List<RatingModelAdvanced>>(
+                        //   future: ratingProvider.fetchproductreview(productId),
+                        //   builder: (context, snapshot) {
+                        //     if (snapshot.connectionState ==
+                        //         ConnectionState.waiting) {
+                        //       return const Center(
+                        //         child: CircularProgressIndicator(),
+                        //       );
+                        //     } else if (snapshot.hasError) {
+                        //       return SelectableText(
+                        //         snapshot.error.toString(),
+                        //       );
+                        //     } else if (!snapshot.hasData ||
+                        //         ratingProvider.getreviews.isEmpty) {}
+                        //     double totalListViewHeight = 0.0;
+                        //     if (snapshot.hasData) {
+                        //       for (var review in snapshot.data!) {
+                        //         totalListViewHeight +=
+                        //             calculateHeightForItem(review);
+                        //       }
+                        //     }
+                        //
+                        //     return SizedBox(
+                        //       height: totalListViewHeight,
+                        //       child: ListView.separated(
+                        //         physics: const BouncingScrollPhysics(),
+                        //         itemCount: snapshot.data!.length,
+                        //         itemBuilder: (ctx, index) {
+                        //           final review = snapshot.data![index];
+                        //           final userDetails = ratingProvider
+                        //               .getUserDetails(review.userId);
+                        //
+                        //           return FutureBuilder(
+                        //             future: userDetails,
+                        //             builder: (BuildContext context,
+                        //                 AsyncSnapshot userSnapshot) {
+                        //               if (userSnapshot.connectionState ==
+                        //                   ConnectionState.waiting) {
+                        //                 return const CircularProgressIndicator();
+                        //               } else if (userSnapshot.hasError) {
+                        //                 return Text(
+                        //                     'Error: ${userSnapshot.error}');
+                        //               } else if (!userSnapshot.hasData) {
+                        //                 return const SizedBox(); // Return an empty widget or handle as needed
+                        //               }
+                        //
+                        //               final user = userSnapshot.data!;
+                        //               return Padding(
+                        //                 padding: const EdgeInsets.symmetric(
+                        //                     horizontal: 2, vertical: 0),
+                        //                 child: Column(
+                        //                   mainAxisAlignment:
+                        //                       MainAxisAlignment.start,
+                        //                   crossAxisAlignment:
+                        //                       CrossAxisAlignment.start,
+                        //                   children: [
+                        //                     Row(
+                        //                       mainAxisAlignment:
+                        //                           MainAxisAlignment
+                        //                               .spaceBetween,
+                        //                       children: [
+                        //                         Row(
+                        //                           children: [
+                        //                             CircleAvatar(
+                        //                               backgroundImage:
+                        //                                   NetworkImage(
+                        //                                 user["userImage"] ??
+                        //                                     "https://pbs.twimg.com/media/FBBFtDvVcAQrSAG.png",
+                        //                               ), // User image fetched based on userId
+                        //                               radius: 20,
+                        //                             ),
+                        //                             const SizedBox(width: 10),
+                        //                             Column(
+                        //                               children: [
+                        //                                 Text(
+                        //                                   user["userName"]
+                        //                                           .toString() ??
+                        //                                       'user3223388222', // User name fetched based on userId
+                        //                                   style:
+                        //                                       const TextStyle(
+                        //                                     fontWeight:
+                        //                                         FontWeight.bold,
+                        //                                   ),
+                        //                                 ),
+                        //                               ],
+                        //                             ),
+                        //                           ],
+                        //                         ),
+                        //                         Row(
+                        //                           children: [
+                        //                             Text(
+                        //                                 "${double.parse(review.rating)}" ??
+                        //                                     "5.0"),
+                        //                             const SizedBox(
+                        //                               width: 10,
+                        //                             ),
+                        //                             Icon(
+                        //                               Icons.star,
+                        //                               color:
+                        //                               appColors.primaryColor,
+                        //                             ),
+                        //                             const SizedBox(
+                        //                               width: 10,
+                        //                             ),
+                        //                           ],
+                        //                         ),
+                        //                       ],
+                        //                     ),
+                        //                     const SizedBox(
+                        //                       height: 4,
+                        //                     ),
+                        //                     Column(
+                        //                       crossAxisAlignment:
+                        //                           CrossAxisAlignment.start,
+                        //                       children: [
+                        //                         ///////////////////// Title Review /////////////////////////
+                        //                         TextWidgets.bodyText1(review.titlereview
+                        //                             .toString() ??
+                        //                             "Awsome"),
+                        //
+                        //                         const SizedBox(
+                        //                           height: 3,
+                        //                         ),
+                        //                         ///////////////////// review /////////////////////////
+                        //                         Text(
+                        //                           review.review.toString(),
+                        //                           style: GoogleFonts.akatab(),
+                        //                         ),
+                        //                       ],
+                        //                     ),
+                        //                   ],
+                        //                 ),
+                        //               );
+                        //             },
+                        //           );
+                        //         },
+                        //         separatorBuilder:
+                        //             (BuildContext context, int index) {
+                        //           return Divider(
+                        //             thickness: 1,
+                        //             color: appColors.primaryColor,
+                        //           );
+                        //         },
+                        //       ),
+                        //     );
+                        //   },
+                        // ),
 
                         ///////////////////////////// you may also like //////////////////////////////////
                         const CustomTitles(text: "You may Also Like"),

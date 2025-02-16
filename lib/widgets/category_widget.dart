@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:smart_shop/shared/app/custom_text.dart';
-import '../screens/search_screen.dart';
+import '../screens/search/search_screen.dart';
 import '../shared/theme/app_colors.dart';
 
 class CategoryRoundedWidget extends StatelessWidget {

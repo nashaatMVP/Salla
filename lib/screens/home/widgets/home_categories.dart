@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_shop/screens/search_screen.dart';
+import 'package:smart_shop/screens/search/search_screen.dart';
 import 'package:smart_shop/shared/app/custom_container.dart';
 import 'package:smart_shop/shared/app/custom_text.dart';
 

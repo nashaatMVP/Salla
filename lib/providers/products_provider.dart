@@ -94,7 +94,7 @@ class ProductProvider with ChangeNotifier {
     }
   }
 
-  ////////////////////// New Arrival
+  /// New Arrival
   Future<List<ProductModel>> fetchProductsHorizontal() async {
     try {
       await productDb
@@ -116,7 +116,7 @@ class ProductProvider with ChangeNotifier {
     }
   }
 
-  ////////////////////// Latest Arrival Two
+  /// Latest Arrival Two
   Future<List<ProductModel>> fetchProductsSecondHorizontal() async {
     try {
       await productDb
@@ -138,7 +138,7 @@ class ProductProvider with ChangeNotifier {
     }
   }
 
-  ////////////////////// Recommanded for you
+  ///Recommanded for you
   Future<List<ProductModel>> fetchProductsVertical() async {
     try {
       await productDb
@@ -160,11 +160,4 @@ class ProductProvider with ChangeNotifier {
     }
   }
 
-  //////////////////////  get Offer
-
-  double getOffer() {
-    double total = double.parse(productModel.productOldPrice!) /
-        double.parse(productModel.productPrice);
-    return total;
-  }
 }

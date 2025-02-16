@@ -3,12 +3,12 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../SCREENS/search_screen.dart';
 import '../../../core/app_constans.dart';
 import '../../../providers/theme_provider.dart';
 import '../../../shared/app/constants.dart';
 import '../../../shared/app/custom_text.dart';
 import '../../../shared/theme/app_colors.dart';
+import '../../search/search_screen.dart';
 import 'home_categories.dart';
 
 class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
