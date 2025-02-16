@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:smart_shop/root_screen.dart';
 import '../core/my_app_functions.dart';
-import '../shared/circular_widget.dart';
-import '../shared/constants.dart';
-import '../shared/custom_text.dart';
-import '../shared/custom_text_field.dart';
-import '../shared/theme/app_colors.dart';
+import '../shared/app/circular_widget.dart';
+import '../shared/app/constants.dart';
+import '../shared/app/custom_text.dart';
+import '../shared/app/custom_text_field.dart';
 import '../core/validator.dart';
 import 'forot_password_screen.dart';
 import 'register.dart';
@@ -91,13 +90,11 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final appColors = Theme.of(context).extension<AppColors>()!;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        backgroundColor: appColors.primaryColor,
         body: LoadingManager(
           isLoading: isLoading,
           child: Padding(
@@ -188,7 +185,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                backgroundColor: appColors.primaryColor,
                               ),
                               child: const Text(
                                 "Login",
@@ -217,7 +213,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               child:  Text(
                                 " Guest ?",
                                 style: TextStyle(
-                                    fontSize: 15, color: appColors.primaryColor),
+                                    fontSize: 15, ),
                               ),
                               onPressed: () async {
                                 Navigator.pushNamed(

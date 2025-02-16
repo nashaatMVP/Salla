@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/order_model.dart';
 import '../providers/order_provider.dart';
-import '../shared/custom_text.dart';
+import '../shared/app/custom_text.dart';
 import '../shared/theme/app_colors.dart';
-import '../shared/custom_empty_widget.dart';
+import '../shared/app/custom_empty_widget.dart';
 import '../widgets/itemWidgets/order_widget.dart';
 
 class OrdersScreenFree extends StatefulWidget {

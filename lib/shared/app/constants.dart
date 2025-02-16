@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-
-import '../core/app_storage.dart';
+import '../../core/app_storage.dart';
 
 AppStorage appStorage = AppStorage();
 
@@ -35,6 +34,9 @@ const kGap35 = Gap(35);
 const kGap40 = Gap(40);
 const kGap50 = Gap(50);
 const kGap60 = Gap(60);
+const kGap65 = Gap(65);
+const kGap70 = Gap(70);
+const kGap75 = Gap(75);
 const kGap80 = Gap(80);
 const kGap100 = Gap(100);
 const kGap200 = Gap(200);

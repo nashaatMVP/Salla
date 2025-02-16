@@ -6,9 +6,9 @@ import 'package:provider/provider.dart';
 import 'package:smart_shop/sideScreens/select_address_screen.dart';
 import '../providers/address_provider.dart';
 import '../core/my_app_functions.dart';
-import '../shared/custom_text.dart';
+import '../shared/app/custom_text.dart';
 import '../shared/theme/app_colors.dart';
-import '../shared/circular_widget.dart';
+import '../shared/app/circular_widget.dart';
 
 class AddressEditScreen extends StatefulWidget {
   const AddressEditScreen({super.key});

@@ -80,7 +80,7 @@ class AppTheme {
     ),
     textTheme: GoogleFonts.montserratTextTheme(),
     primaryColor: Colors.white,
-    scaffoldBackgroundColor: Colors.grey.withAlpha(100),
+    scaffoldBackgroundColor: const Color(0xFF262626),
     appBarTheme: const AppBarTheme(
       backgroundColor: blackColor,
       elevation: 0,

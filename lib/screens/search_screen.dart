@@ -12,7 +12,7 @@ import 'package:smart_shop/widgets/itemWidgets/search_widget.dart';
 import '../core/app_constans.dart';
 import '../models/product_model.dart';
 import '../providers/products_provider.dart';
-import '../shared/custom_text.dart';
+import '../shared/app/custom_text.dart';
 import '../shared/theme/app_colors.dart';
 
 class SearchScreen extends StatefulWidget {

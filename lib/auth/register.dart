@@ -9,10 +9,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:smart_shop/auth/login.dart';
 import 'package:smart_shop/root_screen.dart';
 import '../core/my_app_functions.dart';
-import '../shared/circular_widget.dart';
-import '../shared/constants.dart';
-import '../shared/custom_text.dart';
-import '../shared/custom_text_field.dart';
+import '../shared/app/circular_widget.dart';
+import '../shared/app/constants.dart';
+import '../shared/app/custom_text.dart';
+import '../shared/app/custom_text_field.dart';
 import '../shared/theme/app_colors.dart';
 import '../core/validator.dart';
 import '../widgets/picker_widget.dart';
@@ -202,13 +202,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final appColors = Theme.of(context).extension<AppColors>()!;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        backgroundColor: appColors.primaryColor,
         body: LoadingManager(
           isLoading: isLoading,
           child: SingleChildScrollView(
@@ -316,7 +314,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                                 color: obscureText
                                 ? Colors.grey
-                                : appColors.primaryColor,
+                                : blueColor,
                               ),
                             ),
                             onFieldSubmitted: (p0) async {

@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:smart_shop/shared/custom_text.dart';
+import 'package:smart_shop/shared/app/custom_text.dart';
 import '../shared/theme/app_colors.dart';
 import '../core/validator.dart';
 

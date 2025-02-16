@@ -5,10 +5,10 @@ import 'package:provider/provider.dart';
 import '../../screens/cart/provider/cart_provider.dart';
 import '../../providers/products_provider.dart';
 import '../../providers/viewed_product_provider.dart';
-import '../../shared/custom_text.dart';
+import '../../shared/app/custom_text.dart';
 import '../../shared/theme/app_colors.dart';
 import '../../sideScreens/product_datails_screen.dart';
-import '../../shared/heart_widget.dart';
+import '../../shared/app/heart_widget.dart';
 
 class ProductWidget extends StatefulWidget {
   final String productId;

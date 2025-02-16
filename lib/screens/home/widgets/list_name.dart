@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../shared/custom_text.dart';
+import '../../../shared/app/custom_text.dart';
 import '../../../shared/theme/app_colors.dart';
 
 class ListName extends StatelessWidget {

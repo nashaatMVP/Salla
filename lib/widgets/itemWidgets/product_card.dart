@@ -6,11 +6,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_shop/screens/cart/provider/cart_provider.dart';
 import 'package:smart_shop/providers/viewed_product_provider.dart';
-import 'package:smart_shop/shared/constants.dart';
-import 'package:smart_shop/shared/custom_container.dart';
-import 'package:smart_shop/shared/heart_widget.dart';
+import 'package:smart_shop/shared/app/custom_container.dart';
+import 'package:smart_shop/shared/app/heart_widget.dart';
 import '../../models/product_model.dart';
-import '../../shared/custom_text.dart';
+import '../../shared/app/constants.dart';
+import '../../shared/app/custom_text.dart';
 import '../../shared/theme/app_colors.dart';
 import '../../sideScreens/product_datails_screen.dart';
 
@@ -25,6 +25,17 @@ class ProductCard extends StatelessWidget {
     final viwedProductProvider = Provider.of<ViewedProductProvider>(context);
     final cartProvider = Provider.of<CartProvider>(context);
     final appColors = Theme.of(context).extension<AppColors>()!;
+    String getOffer(String oldPriceStr, String newPriceStr) {
+      double? oldPrice = double.tryParse(oldPriceStr);
+      double? newPrice = double.tryParse(newPriceStr);
+
+      if (oldPrice == null || newPrice == null || oldPrice <= 0 || newPrice >= oldPrice) {
+        return "0%"; // Handle invalid input or no discount case
+      }
+
+      double discount = ((oldPrice - newPrice) / oldPrice) * 100;
+      return "${discount.toStringAsFixed(0)}%";
+    }
 
     return GestureDetector(
       onTap: () async {
@@ -158,7 +169,7 @@ class ProductCard extends StatelessWidget {
                       topLeft: Radius.circular(8)),
                 ),
                 child:  TextWidgets.bodyText1(
-                  "Offer %",
+                  "${getOffer("${productModel.productOldPrice}", productModel.productPrice)} Offer",
                   color: Colors.white,
                   fontSize: 10,
                   fontWeight: FontWeight.bold,

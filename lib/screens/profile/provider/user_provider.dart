@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../models/user-model.dart';
+import '../model/user-model.dart';
 
 class UserProvider with ChangeNotifier {
   UserModel? userModel;

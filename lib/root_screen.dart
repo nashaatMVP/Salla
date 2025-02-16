@@ -4,16 +4,16 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_shop/screens/offers/offers_screen.dart';
-import 'package:smart_shop/shared/photo_link.dart';
-import 'models/user-model.dart';
+import 'package:smart_shop/shared/app/photo_link.dart';
+import 'screens/profile/model/user-model.dart';
 import 'providers/address_provider.dart';
 import 'screens/cart/provider/cart_provider.dart';
 import 'providers/products_provider.dart';
-import 'providers/user_provider.dart';
+import 'screens/profile/provider/user_provider.dart';
 import 'providers/wishList_provider.dart';
 import 'screens/cart/cart_screen.dart';
 import 'screens/home/home_screen.dart';
-import 'screens/profile_screen.dart';
+import 'screens/profile/profile_screen.dart';
 import 'screens/search_screen.dart';
 import 'shared/theme/app_colors.dart';
 
@@ -169,7 +169,17 @@ class _RootScreenState extends State<RootScreen> {
             label: "Cart",
             activeIcon:Padding(
               padding: const EdgeInsets.only(bottom: 2.0),
-              child: SvgPicture.asset(PhotoLink.cartLink,color: appColors.primaryColor,),
+              child: Badge(
+                label: Text(
+                  "${cartProvider.getCartItems.length}",
+                  style: const TextStyle(color: Colors.white,fontSize: 12),
+                ),
+                backgroundColor: blueColor,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 2.0),
+                  child: SvgPicture.asset(PhotoLink.cartFilledLink,color: appColors.primaryColor),
+                ),
+              ),
             ),
             icon: Badge(
               label: Text(
@@ -193,6 +203,22 @@ class _RootScreenState extends State<RootScreen> {
                   userModel != null && userModel!.userImage != null &&  userModel!.userImage != ""
                       ? userModel!.userImage.toString()
                       : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+                ),
+              ),
+            ),
+            activeIcon: Padding(
+              padding: const EdgeInsets.only(bottom: 2.0),
+              child: CircleAvatar(
+                radius: 14,
+                backgroundColor: Colors.green,
+                child: CircleAvatar(
+                  radius: 13,
+
+                  backgroundImage: NetworkImage(
+                    userModel != null && userModel!.userImage != null &&  userModel!.userImage != ""
+                        ? userModel!.userImage.toString()
+                        : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+                  ),
                 ),
               ),
             ),

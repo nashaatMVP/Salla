@@ -6,8 +6,8 @@ import 'package:provider/provider.dart';
 import '../../../SCREENS/search_screen.dart';
 import '../../../core/app_constans.dart';
 import '../../../providers/theme_provider.dart';
-import '../../../shared/constants.dart';
-import '../../../shared/custom_text.dart';
+import '../../../shared/app/constants.dart';
+import '../../../shared/app/custom_text.dart';
 import '../../../shared/theme/app_colors.dart';
 import 'home_categories.dart';
 
@@ -23,13 +23,15 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: appColors.secondaryColor.withAlpha(450),
       scrolledUnderElevation: 0,
-      toolbarHeight: preferredSize.height,
+      leadingWidth: 0,
+      leading: const SizedBox.shrink(),
       flexibleSpace: ClipRect(
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 20,sigmaY : 20),
-          child: Container(color: Colors.transparent,),
+          child: Container(color: Colors.transparent),
         ),
       ),
+      toolbarHeight: preferredSize.height,
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

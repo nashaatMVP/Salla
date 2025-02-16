@@ -2,8 +2,8 @@ import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/viewed_product_provider.dart';
-import '../shared/custom_empty_widget.dart';
-import '../shared/custom_text.dart';
+import '../shared/app/custom_empty_widget.dart';
+import '../shared/app/custom_text.dart';
 import '../shared/theme/app_colors.dart';
 import '../widgets/itemWidgets/product_widget.dart';
 

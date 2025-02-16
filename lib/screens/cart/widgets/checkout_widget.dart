@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/shared/constants.dart';
-import 'package:smart_shop/shared/custom_container.dart';
+import 'package:smart_shop/shared/app/custom_container.dart';
+import '../../../shared/app/constants.dart';
 import '../provider/cart_provider.dart';
 import '../../../providers/products_provider.dart';
-import '../../../shared/custom_text.dart';
+import '../../../shared/app/custom_text.dart';
 import '../../../shared/theme/app_colors.dart';
 import '../../../sideScreens/select_address_screen.dart';
 

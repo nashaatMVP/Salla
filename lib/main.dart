@@ -19,7 +19,7 @@ import 'providers/order_provider.dart';
 import 'providers/products_provider.dart';
 import 'providers/rating_provider.dart';
 import 'providers/theme_provider.dart';
-import 'providers/user_provider.dart';
+import 'screens/profile/provider/user_provider.dart';
 import 'providers/viewed_product_provider.dart';
 import 'providers/wishList_provider.dart';
 import 'screens/home/home_screen.dart';

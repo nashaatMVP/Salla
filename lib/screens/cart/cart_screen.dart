@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/shared/circular_widget.dart';
-import 'package:smart_shop/shared/constants.dart';
-import 'package:smart_shop/shared/custom_appbar.dart';
-import 'package:smart_shop/shared/custom_empty_widget.dart';
+import 'package:smart_shop/shared/app/circular_widget.dart';
+import 'package:smart_shop/shared/app/custom_appbar.dart';
+import 'package:smart_shop/shared/app/custom_empty_widget.dart';
+import '../../shared/app/constants.dart';
 import 'provider/cart_provider.dart';
 import 'widgets/checkout_widget.dart';
 import 'widgets/cart_widget.dart';
@@ -53,7 +53,7 @@ class _CartScreenState extends State<CartScreen> {
                             value: cartProvider.getCartItems.values.toList()[index],
                             child:  Column(
                               children: [
-                                CartWidget(),
+                                const CartWidget(),
                                 Divider(height: 20,color: Colors.grey.shade300,thickness: 10),
                               ],
                             ),

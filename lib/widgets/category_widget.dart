@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_shop/shared/constants.dart';
-import 'package:smart_shop/shared/custom_text.dart';
+import 'package:smart_shop/shared/app/custom_text.dart';
 import '../screens/search_screen.dart';
 import '../shared/theme/app_colors.dart';
 

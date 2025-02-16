@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:smart_shop/root_screen.dart';
-import 'package:smart_shop/shared/constants.dart';
-import 'package:smart_shop/shared/custom_button.dart';
+import 'constants.dart';
+import 'custom_button.dart';
 import 'custom_text.dart';
-import 'theme/app_colors.dart';
+import '../theme/app_colors.dart';
 
 class EmptyBagWidget extends StatelessWidget {
   const EmptyBagWidget({

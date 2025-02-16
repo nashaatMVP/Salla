@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../shared/custom_text.dart';
+import '../shared/app/custom_text.dart';
 
 class MyAppFunctions {
   ////////////////////////////////   App Message  /////////////////////////////////////////////////////////////////////////////

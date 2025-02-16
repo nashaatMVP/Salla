@@ -5,12 +5,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_shop/screens/cart/model/cart_model.dart';
 import 'package:smart_shop/screens/cart/widgets/qty_widget.dart';
-import 'package:smart_shop/shared/constants.dart';
-import 'package:smart_shop/shared/custom_container.dart';
-import 'package:smart_shop/shared/photo_link.dart';
+import 'package:smart_shop/shared/app/custom_container.dart';
+import 'package:smart_shop/shared/app/photo_link.dart';
+import '../../../shared/app/constants.dart';
 import '../provider/cart_provider.dart';
 import '../../../providers/products_provider.dart';
-import '../../../shared/custom_text.dart';
+import '../../../shared/app/custom_text.dart';
 import '../../../shared/theme/app_colors.dart';
 
 class CartWidget extends StatelessWidget {

@@ -5,13 +5,13 @@ import 'package:smart_shop/screens/home/widgets/banner_card.dart';
 import 'package:smart_shop/screens/home/widgets/brands_card.dart';
 import 'package:smart_shop/screens/home/widgets/home_appbar.dart';
 import 'package:smart_shop/screens/home/widgets/list_name.dart';
-import 'package:smart_shop/shared/custom_container.dart';
+import 'package:smart_shop/shared/app/custom_container.dart';
 import 'package:smart_shop/widgets/category_widget.dart';
 import 'package:smart_shop/widgets/itemWidgets/product_card.dart';
 import '../../core/app_constans.dart';
-import '../../models/user-model.dart';
+import '../../shared/app/constants.dart';
+import '../profile/model/user-model.dart';
 import '../../providers/products_provider.dart';
-import '../../shared/constants.dart';
 import '../../shared/theme/app_colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -97,8 +97,8 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(
                     height: 245,
                     child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
                       padding: EdgeInsets.zero,
+                      scrollDirection: Axis.horizontal,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 8),
                         child: Row(

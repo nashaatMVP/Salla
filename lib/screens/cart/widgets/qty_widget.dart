@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:smart_shop/screens/cart/model/cart_model.dart';
 import 'package:smart_shop/screens/cart/provider/cart_provider.dart';
 import '../../../providers/products_provider.dart';
-import '../../../shared/custom_container.dart';
+import '../../../shared/app/custom_container.dart';
 import '../../../shared/theme/app_colors.dart';
 
 class QtyWidget extends StatelessWidget {
@@ -84,13 +84,10 @@ class DeleteWidget extends StatelessWidget {
     final cartProvider = Provider.of<CartProvider>(context);
 
     return CustomContainer(
-      radius: 10,
       width: 36,
+      radius: 10,
       height: 40,
-      color: Colors.grey.shade200,
-      padding: EdgeInsets.zero,
-      margin: EdgeInsets.zero,
-      borderColor: appColors.primaryColor.withAlpha(100),
+      color: blueColor,
       child: IconButton(
         onPressed: () {
           cartProvider.removeOneItem(productId: cartModel.producttID);
@@ -101,17 +98,15 @@ class DeleteWidget extends StatelessWidget {
             qty: cartModel.cartQty,
           );
         },
-        icon: Icon(
-          CupertinoIcons.delete,
+        icon:  const Icon(
           size: 22,
-          color: appColors.secondaryColor,
+          color: Colors.white,
+          CupertinoIcons.delete,
         ),
       ),
     );
   }
 }
-
-
 
 Widget _buildButton(Widget symbol, VoidCallback onPressed) {
   return Material(

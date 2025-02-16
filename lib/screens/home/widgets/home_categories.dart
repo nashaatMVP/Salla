@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_shop/screens/search_screen.dart';
-import 'package:smart_shop/shared/custom_container.dart';
-import 'package:smart_shop/shared/custom_text.dart';
+import 'package:smart_shop/shared/app/custom_container.dart';
+import 'package:smart_shop/shared/app/custom_text.dart';
 
 class HomeCategories extends StatelessWidget {
   const HomeCategories({super.key, required this.text});

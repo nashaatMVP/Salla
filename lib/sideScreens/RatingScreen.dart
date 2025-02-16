@@ -6,9 +6,9 @@ import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import '../core/my_app_functions.dart';
 import '../providers/products_provider.dart';
-import '../providers/user_provider.dart';
+import '../screens/profile/provider/user_provider.dart';
 import '../screens/cart/provider/cart_provider.dart';
-import '../shared/custom_text.dart';
+import '../shared/app/custom_text.dart';
 import '../shared/theme/app_colors.dart';
 
 class RatingScreen extends StatefulWidget {

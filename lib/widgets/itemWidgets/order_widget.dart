@@ -2,7 +2,7 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../models/order_model.dart';
-import '../../shared/custom_text.dart';
+import '../../shared/app/custom_text.dart';
 import '../../shared/theme/app_colors.dart';
 import '../../sideScreens/RatingScreen.dart';
 

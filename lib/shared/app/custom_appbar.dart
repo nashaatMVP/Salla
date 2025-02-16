@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:smart_shop/shared/photo_link.dart';
+import 'package:smart_shop/shared/app/photo_link.dart';
 import 'package:smart_shop/shared/theme/app_colors.dart';
 import 'custom_text.dart';
 
