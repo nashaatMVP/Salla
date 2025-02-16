@@ -6,6 +6,7 @@ class PhotoLink {
   static const String cartLink = "assets/svg/cart.svg";
   static const String cartFilledLink = "assets/svg/cartFilled.svg";
   static const String offersLink = "assets/svg/offers.svg";
+  static const String offersFilledLink = "assets/svg/offerFilled.svg";
 
   // app Bar
   static const String backButtonLink = "assets/svg/backButton.svg";

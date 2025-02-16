@@ -14,7 +14,6 @@ import '../../providers/products_provider.dart';
 import '../../shared/app/constants.dart';
 import '../../shared/app/custom_text.dart';
 import '../../shared/theme/app_colors.dart';
-
 class SearchScreen extends StatefulWidget {
   static const routName = "/SearchScreen";
   const SearchScreen({super.key});

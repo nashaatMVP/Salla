@@ -117,9 +117,11 @@ class _RootScreenState extends State<RootScreen> {
         physics: const NeverScrollableScrollPhysics(),
         children: screens,
       ),
+
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentScreen,
         iconSize: 20,
+        currentIndex: currentScreen,
+        mouseCursor: MouseCursor.uncontrolled,
         selectedItemColor:  appColors.primaryColor,
         unselectedItemColor: appColors.primaryColor,
         onTap: (index) {
@@ -158,7 +160,7 @@ class _RootScreenState extends State<RootScreen> {
             label: "Offers",
             activeIcon: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: SvgPicture.asset(PhotoLink.offersLink,color: Colors.deepPurple),
+              child: SvgPicture.asset(PhotoLink.offersFilledLink,color: blueColor,width: 35),
             ),
             icon: Padding(
               padding: const EdgeInsets.only(bottom: 2.0),
