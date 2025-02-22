@@ -7,10 +7,8 @@ import 'package:smart_shop/models/product_model.dart';
 import 'package:smart_shop/screens/offers/widgets/offer_banner.dart';
 import 'package:smart_shop/screens/offers/widgets/offers_card.dart';
 import 'package:smart_shop/shared/app/constants.dart';
-
+import 'package:smart_shop/shared/theme/app_colors.dart';
 import '../../providers/products_provider.dart';
-import '../../shared/theme/app_colors.dart';
-import '../home/widgets/product_card.dart';
 
 
 class OffersScreen extends StatefulWidget {
@@ -26,7 +24,6 @@ class _OffersScreenState extends State<OffersScreen> {
   int _colorIndex = 0;
   Color _backgroundColor = Colors.green.shade100;
   final List<Color> _colors = [Colors.blue.shade200, Colors.green.shade200, Colors.yellow.shade200];
-
 
   @override
   void initState() {
@@ -59,6 +56,8 @@ class _OffersScreenState extends State<OffersScreen> {
       appBar: AppBar(
         backgroundColor: _backgroundColor,
         toolbarHeight: 80,
+        leadingWidth: 0,
+        leading: const SizedBox.shrink(),
         flexibleSpace: ClipRect(
           child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 10,sigmaY: 10),
@@ -108,8 +107,8 @@ class _OffersScreenState extends State<OffersScreen> {
       floatingActionButton: FloatingActionButton(
           elevation: 10,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(200)),
-          backgroundColor: Colors.red,
-          child: const Icon(CupertinoIcons.stopwatch_fill , color: Colors.white,),
+          backgroundColor: blueColor,
+          child: const Icon(CupertinoIcons.stop_circle, color: Colors.white,),
           onPressed: () =>  _timer.cancel(),
       ),
     );

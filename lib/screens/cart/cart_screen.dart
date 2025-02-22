@@ -36,10 +36,12 @@ class _CartScreenState extends State<CartScreen> {
             backgroundColor: Colors.transparent,
             appBar: CustomAppBar(
               text: "Your Cart",
+              isCart: true,
               onDelete: () async {
               await cartProvider.clearCartFromFirestore(context: context);
               cartProvider.clearLocalCart();
-            },),
+            },
+            ),
             body: LoadingManager(
               isLoading: isLoading,
               child: Column(

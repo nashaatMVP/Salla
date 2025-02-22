@@ -23,40 +23,38 @@ class CartBottomSheetWidget extends StatelessWidget {
         elevation: 10,
         backgroundColor: appColors.secondaryColor,
         onClosing: () {},
-        builder: (e) =>  Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 16),
-          child: CustomContainer(
-            color: blueColor,
-            height: 55,
-            radius: 10,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextWidgets.bodyText1("${cartProvider.getQty()} items",fontSize: 12,color: whiteColor),
-                      TextWidgets.bodyText1("AED ${cartProvider.getTotal(productProvider: productsProvider).toStringAsFixed(2)}",fontSize: 15,fontWeight: FontWeight.bold,color: whiteColor),
-                    ],
-                  ),
-                  TextWidgets.subHeading("CHECKOUT",color: whiteColor),
-                  kGap5,
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const CheckoutScreen(),
-                          ));
-                    },
-                    child: const CustomContainer(
+        builder: (e) =>  InkWell(
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const CheckoutScreen(),
+              )),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 16),
+            child: CustomContainer(
+              color: blueColor,
+              height: 55,
+              radius: 10,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextWidgets.bodyText1("${cartProvider.getQty()} items",fontSize: 12,color: whiteColor),
+                        TextWidgets.bodyText1("AED ${cartProvider.getTotal(productProvider: productsProvider).toStringAsFixed(2)}",fontSize: 15,fontWeight: FontWeight.bold,color: whiteColor),
+                      ],
+                    ),
+                    TextWidgets.subHeading("CHECKOUT",color: whiteColor,fontSize: 17),
+                    kGap5,
+                    const CustomContainer(
                       child: Icon(CupertinoIcons.arrow_right_square_fill , color: Colors.white,size: 30),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

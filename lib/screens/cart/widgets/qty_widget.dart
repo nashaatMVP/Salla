@@ -17,7 +17,7 @@ class QtyWidget extends StatelessWidget {
     final productsProvider = Provider.of<ProductProvider>(context);
     final stockValue = productsProvider.findById(cartModel.producttID)?.productQty;
     return CustomContainer(
-      height: 50,
+      height: 40,
       padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 1),
       color: blueColor,
       radius: 30,
@@ -79,7 +79,6 @@ class DeleteWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appColors = Theme.of(context).extension<AppColors>()!;
     final cartModel = Provider.of<CartModel>(context);
     final cartProvider = Provider.of<CartProvider>(context);
 

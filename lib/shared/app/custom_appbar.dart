@@ -12,8 +12,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize;
   final String text;
+  final bool isCart;
   final void Function() onDelete;
-  const CustomAppBar({Key? key, required this.onDelete, required this.text}): preferredSize = const Size.fromHeight(55), super(key: key);
+  const CustomAppBar({Key? key, required this.onDelete, required this.text, this.isCart = false}): preferredSize = const Size.fromHeight(55), super(key: key);
 
 
   @override
@@ -36,6 +37,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          isCart ? SvgPicture.asset(PhotoLink.cartLink,color: appColors.primaryColor,width: 30):
           GestureDetector(
             onTap: () => Navigator.pop(context),
             child: SvgPicture.asset(PhotoLink.backButtonLink,color: appColors.primaryColor,width: 30),

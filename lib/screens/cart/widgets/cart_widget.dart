@@ -40,94 +40,97 @@ class CartWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: CustomContainer(
 
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Column(
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(5),
-                    child: FancyShimmerImage(
-                      imageUrl: getCurrentProduct.productImage,
-                      height: 60,
-                      width: 60,
-                    ),
-                  ),
-                  kGap10,
-                  Column(
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * .70,
-                        child: TextWidgets.bodyText1(
-                            getCurrentProduct.productTitle,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                            maxLines: 2,
-                            color: appColors.primaryColor),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(5),
+                        child: FancyShimmerImage(
+                          imageUrl: getCurrentProduct.productImage,
+                          height: 60,
+                          width: 60,
+                        ),
                       ),
                       kGap10,
-                      /// prices
-                      Row(
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          TextWidgets.subHeading("AED",
-                              fontSize: 13, color: appColors.primaryColor),
-                          TextWidgets.bodyText1(
-                              " ${getCurrentProduct.productPrice}",
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              color: appColors.primaryColor,
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * .70,
+                            child: TextWidgets.bodyText1(
+                                getCurrentProduct.productTitle,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                maxLines: 2,
+                                color: appColors.primaryColor),
                           ),
                           kGap10,
-                          Text("${getCurrentProduct.productOldPrice}",
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.grey.shade400,
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.lineThrough,
-                            ),
+                          /// prices
+                          Row(
+                            children: [
+                              TextWidgets.subHeading("AED",
+                                  fontSize: 13, color: appColors.primaryColor),
+                              TextWidgets.bodyText1(
+                                  " ${getCurrentProduct.productPrice}",
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                  color: appColors.primaryColor,
+                              ),
+                              kGap10,
+                              Text("${getCurrentProduct.productOldPrice}",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey.shade400,
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.lineThrough,
+                                ),
+                              ),
+                              kGap10,
+                              TextWidgets.bodyText1(
+                                "${getOffer("${getCurrentProduct.productOldPrice}", getCurrentProduct.productPrice)} OFF",
+                                fontWeight: FontWeight.w800,
+                                fontSize: 16,
+                                color: Colors.green.shade500,
+                              ),
+                            ],
                           ),
                           kGap10,
-                          TextWidgets.bodyText1(
-                            "${getOffer("${getCurrentProduct.productOldPrice}", getCurrentProduct.productPrice)} OFF",
-                            fontWeight: FontWeight.w800,
-                            fontSize: 16,
-                            color: Colors.green.shade500,
-                          ),
-                        ],
-                      ),
-                      kGap10,
-                      Row(
-                        children: [
-                          SvgPicture.asset(
-                            PhotoLink.delivery,
-                            width: 13,
-                            color: blueColor,
+                          Row(
+                            children: [
+                              SvgPicture.asset(
+                                PhotoLink.delivery,
+                                width: 13,
+                                color: blueColor,
+                              ),
+                              kGap5,
+                              TextWidgets.subHeading("Fast Delivery", fontSize: 13, color: appColors.primaryColor),
+                            ],
                           ),
                           kGap5,
-                          TextWidgets.subHeading("Fast Delivery", fontSize: 13, color: appColors.primaryColor),
-                        ],
-                      ),
-                      kGap5,
-                      Row(
-                        children: [
-                          SvgPicture.asset(
-                            PhotoLink.check,
-                            width: 13,
-                            color: yellowColor,
+                          Row(
+                            children: [
+                              SvgPicture.asset(
+                                PhotoLink.check,
+                                width: 13,
+                                color: yellowColor,
+                              ),
+                              kGap5,
+                              TextWidgets.bodyText1("1 year warranty",fontSize: 13, color: appColors.primaryColor),
+                            ],
                           ),
-                          kGap5,
-                          TextWidgets.bodyText1("1 year warranty",fontSize: 13, color: appColors.primaryColor),
+                          kGap20,
                         ],
                       ),
-                      kGap20,
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          QtyWidget(),
-                          kGap80,
-                          DeleteWidget(),
-                        ],
-                      ),
+                    ],
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      QtyWidget(),
+                      DeleteWidget(),
                     ],
                   ),
                 ],
