@@ -59,7 +59,7 @@ class _AddressScreenState extends State<SelectAddressScreen> {
                 centerTitle: true,
                 toolbarHeight: 35,
                 title:  Padding(
-                  padding: EdgeInsets.only(top: 20.0),
+                  padding: const EdgeInsets.only(top: 20.0),
                   child: TextWidgets.bodyText1("CheckOut"),
 
                 ),
@@ -136,12 +136,12 @@ class _AddressScreenState extends State<SelectAddressScreen> {
                                         color: appColors.primaryColor
                                         ,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 10,
                                       ),
                                       TextWidgets.bodyText1("Please Add Your Address Information"),
 
-                                      Spacer(),
+                                      const Spacer(),
                                       Icon(
                                         Icons.arrow_forward_ios,
                                         color: appColors.primaryColor,
@@ -162,7 +162,7 @@ class _AddressScreenState extends State<SelectAddressScreen> {
                               return ChangeNotifierProvider.value(
                                 value: cartProvider.getCartItems.values
                                     .toList()[index],
-                                child:  CartWidget(),
+                                child:  const CartWidget(),
                               );
                             }),
                       ),

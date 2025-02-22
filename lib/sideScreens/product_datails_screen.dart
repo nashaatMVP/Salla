@@ -33,9 +33,7 @@ class ProductDetailsScreen extends StatelessWidget {
       double userRowHeight = 60.0;
       double reviewTextHeight = 50.0;
       double padding = 20.0;
-      // Calculate the total height needed for an individual item
       double totalItemHeight = userRowHeight + reviewTextHeight + padding;
-
       return totalItemHeight;
     }
 
