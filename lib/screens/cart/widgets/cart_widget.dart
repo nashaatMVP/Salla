@@ -1,5 +1,4 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +7,6 @@ import 'package:smart_shop/screens/cart/widgets/qty_widget.dart';
 import 'package:smart_shop/shared/app/custom_container.dart';
 import 'package:smart_shop/shared/app/photo_link.dart';
 import '../../../shared/app/constants.dart';
-import '../provider/cart_provider.dart';
 import '../../../providers/products_provider.dart';
 import '../../../shared/app/custom_text.dart';
 import '../../../shared/theme/app_colors.dart';
@@ -28,7 +26,7 @@ class CartWidget extends StatelessWidget {
       double? newPrice = double.tryParse(newPriceStr);
 
       if (oldPrice == null || newPrice == null || oldPrice <= 0 || newPrice >= oldPrice) {
-        return "0%"; // Handle invalid input or no discount case
+        return "0%";
       }
 
       double discount = ((oldPrice - newPrice) / oldPrice) * 100;
@@ -127,7 +125,6 @@ class CartWidget extends StatelessWidget {
                         children: [
                           QtyWidget(),
                           kGap80,
-                          kGap20,
                           DeleteWidget(),
                         ],
                       ),

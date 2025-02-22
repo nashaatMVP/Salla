@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/sideScreens/select_address_screen.dart';
+import 'package:smart_shop/screens/cart/checkout_screen.dart';
 import '../providers/address_provider.dart';
 import '../core/my_app_functions.dart';
 import '../shared/app/custom_text.dart';
@@ -360,7 +360,8 @@ class _AddressEditScreenState extends State<AddressEditScreen> {
                                           context,
                                           MaterialPageRoute(
                                               builder: ((context) =>
-                                                  const SelectAddressScreen())));
+                                                  const CheckoutScreen()),
+                                          ));
                                     } else {
                                       MyAppFunctions().globalMassage(
                                           context: context,

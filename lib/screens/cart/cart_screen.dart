@@ -35,6 +35,7 @@ class _CartScreenState extends State<CartScreen> {
             extendBodyBehindAppBar: true,
             backgroundColor: Colors.transparent,
             appBar: CustomAppBar(
+              text: "Your Cart",
               onDelete: () async {
               await cartProvider.clearCartFromFirestore(context: context);
               cartProvider.clearLocalCart();

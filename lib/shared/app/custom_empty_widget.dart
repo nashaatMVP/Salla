@@ -36,15 +36,18 @@ class EmptyBagWidget extends StatelessWidget {
               color: Colors.grey.shade600,
             ),
             kGap30,
-
             Image.asset(
               image,
               height: 140,
             ),
             kGap30,
-           const Padding(
-             padding: EdgeInsets.symmetric(horizontal: 20.0),
-             child: CustomButton(text: "Go To Shopping", backgroundColor: Colors.black),
+            Padding(
+             padding: const EdgeInsets.symmetric(horizontal: 20.0),
+             child: CustomButton(
+                 text: "Go To Shopping", backgroundColor: appColors.primaryColor,
+                 fontWeight: FontWeight.bold,
+                 arrow: true,
+             ),
            ),
           ],
         ),

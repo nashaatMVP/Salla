@@ -6,8 +6,8 @@ import 'package:smart_shop/screens/home/widgets/brands_card.dart';
 import 'package:smart_shop/screens/home/widgets/category_widget.dart';
 import 'package:smart_shop/screens/home/widgets/home_appbar.dart';
 import 'package:smart_shop/screens/home/widgets/list_name.dart';
+import 'package:smart_shop/screens/home/widgets/product_card.dart';
 import 'package:smart_shop/shared/app/custom_container.dart';
-import 'package:smart_shop/widgets/itemWidgets/product_card.dart';
 import '../../core/app_constans.dart';
 import '../../shared/app/constants.dart';
 import '../profile/model/user-model.dart';
@@ -25,7 +25,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel? userModel;
-  bool isLoading = false;
   // Future<void> fetchUserInfo() async {
   //   final userProvider = Provider.of<UserProvider>(context, listen: false);
   //
@@ -48,6 +47,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final productsProvider = Provider.of<ProductProvider>(context);
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.transparent,
@@ -106,10 +106,8 @@ class _HomePageState extends State<HomePage> {
                             productsProvider
                                 .productsproductsSecondHorizontal.length,
                             (index) => ChangeNotifierProvider.value(
-                              value: productsProvider
-                                  .productsproductsSecondHorizontal[index],
-                              child: ProductCard(
-                                  offerBgColor: Colors.green.shade700),
+                              value: productsProvider.productsproductsSecondHorizontal[index],
+                              child: ProductCard(offerBgColor: Colors.green.shade700),
                             ),
                           ),
                         ),
@@ -143,14 +141,9 @@ class _HomePageState extends State<HomePage> {
             ),
             const BrandsCard(),
             kGap20,
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.0),
-              child: ListName(text: "Best Sellers"),
-            ),
-            kGap20,
             Center(
               child: Wrap(
-                spacing: 30,
+                spacing: 5,
                 runSpacing: 10,
                 children: List.generate(
                   productsProvider.getproductsproductsVertical.length,

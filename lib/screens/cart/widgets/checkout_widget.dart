@@ -7,7 +7,7 @@ import '../provider/cart_provider.dart';
 import '../../../providers/products_provider.dart';
 import '../../../shared/app/custom_text.dart';
 import '../../../shared/theme/app_colors.dart';
-import '../../../sideScreens/select_address_screen.dart';
+import '../checkout_screen.dart';
 
 class CartBottomSheetWidget extends StatelessWidget {
   const CartBottomSheetWidget({
@@ -49,36 +49,13 @@ class CartBottomSheetWidget extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SelectAddressScreen(),
+                            builder: (context) => const CheckoutScreen(),
                           ));
                     },
                     child: const CustomContainer(
                       child: Icon(CupertinoIcons.arrow_right_square_fill , color: Colors.white,size: 30),
                     ),
                   ),
-
-                  // Flexible(
-                  //   child: Column(
-                  //     crossAxisAlignment: CrossAxisAlignment.start,
-                  //     children: [
-                  //       const SizedBox(
-                  //         height: 6,
-                  //       ),
-                  //       TextWidgets.bodyText1(
-                  //             "Total: [ ${cartProvider.getCartItems.length} ] Products  [ ${cartProvider.getQty()} ] Items",
-                  //         fontSize: 14,
-                  //       ),
-                  //       const SizedBox(
-                  //         height: 10,
-                  //       ),
-                  //       TextWidgets.bodyText1(
-                  //             "SubTotal: ${cartProvider.getTotal(productProvider: productsProvider).toStringAsFixed(2)} AED",
-                  //
-                  //         fontWeight: FontWeight.bold,
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
                 ],
               ),
             ),

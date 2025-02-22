@@ -2,17 +2,16 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_shop/screens/cart/provider/cart_provider.dart';
 import 'package:smart_shop/providers/viewed_product_provider.dart';
 import 'package:smart_shop/shared/app/custom_container.dart';
 import 'package:smart_shop/shared/app/heart_widget.dart';
-import '../../models/product_model.dart';
-import '../../shared/app/constants.dart';
-import '../../shared/app/custom_text.dart';
-import '../../shared/theme/app_colors.dart';
-import '../../sideScreens/product_datails_screen.dart';
+import '../../../models/product_model.dart';
+import '../../../shared/app/constants.dart';
+import '../../../shared/app/custom_text.dart';
+import '../../../shared/theme/app_colors.dart';
+import '../../../sideScreens/product_datails_screen.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({super.key, required this.offerBgColor,  this.isOffer = true});
@@ -28,11 +27,9 @@ class ProductCard extends StatelessWidget {
     String getOffer(String oldPriceStr, String newPriceStr) {
       double? oldPrice = double.tryParse(oldPriceStr);
       double? newPrice = double.tryParse(newPriceStr);
-
       if (oldPrice == null || newPrice == null || oldPrice <= 0 || newPrice >= oldPrice) {
-        return "0%"; // Handle invalid input or no discount case
+        return "0%";
       }
-
       double discount = ((oldPrice - newPrice) / oldPrice) * 100;
       return "${discount.toStringAsFixed(0)}%";
     }
@@ -123,7 +120,7 @@ class ProductCard extends StatelessWidget {
                                   ],
                                 ),
                                 kGap10,
-                                TextWidgets.bodyText1(productModel.productOldPrice == null ? "" : productModel.productOldPrice.toString(),decoration: TextDecoration.lineThrough,color: CupertinoColors.activeGreen),
+                                TextWidgets.bodyText1(productModel.productOldPrice == null ? "" : productModel.productOldPrice.toString(),decoration: TextDecoration.lineThrough,color: CupertinoColors.systemGrey.withAlpha(100)),
                               ],
                             ),
                           ],

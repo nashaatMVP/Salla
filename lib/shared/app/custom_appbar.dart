@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,8 +11,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   final Size preferredSize;
+  final String text;
   final void Function() onDelete;
-  const CustomAppBar({Key? key, required this.onDelete}): preferredSize = const Size.fromHeight(55), super(key: key);
+  const CustomAppBar({Key? key, required this.onDelete, required this.text}): preferredSize = const Size.fromHeight(55), super(key: key);
 
 
   @override
@@ -22,6 +22,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       centerTitle: true,
       elevation: 1,
+      leading: const SizedBox.shrink(),
+      leadingWidth: 0,
       toolbarHeight: preferredSize.height,
       scrolledUnderElevation: 4,
       backgroundColor: appColors.secondaryColor.withAlpha(450),
@@ -38,7 +40,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             onTap: () => Navigator.pop(context),
             child: SvgPicture.asset(PhotoLink.backButtonLink,color: appColors.primaryColor,width: 30),
           ),
-          TextWidgets.heading("You Cart",color: appColors.primaryColor),
+          TextWidgets.heading(text,color: appColors.primaryColor),
           IconButton(
             onPressed: onDelete,
             icon: Icon(

@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    _emailController = TextEditingController(text: "nashaat@gmail.com");
+    _emailController = TextEditingController(text: "Ayoub@gmail.com");
     _passwordController = TextEditingController(text: '123456');
     _emailFocusNode = FocusNode();
     _passwordFocusNode = FocusNode();

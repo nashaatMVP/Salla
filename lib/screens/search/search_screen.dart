@@ -41,9 +41,7 @@ class _SearchScreenState extends State<SearchScreen> {
       },
       child: Scaffold(
         body: productList.isEmpty
-            ? Center(
-                child:
-                    TextWidgets.bodyText1("Unfortunately ,Not Found Products"))
+            ? Center(child: TextWidgets.bodyText1("Unfortunately ,Not Found Products"))
             : StreamBuilder<List<ProductModel>>(
                 stream: productsProvider.fetchproductStream(),
                 builder: (context, snapshot) {
