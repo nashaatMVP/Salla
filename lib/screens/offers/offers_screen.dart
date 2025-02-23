@@ -49,14 +49,13 @@ class _OffersScreenState extends State<OffersScreen> {
   @override
   Widget build(BuildContext context) {
     final productProvider = Provider.of<ProductProvider>(context);
-
     return Scaffold(
-      backgroundColor: _backgroundColor,
       extendBodyBehindAppBar: true,
+      backgroundColor: _backgroundColor,
       appBar: AppBar(
         backgroundColor: _backgroundColor,
-        toolbarHeight: 80,
         leadingWidth: 0,
+        toolbarHeight: 85,
         leading: const SizedBox.shrink(),
         flexibleSpace: ClipRect(
           child: BackdropFilter(
@@ -64,7 +63,7 @@ class _OffersScreenState extends State<OffersScreen> {
               child: Container(color: Colors.transparent),
           ),
         ),
-        title: OfferBanner(),
+        title: const OfferBanner(),
       ),
       body: SingleChildScrollView(
         child: Center(

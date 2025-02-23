@@ -68,11 +68,15 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/images/banners/
     - assets/bag/
     - assets/categories/
     - assets/Lottie/
-    - assets/banners/
     - assets/svg/
+    - assets/svg/nav/
+    - assets/svg/brand/
+    - assets/svg/profile/
+    - assets/svg/global/
 
   fonts:
     - family: IBMPlexSans

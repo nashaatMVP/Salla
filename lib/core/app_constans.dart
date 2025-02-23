@@ -1,24 +1,29 @@
 import 'package:smart_shop/MODELS/category_models.dart';
+import '../shared/app/photo_link.dart';
 
 class AppConsts {
 
   static List bannerImages = [
-    "assets/banners/banner3.gif",
-    "assets/banners/banner2.avif",
-    "assets/banners/banner1.avif",
+    PhotoLink.banner,
+    PhotoLink.banner1,
+    PhotoLink.banner2,
   ];
 
   static List brandSvgs = [
-    "assets/svg/Adidas.svg",
-    "assets/svg/amazon-icon-logo-svgrepo-com.svg",
-    "assets/svg/android-5-logo-svgrepo-com.svg",
-    "assets/svg/Bench.svg",
-    "assets/svg/Dior.svg",
-    "assets/svg/Gucci-Logo.wine.svg",
-    "assets/svg/Kangol.svg",
-    "assets/svg/NewBalance.svg",
-    "assets/svg/Nike.svg",
-    "assets/svg/Samsung.svg",
+    PhotoLink.adidasLink,
+    PhotoLink.amazonLink,
+    PhotoLink.androidLink,
+    PhotoLink.benchLink,
+    PhotoLink.benchLink,
+    PhotoLink.gucciLink,
+    PhotoLink.kangolLink,
+    PhotoLink.kangolLink,
+    PhotoLink.nikesLink,
+    PhotoLink.newBalanceLink,
+    PhotoLink.samsungLink,
+    PhotoLink.diorLink,
+    PhotoLink.diorLink,
+    PhotoLink.chanelLink,
   ];
 
   static List<CategoryModel> categoryList = [
@@ -88,9 +93,4 @@ class AppConsts {
       name: "Furniture",
     ),
   ];
-  
-
-  static String popImage = "assets/pop.png";
-  static String trueImage = "assets/True.png";
-  static String wrongImage = "assets/Wrong.png";
 }
