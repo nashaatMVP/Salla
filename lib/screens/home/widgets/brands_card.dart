@@ -20,7 +20,7 @@ class BrandsCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 14),
           child: Row(
             spacing: 20,
-            children: List.generate(AppConsts.brandSvgs.length, (index) => SvgPicture.asset(AppConsts.brandSvgs[index],width: 22,color: whiteColor,)),
+            children: List.generate(AppConsts.brandSvgs.length, (index) => SvgPicture.asset(AppConsts.brandSvgs[index],width: 22,color: whiteColor)),
           ),
         ),
       ),
