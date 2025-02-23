@@ -175,9 +175,8 @@ class ProductDetailsScreen extends StatelessWidget {
                         ),
                       ),
                       kGap10,
-                      const CustomTitles(text: "Reviews"),
+                      getCurrentProduct.productrating == null ? const CustomTitles(text: "Reviews") : const SizedBox.shrink(),
                       kGap5,
-
                       FutureBuilder<List<RatingModelAdvanced>>(
                         future: ratingProvider.fetchproductreview(productId),
                         builder: (context, snapshot) {
@@ -216,6 +215,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       ),
 
                       const CustomTitles(text: "You may Also Like"),
+                      kGap20,
                       SizedBox(
                         height: 100,
                         child: ListView.builder(
