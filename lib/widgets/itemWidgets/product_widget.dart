@@ -7,7 +7,7 @@ import '../../providers/products_provider.dart';
 import '../../providers/viewed_product_provider.dart';
 import '../../shared/app/custom_text.dart';
 import '../../shared/theme/app_colors.dart';
-import '../../sideScreens/product_datails_screen.dart';
+import '../../screens/product/product_datails_screen.dart';
 import '../../shared/app/heart_widget.dart';
 
 class ProductWidget extends StatefulWidget {

@@ -12,7 +12,7 @@ import '../../../models/product_model.dart';
 import '../../../shared/app/constants.dart';
 import '../../../shared/app/custom_text.dart';
 import '../../../shared/theme/app_colors.dart';
-import '../../../sideScreens/product_datails_screen.dart';
+import '../../product/product_datails_screen.dart';
 
 
 class OffersCard extends StatelessWidget {
@@ -49,7 +49,6 @@ class OffersCard extends StatelessWidget {
         },
         child: Stack(
           children: [
-            
             Card(
               elevation: 2,
               shadowColor: Colors.grey.shade900,
@@ -57,71 +56,97 @@ class OffersCard extends StatelessWidget {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               child: SizedBox(
                 width: 170,
-                child: Column(
-                  children: [
-                    CustomContainer(
-                      color: Colors.white,
-                      width: double.infinity,
-                      borderRadius: const BorderRadius.only(
-                        topRight: Radius.circular(12),
-                        topLeft: Radius.circular(12),
-                      ),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 20.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: SizedBox(
-                                height: 70,
-                                width: 70,
-                                child: FancyShimmerImage(
-                                  imageUrl: productModel.productImage,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomContainer(
+                        color: Colors.white,
+                        width: double.infinity,
+                        borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(12),
+                          topLeft: Radius.circular(12),
+                        ),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 20.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: SizedBox(
+                                  height: 70,
+                                  width: 70,
+                                  child: FancyShimmerImage(
+                                    imageUrl: productModel.productImage,
+                                  ),
                                 ),
                               ),
                             ),
+                            kGap10,
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10.0),
+                        child: TextWidgets.bodyText1(
+                          productModel.productTitle,
+                          maxLines: 2,
+                          color: appColors.primaryColor,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      kGap5,
+                      RatingBarIndicator(
+                        rating: productModel.productrating!.toDouble(),
+                        itemBuilder: (context, index) => const Icon(Icons.star, color: CupertinoColors.activeGreen),
+                        unratedColor: Colors.grey.shade400,
+                        itemCount: 5,
+                        itemSize: 13.0,
+                        direction: Axis.horizontal,
+                      ),
+                      kGap5,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Row(
+                                children: [
+                                  TextWidgets.bodyText1("AED",color: appColors.primaryColor) ,
+                                  kGap5,
+                                  TextWidgets.bodyText1(productModel.productPrice,fontSize: 15,fontWeight: FontWeight.bold,color: appColors.primaryColor),
+                                ],
+                              ),
+                              kGap10,
+                              TextWidgets.bodyText1(productModel.productOldPrice == null ? "" : productModel.productOldPrice.toString(),decoration: TextDecoration.lineThrough,color: CupertinoColors.systemGrey.withAlpha(100)),
+                            ],
                           ),
-                          kGap10,
                         ],
                       ),
-                    ),
-                    CustomContainer(
-                      width: double.infinity,
-                      color: appColors.primaryColor,
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(12),
-                        bottomRight: Radius.circular(12),
-                      ),
-                      child: CustomButton(
-                        text: "Buy Now",
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        arrow: true,
-                        arrowColor: appColors.secondaryColor,
-                        backgroundColor: appColors.primaryColor,
-                        textColor: appColors.secondaryColor,
-                      ),
-                    ),
-                  ],
+                      kGap10,
+                    ],
+                  ),
                 ),
               ),
             ),
-
             /// offer
             if(isOffer)
             Positioned(
                 top: 3,
                 left: 3,
-                child: Visibility(
-                  visible: productModel.productOldPrice!.isNotEmpty,
-                  child: Container(
+                child: Material(
+                  elevation: 3,
+                  shadowColor: Colors.grey,
+                  borderRadius: const BorderRadius.only(
+                      bottomRight: Radius.circular(15),
+                      topLeft: Radius.circular(8)),
+                  child: CustomContainer(
                     padding: const EdgeInsets.all(6),
-                    decoration: BoxDecoration(
-                      color: offerBgColor,
-                      borderRadius: const BorderRadius.only(
-                          bottomRight: Radius.circular(15),
-                          topLeft: Radius.circular(8)),
-                    ),
+                    color: offerBgColor,
+                    borderRadius: const BorderRadius.only(
+                        bottomRight: Radius.circular(15),
+                        topLeft: Radius.circular(8)),
                     child:  TextWidgets.bodyText1(
                       "${getOffer("${productModel.productOldPrice}", productModel.productPrice)} Offer",
                       color: Colors.white,

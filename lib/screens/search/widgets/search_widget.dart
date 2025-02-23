@@ -8,7 +8,7 @@ import 'package:smart_shop/shared/app/custom_text.dart';
 import '../../../providers/products_provider.dart';
 import '../../../providers/viewed_product_provider.dart';
 import '../../../shared/theme/app_colors.dart';
-import '../../../sideScreens/product_datails_screen.dart';
+import '../../product/product_datails_screen.dart';
 
 class SearchWidget extends StatefulWidget {
   final String productId;

@@ -11,7 +11,7 @@ import '../../../models/product_model.dart';
 import '../../../shared/app/constants.dart';
 import '../../../shared/app/custom_text.dart';
 import '../../../shared/theme/app_colors.dart';
-import '../../../sideScreens/product_datails_screen.dart';
+import '../../product/product_datails_screen.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({super.key, required this.offerBgColor,  this.isOffer = true});

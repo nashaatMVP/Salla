@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:smart_shop/root_screen.dart';
 import 'package:smart_shop/screens/splash_screen.dart';
 import 'package:smart_shop/sideScreens/order_screen.dart';
-import 'package:smart_shop/sideScreens/product_datails_screen.dart';
+import 'package:smart_shop/screens/product/product_datails_screen.dart';
 import 'package:smart_shop/sideScreens/viewed_Recent_Screen.dart';
 import 'package:smart_shop/sideScreens/wislist_screen.dart';
 

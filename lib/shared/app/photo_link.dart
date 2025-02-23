@@ -28,6 +28,9 @@ class PhotoLink {
   static const String banner1 = "assets/images/banners/banner1.avif";
   static const String banner2 = "assets/images/banners/banner2.avif";
 
+  // default images
+  static const String defaultImg = "https://pbs.twimg.com/media/FBBFtDvVcAQrSAG.png";
+
   // brands
   static const String adidasLink = "assets/svg/brand/Adidas.svg";
   static const String amazonLink = "assets/svg/brand/amazon-icon-logo-svgrepo-com.svg";

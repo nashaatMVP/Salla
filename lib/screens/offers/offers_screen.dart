@@ -21,6 +21,7 @@ class OffersScreen extends StatefulWidget {
 class _OffersScreenState extends State<OffersScreen> {
   ProductModel? productModel;
   late Timer _timer;
+  bool isStopTimer = true;
   int _colorIndex = 0;
   Color _backgroundColor = Colors.green.shade100;
   final List<Color> _colors = [Colors.blue.shade200, Colors.green.shade200, Colors.yellow.shade200];
@@ -56,6 +57,8 @@ class _OffersScreenState extends State<OffersScreen> {
         backgroundColor: _backgroundColor,
         leadingWidth: 0,
         toolbarHeight: 85,
+        elevation: 0,
+        scrolledUnderElevation: 0,
         leading: const SizedBox.shrink(),
         flexibleSpace: ClipRect(
           child: BackdropFilter(
@@ -71,7 +74,7 @@ class _OffersScreenState extends State<OffersScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
              kGap100,
-             kGap50,
+             kGap60,
              Wrap(
                 spacing: 10,
                 runSpacing: 10,
@@ -108,7 +111,11 @@ class _OffersScreenState extends State<OffersScreen> {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(200)),
           backgroundColor: blueColor,
           child: const Icon(CupertinoIcons.stop_circle, color: Colors.white,),
-          onPressed: () =>  _timer.cancel(),
+          onPressed: () {
+            setState(() {
+               _timer.cancel();
+            });
+          },
       ),
     );
   }

@@ -2,10 +2,10 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../../models/product_model.dart';
-import '../../shared/app/custom_text.dart';
-import '../../shared/theme/app_colors.dart';
-import '../../sideScreens/product_datails_screen.dart';
+import '../../../models/product_model.dart';
+import '../../../shared/app/custom_text.dart';
+import '../../../shared/theme/app_colors.dart';
+import '../product_datails_screen.dart';
 
 class AlsoProductList extends StatelessWidget {
   const AlsoProductList({super.key});

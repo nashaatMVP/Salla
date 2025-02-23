@@ -14,7 +14,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String text;
   final bool isCart;
   final void Function() onDelete;
-  const CustomAppBar({Key? key, required this.onDelete, required this.text, this.isCart = false}): preferredSize = const Size.fromHeight(55), super(key: key);
+  const CustomAppBar({Key? key, required this.onDelete, required this.text, this.isCart = false,}): preferredSize = const Size.fromHeight(55), super(key: key);
 
 
   @override

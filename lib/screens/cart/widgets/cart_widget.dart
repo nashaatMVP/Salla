@@ -64,7 +64,8 @@ class CartWidget extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
                                 maxLines: 2,
-                                color: appColors.primaryColor),
+                                color: appColors.primaryColor,
+                            ),
                           ),
                           kGap10,
                           /// prices

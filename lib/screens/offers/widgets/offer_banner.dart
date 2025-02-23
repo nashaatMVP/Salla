@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smart_shop/core/app_constans.dart';
 import 'package:smart_shop/shared/app/custom_text.dart';
 
 class OfferBanner extends StatefulWidget {
@@ -15,10 +17,10 @@ class _OfferBannerState extends State<OfferBanner> {
   late Timer _timer;
   int _colorIndex = 0;
   final List<Color> _colors = [
-    Colors.green,
-    Colors.blue,
-    Colors.purple,
-    Colors.orange,
+    Colors.black,
+    Colors.black45,
+    Colors.black45,
+    Colors.black26,
   ];
 
   @override
@@ -55,22 +57,24 @@ class _OfferBannerState extends State<OfferBanner> {
       duration: const Duration(milliseconds: 1000),
       curve: Curves.bounceInOut,
       height: 50,
-      transform: Matrix4.diagonal3Values(1, _scale, 1),
+      transform: Matrix4.diagonal3Values(1, 1 , _scale),
       decoration: BoxDecoration(
         color: _bgColor,
         borderRadius:  BorderRadius.circular(5),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 10,
-            offset: Offset(3, 4),
-          ),
-        ],
       ),
-      child: Center(
-        child: TextWidgets.subHeading(
-           "Special Offers 50%",
-            fontSize: 20, color: Colors.white,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+          child: Row(
+            children: List.generate(
+              AppConsts.brandSvgs.length,
+              (index) => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: SvgPicture.asset(AppConsts.brandSvgs[index],width: 26,color: Colors.white),
+              ),
+            ),
+          ),
         ),
       ),
     );
