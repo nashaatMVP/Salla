@@ -80,6 +80,7 @@ class TextWidgets {
         double? fontSize,
         TextAlign? textAlign,
         FontWeight? fontWeight,
+        int? maxLines,
       }) {
     return CustomText(
       text: text,
@@ -87,6 +88,7 @@ class TextWidgets {
       fontSize: fontSize ?? 20,
       fontWeight: fontWeight ?? FontWeight.w700,
       textAlign: textAlign,
+      maxLines: maxLines,
     );
   }
 

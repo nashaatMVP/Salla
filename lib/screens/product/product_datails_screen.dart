@@ -15,6 +15,7 @@ import 'package:smart_shop/shared/app/constants.dart';
 import 'package:smart_shop/shared/app/custom_appbar.dart';
 import 'package:smart_shop/shared/app/custom_container.dart';
 import 'package:smart_shop/shared/app/photo_link.dart';
+import '../../models/product_model.dart';
 import '../../models/rating_model.dart';
 import '../cart/provider/cart_provider.dart';
 import '../../providers/products_provider.dart';
@@ -22,6 +23,7 @@ import '../../providers/rating_provider.dart';
 import '../../shared/app/custom_text.dart';
 import '../../shared/theme/app_colors.dart';
 import '../../shared/app/heart_widget.dart';
+import '../cart/widgets/qty_widget.dart';
 import 'widgets/also_widget.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
@@ -45,7 +47,6 @@ class ProductDetailsScreen extends StatelessWidget {
       double totalItemHeight = userRowHeight + reviewTextHeight + padding;
       return totalItemHeight;
     }
-
     String getOffer(String oldPriceStr, String newPriceStr) {
       double? oldPrice = double.tryParse(oldPriceStr);
       double? newPrice = double.tryParse(newPriceStr);
@@ -70,20 +71,33 @@ class ProductDetailsScreen extends StatelessWidget {
               children: [
                 /// image
                 ProductImage(path: getCurrentProduct.productImage),
-
-                /// title
+                kGap20,
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       kGap15,
-                      TextWidgets.subHeading(
-                        getCurrentProduct.productTitle,
-                        color: appColors.primaryColor,
-                        fontSize: 14,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            width: 270,
+                            child: TextWidgets.subHeading(
+                              getCurrentProduct.productTitle,
+                              color: appColors.primaryColor,
+                              fontSize: 14,
+                            ),
+                          ),
+                          TextWidgets.bodyText1(
+                            " ${getCurrentProduct.productPrice} AED",
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: appColors.primaryColor,
+                          ),
+                        ],
                       ),
-                      kGap10,
+                      kGap30,
                       CustomContainer(
                         padding: const EdgeInsets.symmetric( horizontal: 10, vertical: 5),
                         borderRadius: BorderRadius.circular(17),
@@ -107,52 +121,13 @@ class ProductDetailsScreen extends StatelessWidget {
                       ),
                       kGap10,
                       Row(
-                        children: [
-                          TextWidgets.subHeading("AED",
-                              fontSize: 13, color: appColors.primaryColor),
-                          TextWidgets.bodyText1(
-                            " ${getCurrentProduct.productPrice}",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                            color: appColors.primaryColor,
-                          ),
-                          kGap10,
-                          Text("${getCurrentProduct.productOldPrice}",
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.grey.shade400,
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.lineThrough,
-                            ),
-                          ),
-                          kGap10,
-                          TextWidgets.bodyText1(
-                            "${getOffer("${getCurrentProduct.productOldPrice}", getCurrentProduct.productPrice)} OFF",
-                            fontWeight: FontWeight.w800,
-                            fontSize: 16,
-                            color: Colors.green.shade500,
-                          ),
-                        ],
-                      ),
-                      kGap10,
-                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          RatingBarIndicator(
-                            rating: getCurrentProduct.productrating!.toDouble(),
-                            itemBuilder: (context, index) => Icon(
-                              Icons.star,
-                              color: appColors.primaryColor,
-                            ),
-                            unratedColor: Colors.grey.shade600,
-                            itemCount: 5,
-                            itemSize: 20.0,
-                            direction: Axis.horizontal,
-                          ),
+
                           TextWidgets.subHeading("${getCurrentProduct.productQty} in Stock",fontSize: 14, color: appColors.primaryColor),
                         ],
                       ),
-                      kGap30,
+                      kGap20,
                       const CustomTitles(text: "Overview"),
                       kGap5,
                       SingleChildScrollView(
@@ -192,7 +167,7 @@ class ProductDetailsScreen extends StatelessWidget {
                             child: ListView.separated(
                               physics: const NeverScrollableScrollPhysics(),
                               itemCount: snapshot.data!.length,
-                              separatorBuilder: (BuildContext context, int index) => kGap15,
+                              separatorBuilder: (BuildContext context, int index) => const SizedBox.shrink(),
                               itemBuilder: (ctx, index) {
                                 final review = snapshot.data![index];
                                 final userDetails = ratingProvider.getUserDetails(review.userId);
@@ -213,7 +188,6 @@ class ProductDetailsScreen extends StatelessWidget {
                           );
                         },
                       ),
-
                       const CustomTitles(text: "You may Also Like"),
                       kGap20,
                       SizedBox(
@@ -244,8 +218,6 @@ class ProductDetailsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-
-                kGap200,
               ],
             ),
           ),

@@ -13,46 +13,48 @@ class RatingBarCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appColors = Theme.of(context).extension<AppColors>()!;
-    return CustomContainer(
-      width: double.infinity,
+    return Card(
       color: appColors.secondaryColor,
-      borderColor: Colors.grey,
-      radius: 7,
-      padding: const EdgeInsets.symmetric(horizontal: 7,vertical: 10),
-      child: Row(
-        children: [
-          CircleAvatar(
-            backgroundImage:
-            NetworkImage(
-              image,
-            ),
-            radius: 20,
-          ),
-          kGap10,
-          Column(
-            crossAxisAlignment:
-            CrossAxisAlignment.start,
-            children: [
-              TextWidgets.subHeading(titleReview,fontSize: 13, color: appColors.primaryColor,fontWeight: FontWeight.w600),
-              SizedBox(
-                  width: 200,
-                  child: TextWidgets.bodyText(subTitleReview, color: appColors.primaryColor)),
-            ],
-          ),
-          const Spacer(),
-          Row(
-            children: [
-              TextWidgets.bodyText("${double.parse(ratingNumber)}" , color: appColors.primaryColor),
-              kGap10,
-              const Icon(
-                CupertinoIcons.star_fill,
-                color: Colors.green,
-                size: 16,
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            CircleAvatar(
+              backgroundImage:
+              NetworkImage(
+                image,
               ),
-              kGap10,
-            ],
-          ),
-        ],
+              radius: 14,
+            ),
+            kGap10,
+            Column(
+              crossAxisAlignment:
+              CrossAxisAlignment.start,
+              children: [
+                TextWidgets.subHeading(titleReview,fontSize: 11, color: appColors.primaryColor,fontWeight: FontWeight.w600),
+                const SizedBox(height: 2),
+                SizedBox(
+                    width: 200,
+                    child: TextWidgets.bodyText(subTitleReview, color: appColors.primaryColor,fontSize: 10)),
+              ],
+            ),
+            const Spacer(),
+            Row(
+              children: [
+                TextWidgets.bodyText("${double.parse(ratingNumber)}" , color: appColors.primaryColor),
+                kGap10,
+                const Icon(
+                  CupertinoIcons.star_fill,
+                  color: Colors.green,
+                  size: 16,
+                ),
+                kGap10,
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
