@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+import 'package:flutter/cupertino.dart';
 
 class LoadingManager extends StatelessWidget {
   const LoadingManager(
@@ -13,15 +12,8 @@ class LoadingManager extends StatelessWidget {
       children: [
         child,
         if (isLoading) ...[
-          Center(
-                    child: SizedBox(
-          height: 20,
-          width: 20,
-          child: LottieBuilder.asset(
-                    "assets/Lottie/Loading.json",
-                  ),
-                    ),
-                    ),
+          const Center(
+          child: CupertinoActivityIndicator()),
         ],
       ],
     );

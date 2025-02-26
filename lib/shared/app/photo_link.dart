@@ -1,8 +1,14 @@
 class PhotoLink {
 
+  // logo
+  static const String logo = "assets/images/logo/logo.png";
+  static const String logoBg = "assets/images/logo/logo-bg.png";
+
   // global
   static const String delivery = "assets/svg/global/deliver.svg";
   static const String check = "assets/svg/global/check.svg";
+  static const String emptyOrder = "assets/bag/empty_order.png";
+  static const String emptyCart = "assets/bag/emptyCart.png";
 
   // navbar
   static const String homeLink = "assets/svg/nav/home.svg";
@@ -43,5 +49,9 @@ class PhotoLink {
   static const String newBalanceLink = "assets/svg/brand/NewBalance.svg";
   static const String nikesLink = "assets/svg/brand/Nike.svg";
   static const String samsungLink = "assets/svg/brand/Samsung.svg";
+
+
+  // auth
+  static const String forgotPassword = "assets/images/auth/forgot_password.jpg";
 
 }

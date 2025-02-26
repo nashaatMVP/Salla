@@ -19,7 +19,7 @@ class ViewedRecentScreen extends StatelessWidget {
     return viwedProductProvider.getViewedProductItems.isEmpty
         ? const Scaffold(
             body: EmptyBagWidget(
-              image: "assets/bag/emptyCart.png",
+              isCart: true,
               title: "No viewed products",
               subTitle: "what are you waiting for ? browse some products",
               buttonTitle: "View Products",

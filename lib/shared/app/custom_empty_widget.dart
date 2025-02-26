@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_shop/shared/app/photo_link.dart';
 import 'constants.dart';
 import 'custom_button.dart';
 import 'custom_text.dart';
@@ -7,13 +8,14 @@ import '../theme/app_colors.dart';
 class EmptyBagWidget extends StatelessWidget {
   const EmptyBagWidget({
     super.key,
-    required this.image,
     required this.title,
     required this.subTitle,
     required this.buttonTitle,
+    required this.isCart,
   });
 
-  final String image, title, subTitle, buttonTitle;
+  final String title, subTitle, buttonTitle;
+  final bool isCart;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class EmptyBagWidget extends StatelessWidget {
             ),
             kGap30,
             Image.asset(
-              image,
+              isCart ? PhotoLink.emptyCart : PhotoLink.emptyOrder,
               height: 140,
             ),
             kGap30,

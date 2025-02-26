@@ -103,7 +103,7 @@ class _ProfileScreenState extends State<ProfileScreen> with AutomaticKeepAliveCl
                           null &&
                       userModel!.userImage != ""
                       ? userModel!.userImage.toString()
-                      : "https://media.raritysniper.com/hape-prime/4280-600.webp?cacheId=2",
+                      : PhotoLink.defaultImg,
                 ),
               ),
             ),

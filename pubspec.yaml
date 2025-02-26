@@ -69,7 +69,8 @@ flutter:
   assets:
     - assets/
     - assets/images/banners/
-    - assets/bag/
+    - assets/images/bag/
+    - assets/images/auth/
     - assets/categories/
     - assets/Lottie/
     - assets/svg/

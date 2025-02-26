@@ -25,7 +25,7 @@ class _CartScreenState extends State<CartScreen> {
     return cartProvider.getCartItems.isEmpty
         ? const Scaffold(
             body: EmptyBagWidget(
-              image: "assets/bag/emptyCart.png",
+              isCart: true,
               title: "Your Shopping cart looks empty.",
               subTitle: "what are you waiting for !!",
               buttonTitle: "Shop Now",

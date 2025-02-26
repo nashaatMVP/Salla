@@ -50,7 +50,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     return cartProvider.getCartItems.isEmpty &&  addressProvider.getaddress.isEmpty
         ? const Scaffold(
             body: EmptyBagWidget(
-              image: "assets/bag/emptyCart.png",
+              isCart: true,
               title: "Your Shopping cart looks empty.",
               subTitle: "what are you waiting for !!",
               buttonTitle: "Shop Now",

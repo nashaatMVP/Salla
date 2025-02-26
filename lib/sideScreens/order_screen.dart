@@ -27,7 +27,7 @@ class _OrdersScreenFreeState extends State<OrdersScreenFree> {
         centerTitle: true,
         toolbarHeight: 50,
         title:  Padding(
-          padding: EdgeInsets.only(top: 20.0),
+          padding: const EdgeInsets.only(top: 20.0),
           child: TextWidgets.bodyText1("My Orders"),
 
         ),
@@ -54,7 +54,7 @@ class _OrdersScreenFreeState extends State<OrdersScreenFree> {
             );
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return const EmptyBagWidget(
-              image: "assets/bag/empty_order.png",
+              isCart: false,
               buttonTitle: "shop now",
               title: "Empty Orders",
               subTitle: "select order and enjoy the quality",
