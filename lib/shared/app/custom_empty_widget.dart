@@ -44,7 +44,10 @@ class EmptyBagWidget extends StatelessWidget {
             Padding(
              padding: const EdgeInsets.symmetric(horizontal: 20.0),
              child: CustomButton(
-                 text: "Go To Shopping", backgroundColor: appColors.primaryColor,
+                 text: "Go To Shopping",
+                 textColor: appColors.secondaryColor,
+                 backgroundColor: appColors.primaryColor,
+                 arrowColor: appColors.secondaryColor,
                  fontWeight: FontWeight.bold,
                  arrow: true,
              ),

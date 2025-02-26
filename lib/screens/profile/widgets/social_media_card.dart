@@ -13,25 +13,25 @@ class SocialMediaCard extends StatelessWidget {
     return  Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        // icons
-        const Center(
+        /// logos
+        Center(
           child: SizedBox(
             width: 140,
             child: Row(
               mainAxisAlignment:
               MainAxisAlignment.spaceBetween,
               children: [
-                Icon(
+                const Icon(
                   Ionicons.logo_instagram,
                   color: Color(0xffC13584),
                 ),
-                Icon(
+                const Icon(
                   Ionicons.logo_facebook,
                   color: Color(0xff4267B2),
                 ),
                 Icon(
-                  Ionicons.logo_twitter,
-                  color: Colors.blue,
+                  Ionicons.logo_tiktok,
+                  color: appColors.primaryColor,
                 ),
               ],
             ),
@@ -62,9 +62,7 @@ class SocialMediaCard extends StatelessWidget {
             TextWidgets.bodyText1("2023 salla.com All rights reversed.",color: appColors.primaryColor),
           ],
         ),
-
         kGap30,
-
       ],
     );
   }

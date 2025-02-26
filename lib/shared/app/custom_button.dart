@@ -24,7 +24,7 @@ class CustomButton extends StatelessWidget {
     required this.text,
     this.onPressed,
     this.width,
-    this.height,
+    this.height = 45,
     this.isLoading = false,
     required this.backgroundColor,
     this.borderRadius,
@@ -51,19 +51,19 @@ class CustomButton extends StatelessWidget {
         padding: padding ?? const EdgeInsets.symmetric(horizontal: 20,vertical: 7),
         color: backgroundColor ?? appColors.primaryColor,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: arrow == true ? MainAxisAlignment.spaceBetween : MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            if(arrow)
-            const SizedBox.shrink(),
+            if(arrow)...[
+              const SizedBox.shrink(),
+            ],
 
-            TextWidgets.bodyText(text , fontWeight: fontWeight,fontSize: fontSize,color: textColor),
+            TextWidgets.subHeading(text , fontWeight: fontWeight,fontSize: fontSize ?? 15,color: textColor),
 
+            if(arrow)...[
+              Icon(Icons.arrow_forward,color: arrowColor ?? appColors.secondaryColor),
+            ]
 
-            if(arrow)
-            const Spacer(),
-            if(arrow)
-            Icon(Icons.arrow_forward,color: arrowColor),
           ],
         ),
       ),

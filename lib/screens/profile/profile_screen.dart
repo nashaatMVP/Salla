@@ -138,9 +138,7 @@ class _ProfileScreenState extends State<ProfileScreen> with AutomaticKeepAliveCl
               kGap100,
               kGap75,
 
-              user == null
-                  ? const GuestWidget()
-                  : CustomContainer(
+              user == null ? const GuestWidget() : CustomContainer(
                 radius: 12,
                 child: Column(
                   children: [
