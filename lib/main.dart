@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
@@ -31,13 +32,11 @@ void main() async {
     SystemUiOverlayStyle(statusBarColor: Colors.deepPurple.shade200),
   );
   ErrorWidget.builder = (FlutterErrorDetails details) {
-    return Center(
+    return const Center(
       child: SizedBox(
         height: 100,
         width: 100,
-        child: LottieBuilder.asset(
-          "assets/Lottie/Loading.json",
-        ),),);
+        child: CupertinoActivityIndicator(),),);
   };
   WidgetsFlutterBinding.ensureInitialized();
   // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])

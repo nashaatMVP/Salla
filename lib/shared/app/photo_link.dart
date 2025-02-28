@@ -7,8 +7,8 @@ class PhotoLink {
   // global
   static const String delivery = "assets/svg/global/deliver.svg";
   static const String check = "assets/svg/global/check.svg";
-  static const String emptyOrder = "assets/bag/empty_order.png";
-  static const String emptyCart = "assets/bag/emptyCart.png";
+  static const String emptyOrder = "assets/images/bag/empty_order.png";
+  static const String emptyCart = "assets/images/bag/emptyCart.png";
 
   // navbar
   static const String homeLink = "assets/svg/nav/home.svg";
