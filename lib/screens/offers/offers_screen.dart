@@ -56,7 +56,7 @@ class _OffersScreenState extends State<OffersScreen> {
       appBar: AppBar(
         backgroundColor: _backgroundColor,
         leadingWidth: 0,
-        toolbarHeight: 85,
+        toolbarHeight: 75,
         elevation: 0,
         scrolledUnderElevation: 0,
         leading: const SizedBox.shrink(),
@@ -73,8 +73,8 @@ class _OffersScreenState extends State<OffersScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+             kGap50,
              kGap100,
-             kGap60,
              Wrap(
                 spacing: 10,
                 runSpacing: 10,

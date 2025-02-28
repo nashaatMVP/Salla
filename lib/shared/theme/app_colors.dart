@@ -6,6 +6,7 @@ const whiteColor = Color(0xFFFFFFFF);
 const goldenColor = Color(0xffcfb53b);
 const blueColor = Color(0xff3966de);
 const yellowColor = Color(0xffffee00);
+const greenColor = Color(0xff019309);
 const searchBlackColor = Colors.black26;
 const primaryLinearColor = [blackColor, blackColor];
 

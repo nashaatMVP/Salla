@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_shop/shared/app/constants.dart';
 import 'package:smart_shop/shared/app/custom_container.dart';
 import 'package:smart_shop/shared/app/custom_text.dart';
+import '../../../shared/app/custom_divider.dart';
 import '../../../shared/theme/app_colors.dart';
 
 class PaymentOptions extends StatefulWidget {
@@ -28,7 +29,7 @@ class _PaymentOptionsState extends State<PaymentOptions> {
           _buildDisabledOption("Apple Pay" , Icons.apple , appColors),
           kGap10,
           kGap10,
-          const Divider(height: 4, color: Colors.grey, thickness: 7),
+          const CustomDivider(),
         ],
       ),
     );

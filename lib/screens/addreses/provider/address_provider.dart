@@ -2,37 +2,33 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
-
-import '../models/address_model.dart';
-import '../core/my_app_functions.dart';
+import '../model/address_model.dart';
+import '../../../core/my_app_functions.dart';
 
 class AddressProvider with ChangeNotifier {
   final Map<String, AddressModel> _address = {};
-
   Map<String, AddressModel> get getaddress {
     return _address;
   }
-
   String selectedaddresses = "";
 
   // ignore: non_constant_identifier_names
   String get SelectedAddresses => selectedaddresses;
   AddressModel? _selectedAddress;
-
   AddressModel? getSelectedAddress() => _selectedAddress;
 
   void setSelectedAddress(AddressModel address) {
     _selectedAddress = address;
     String formattedAddress =
-        '${_selectedAddress!.area} , ${_selectedAddress!.flat} ${_selectedAddress!.town} , ${_selectedAddress!.state} , \n\nPhone Number : +971-${_selectedAddress!.phoneNumber}';
-    print(formattedAddress);
+        '${_selectedAddress!.area} , ${_selectedAddress!.flat} ${_selectedAddress!.town} , ${_selectedAddress!.state} ,${_selectedAddress!.phoneNumber}';
     selectedaddresses = formattedAddress;
     notifyListeners();
   }
 
   final userstDb = FirebaseFirestore.instance.collection("users");
   final _auth = FirebaseAuth.instance;
-  // Firebase
+
+  /// Firebase
   Future<void> addToAddressFirebase({
     required String phoneNumber,
     required String flat,
@@ -45,8 +41,7 @@ class AddressProvider with ChangeNotifier {
   }) async {
     final User? user = _auth.currentUser;
     if (user == null) {
-      MyAppFunctions()
-          .globalMassage(context: context, message: "Plese Login First");
+      MyAppFunctions().globalMassage(context: context, message: "Please Login First");
       return;
     }
     final uid = user.uid;
@@ -66,8 +61,7 @@ class AddressProvider with ChangeNotifier {
       });
       await fetchAddress();
       // ignore: use_build_context_synchronously
-      MyAppFunctions()
-          .globalMassage(context: context, message: "Address has been Added");
+      MyAppFunctions().globalMassage(context: context, message: "Address has been Added");
     } catch (e) {
       rethrow;
     }
@@ -106,7 +100,7 @@ class AddressProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  /////////////// remove from firsore ///////////////
+  /// remove address
   Future<void> removeAddressFirestor({
     required String phoneNumber,
     required String flat,

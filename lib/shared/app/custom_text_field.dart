@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme/app_colors.dart';
 
 // ignore: must_be_immutable
 class CustomFormField extends StatelessWidget {
@@ -9,12 +10,13 @@ class CustomFormField extends StatelessWidget {
     required this.hintName,
     required this.iconData,
     required this.onFieldSubmitted,
-    required this.validator,
+    this.validator,
     this.suffixIcon,
-    required this.keyboardType,
+    this.keyboardType,
     required this.obscureText,
     this.textInputAction,
     this.icon,
+    this.label,
   });
   final TextEditingController controller;
   final FocusNode focusNode;
@@ -27,58 +29,64 @@ class CustomFormField extends StatelessWidget {
   final Widget? icon;
   final void Function(String)? onFieldSubmitted;
   String? Function(String?)? validator;
+  final String? label;
 
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
     return SizedBox(
-      height: 47,
+      height: 40,
       child: TextFormField(
         autocorrect: true,
         controller: controller,
         focusNode: focusNode,
         obscureText: obscureText,
-        style: const TextStyle(
-          fontSize: 15,
+        style: TextStyle(
+          fontSize: 10,
           decorationThickness: 0,
-          color: Colors.black,
+          color: appColors.primaryColor,
         ),
-        textInputAction: textInputAction,
         keyboardType: keyboardType,
+        textInputAction: textInputAction,
+        onFieldSubmitted: onFieldSubmitted,
+        validator: validator,
+        cursorHeight: 10,
+        cursorColor: blueColor,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(10),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: Colors.white),
+            borderSide: BorderSide(color: Colors.grey.shade300),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: Colors.purple),
+            borderRadius: BorderRadius.circular(9),
+            borderSide:  BorderSide(color: Colors.grey.shade400),
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: Colors.purple),
+            borderRadius: BorderRadius.circular(9),
+            borderSide:  BorderSide(color: Colors.grey.shade200),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(color: Colors.purple),
           ),
-
-          fillColor: Colors.white,
+          fillColor: appColors.secondaryColor,
           filled: true,
           hintText: hintName,
-          hintStyle: const TextStyle(
-            color: Colors.grey,
+          hintStyle: TextStyle(
             fontSize: 12,
+            color: Colors.grey.shade400,
+            fontWeight: FontWeight.bold,
           ),
+          // label: Text(label!),
           icon: icon,
           suffixIcon: suffixIcon,
           prefixIcon: Icon(
             iconData,
-            color: Colors.grey,
+            size: 17,
+            color: appColors.primaryColor,
           ),
         ),
-        onFieldSubmitted: onFieldSubmitted,
-        validator: validator,
       ),
     );
   }

@@ -18,12 +18,13 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../auth/login.dart';
 import '../../auth/register.dart';
 import '../../shared/app/constants.dart';
+import '../addreses/saved_address_screen.dart';
 import 'model/user-model.dart';
 import '../../providers/theme_provider.dart';
 import 'provider/user_provider.dart';
 import '../../shared/app/custom_text.dart';
 import '../../shared/theme/app_colors.dart';
-import '../../sideScreens/AddAddressScreen.dart';
+import '../addreses/AddAddressScreen.dart';
 import '../../sideScreens/order_screen.dart';
 import '../../sideScreens/wislist_screen.dart';
 import '../../shared/app/circular_widget.dart';
@@ -145,9 +146,10 @@ class _ProfileScreenState extends State<ProfileScreen> with AutomaticKeepAliveCl
                     ProfileItem(
                       text: "Address",
                       svg: PhotoLink.addressLink,
-                      function: () => Navigator.pushNamed(
+                      function: () => Navigator.push(
                         context,
-                        AddressEditScreen.routName,
+                        MaterialPageRoute(builder: (c) => const SavedAddressScreen(),
+                        ),
                       ),
                     ),
                     ProfileItem(

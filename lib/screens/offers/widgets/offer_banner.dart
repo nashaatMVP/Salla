@@ -56,22 +56,22 @@ class _OfferBannerState extends State<OfferBanner> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 1000),
       curve: Curves.bounceInOut,
-      height: 50,
-      transform: Matrix4.diagonal3Values(1, 1 , _scale),
+      height: 30,
+      transform: Matrix4.diagonal3Values(1, _scale , _scale),
       decoration: BoxDecoration(
-        color: _bgColor,
+        color: Colors.black54,
         borderRadius:  BorderRadius.circular(5),
       ),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+          padding: const EdgeInsets.symmetric(horizontal: 4.0,vertical: 4),
           child: Row(
             children: List.generate(
               AppConsts.brandSvgs.length,
               (index) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: SvgPicture.asset(AppConsts.brandSvgs[index],width: 26,color: Colors.white),
+                child: SvgPicture.asset(AppConsts.brandSvgs[index],width: 20,color: Colors.white),
               ),
             ),
           ),

@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:smart_shop/screens/offers/offers_screen.dart';
 import 'package:smart_shop/shared/app/photo_link.dart';
 import 'screens/profile/model/user-model.dart';
-import 'providers/address_provider.dart';
+import 'screens/addreses/provider/address_provider.dart';
 import 'screens/cart/provider/cart_provider.dart';
 import 'providers/products_provider.dart';
 import 'screens/profile/provider/user_provider.dart';

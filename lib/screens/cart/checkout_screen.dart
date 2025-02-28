@@ -1,15 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_shop/screens/addreses/saved_address_screen.dart';
 import 'package:smart_shop/shared/app/constants.dart';
 import 'package:smart_shop/shared/app/custom_appbar.dart';
 import 'package:smart_shop/shared/app/custom_button.dart';
 import 'package:smart_shop/shared/app/custom_container.dart';
+import 'package:smart_shop/shared/app/custom_divider.dart';
 import 'package:uuid/uuid.dart';
-import '../../models/address_model.dart';
-import '../../providers/address_provider.dart';
+import '../addreses/model/address_model.dart';
+import '../addreses/provider/address_provider.dart';
+import '../addreses/widgets/add_new_address_card.dart';
 import 'provider/cart_provider.dart';
 import '../../providers/products_provider.dart';
 import '../profile/provider/user_provider.dart';
@@ -18,7 +22,7 @@ import '../../shared/theme/app_colors.dart';
 import '../../shared/app/circular_widget.dart';
 import '../../shared/app/custom_empty_widget.dart';
 import 'widgets/cart_widget.dart';
-import '../../sideScreens/AddAddressScreen.dart';
+import '../addreses/AddAddressScreen.dart';
 import '../../sideScreens/order_screen.dart';
 import 'widgets/payment_options.dart';
 
@@ -37,7 +41,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   double shippingFee = 10.00;
 
   /// Shipping Fee
-
   @override
   Widget build(BuildContext context) {
     final appColors = Theme.of(context).extension<AppColors>()!;
@@ -71,47 +74,36 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 child: Column(
                   children: [
                     kGap15,
-                    addressProvider.getaddress.isNotEmpty ? CustomContainer(
-                      height: addressProvider.getaddress.length * 60,
-                      child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: addressProvider.getaddress.length,
-                          itemBuilder: (context, index) {
-                            return ChangeNotifierProvider.value(
-                              value: addressProvider.getaddress.values
-                                  .toList()[index],
-                              child: const AddressWidget(),
-                            );
-                          }),
-                    ) : GestureDetector(
-                            onTap: () {
-                              Navigator.pushReplacement(context, MaterialPageRoute( builder: ((context) => const AddressEditScreen())));
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: CustomContainer(
-                                padding: const EdgeInsets.all(12),
-                                radius: 12,
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Ionicons.location,
-                                      color: appColors.primaryColor,
-                                    ),
-                                    kGap10,
-                                    TextWidgets.bodyText1("Please Add Your Address Information"),
-                                    const Spacer(),
-                                    Icon(
-                                      Icons.arrow_forward_ios,
-                                      color: appColors.primaryColor,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
+                    addressProvider.selectedaddresses.isNotEmpty
+                        ? CustomContainer(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(left: 10.0 , bottom: 5),
+                            child: Icon(CupertinoIcons.map_pin_ellipse , color: blueColor),
                           ),
+                          kGap10,
+                          TextWidgets.bodyText(addressProvider.SelectedAddresses,color: appColors.primaryColor),
+                          const Spacer(), 
+                          TextButton(
+                              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (c) => const SavedAddressScreen())),
+                              child: TextWidgets.bodyText("Change"),
+                          ),
+                        ],
+                      ),
+                    )
+                        : AddNewAddressCard(
+                        onTap: () {
+                          if(addressProvider.selectedaddresses.isNotEmpty ) {
+                            Navigator.push(context, MaterialPageRoute(builder: (c) => const AddressEditScreen()));
+                          } else {
+                            Navigator.push(context, MaterialPageRoute(builder: (c) => const SavedAddressScreen()));
+                          }
+                        },
+                    ),
                     kGap10,
-                    const Divider(height: 4, color: Colors.grey, thickness: 7),
+                    const CustomDivider(),
                     kGap10,
                     const PaymentOptions(),
                   ],
@@ -140,7 +132,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           const Spacer(),
                           TextWidgets.bodyText1(
                               "${cartProvider.getTotal(productProvider: productProvider).toStringAsFixed(2)} AED",
-                              color: appColors.secondaryColor),
+                              color: appColors.secondaryColor,
+                              fontWeight: FontWeight.w600,
+                          ),
                         ],
                       ),
                       kGap5,
@@ -149,8 +143,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           TextWidgets.bodyText1("Shipping Fee : ",
                               color: appColors.secondaryColor),
                           const Spacer(),
-                          TextWidgets.bodyText1("${shippingFee.toString()} AED",
-                              color: appColors.secondaryColor),
+                          TextWidgets.bodyText1("${shippingFee.toString()} AED",color: blueColor , fontWeight: FontWeight.w600),
                         ],
                       ),
                       kGap15,
@@ -168,14 +161,16 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           const Spacer(),
                           CustomButton(
                             text: "Place Order",
+                            height: 34,
+                            fontSize: 13,
                             textColor: appColors.primaryColor,
                             backgroundColor: appColors.secondaryColor,
                             onPressed: () async {
                               if (addressProvider.SelectedAddresses != "") {
                                 await orderPlace(
                                   cartProvider: cartProvider,
-                                  productProvider: productProvider,
                                   userProvider: userProvider,
+                                  productProvider: productProvider,
                                   addressModel: addressProvider.SelectedAddresses,
                                   appColors: appColors,
                                 ).then((value) => Navigator.pushNamed(context, OrdersScreenFree.routeName));
@@ -228,18 +223,17 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           "productTitle": getCurrentProduct!.productTitle,
           "userName": userProvider.userModel!.userName,
           "price": double.parse(getCurrentProduct.productPrice) * value.cartQty,
-          "totalPrice": cartProvider.getTotal(productProvider: productProvider),
+          // "totalPrice": cartProvider.getTotal(productProvider: productProvider),
           "ImageUrl": getCurrentProduct.productImage,
           "quntity": value.cartQty,
           "orderDate": Timestamp.now(),
           "orderStatus": "0",
           "orderAddress": addressModel,
-          "totalPrice": shippingFee +  double.parse(getCurrentProduct.productPrice) * value.cartQty,
+          "totalPrice": shippingFee + double.parse(getCurrentProduct.productPrice) * value.cartQty,
         });
       });
       await cartProvider.clearCartFromFirestore(context: context);
       cartProvider.clearLocalCart();
-      // ignore: use_build_context_synchronously
       Navigator.pop(context);
     } catch (e) {
       // ignore: use_build_context_synchronously
@@ -252,69 +246,3 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   }
 }
 
-class AddressWidget extends StatefulWidget {
-  const AddressWidget({Key? key}) : super(key: key);
-
-  @override
-  State<AddressWidget> createState() => _AddressWidgetState();
-}
-
-class _AddressWidgetState extends State<AddressWidget> {
-  @override
-  Widget build(BuildContext context) {
-    final addressModel = Provider.of<AddressModel>(context);
-    final addressProvider = Provider.of<AddressProvider>(context);
-    final appColors = Theme.of(context).extension<AppColors>()!;
-    return ListTile(
-      leading: SizedBox(
-        width: 20,
-        child: Radio<AddressModel>(
-          fillColor: MaterialStateColor.resolveWith((states) => appColors.primaryColor),
-          value: addressModel,
-          groupValue: addressProvider.getSelectedAddress(),
-          onChanged: (AddressModel? selectedAddress) => addressProvider.setSelectedAddress(selectedAddress!),
-        ),
-      ),
-      trailing: TextButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const AddressEditScreen(),
-                ));
-          },
-          child: TextWidgets.subHeading(
-            "Edit",
-            color: blueColor,
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-          )),
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TextWidgets.bodyText(
-            '${addressModel.area}, ${addressModel.flat} ${addressModel.town}, ${addressModel.state}',
-              fontWeight: FontWeight.normal, fontSize: 13,
-            color: appColors.primaryColor,
-          ),
-          kGap5,
-          Row(
-            children: [
-              TextWidgets.bodyText('+971- ${addressModel.phoneNumber}',
-              color: appColors.primaryColor,
-              fontWeight: FontWeight.bold, fontSize: 12,
-              ),
-              kGap5,
-              const Icon(
-                Icons.verified,
-                color: blueColor,
-                size: 14,
-              ),
-            ],
-          ),
-          // Add other address fields as needed
-        ],
-      ),
-    );
-  }
-}

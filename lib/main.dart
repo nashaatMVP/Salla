@@ -14,7 +14,7 @@ import 'package:smart_shop/sideScreens/wislist_screen.dart';
 import 'AUTH/forot_password_screen.dart';
 import 'AUTH/login.dart';
 import 'AUTH/register.dart';
-import 'providers/address_provider.dart';
+import 'screens/addreses/provider/address_provider.dart';
 import 'screens/cart/provider/cart_provider.dart';
 import 'providers/order_provider.dart';
 import 'providers/products_provider.dart';
@@ -25,7 +25,7 @@ import 'providers/viewed_product_provider.dart';
 import 'providers/wishList_provider.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/search/search_screen.dart';
-import 'sideScreens/AddAddressScreen.dart';
+import 'screens/addreses/AddAddressScreen.dart';
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(
@@ -128,8 +128,6 @@ class _MyAppState extends State<MyApp> {
             const ForgotPasswordScreen(),
             SearchScreen.routName: (context) => const SearchScreen(),
             HomePage.routName: (context) => const HomePage(),
-            AddressEditScreen.routName: (context) =>
-            const AddressEditScreen(),
           },
         );
       }),

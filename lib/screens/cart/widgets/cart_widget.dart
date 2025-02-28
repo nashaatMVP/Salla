@@ -72,7 +72,7 @@ class CartWidget extends StatelessWidget {
                           Row(
                             children: [
                               TextWidgets.subHeading("AED",
-                                  fontSize: 13, color: appColors.primaryColor),
+                                  fontSize: 10, color: appColors.primaryColor),
                               TextWidgets.bodyText1(
                                   " ${getCurrentProduct.productPrice}",
                                   fontWeight: FontWeight.bold,
@@ -82,8 +82,8 @@ class CartWidget extends StatelessWidget {
                               kGap10,
                               Text("${getCurrentProduct.productOldPrice}",
                                 style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.grey.shade400,
+                                  fontSize: 14,
+                                  color: Colors.grey.shade500,
                                   fontWeight: FontWeight.bold,
                                   decoration: TextDecoration.lineThrough,
                                 ),
@@ -92,7 +92,7 @@ class CartWidget extends StatelessWidget {
                               TextWidgets.bodyText1(
                                 "${getOffer("${getCurrentProduct.productOldPrice}", getCurrentProduct.productPrice)} OFF",
                                 fontWeight: FontWeight.w800,
-                                fontSize: 16,
+                                fontSize: 13,
                                 color: Colors.green.shade500,
                               ),
                             ],
