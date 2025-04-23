@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smart_shop/shared/app/constants.dart';
-import 'package:smart_shop/shared/app/custom_container.dart';
-import 'package:smart_shop/shared/app/custom_text.dart';
+import 'package:salla/shared/app/constants.dart';
+import 'package:salla/shared/app/custom_container.dart';
+import 'package:salla/shared/app/custom_text.dart';
 import '../../../shared/app/custom_divider.dart';
 import '../../../shared/theme/app_colors.dart';
 

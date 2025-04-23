@@ -1,4 +1,4 @@
-import 'package:smart_shop/MODELS/category_models.dart';
+import 'package:salla/MODELS/category_models.dart';
 import '../shared/app/photo_link.dart';
 
 class AppConsts {
@@ -56,7 +56,7 @@ class AppConsts {
     ),
     CategoryModel(
       id: "1",
-      image: "assets/categories/Gaming.png",
+      image: "assets/images/category/controller.jpg",
       name: "Gaming",
     ),
     CategoryModel(

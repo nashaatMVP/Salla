@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_shop/providers/products_provider.dart';
-import 'package:smart_shop/screens/cart/model/cart_model.dart';
+import 'package:salla/providers/products_provider.dart';
+import 'package:salla/screens/cart/model/cart_model.dart';
 import 'package:uuid/uuid.dart';
 import '../../../core/my_app_functions.dart';
 

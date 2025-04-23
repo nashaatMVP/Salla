@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/screens/addreses/AddAddressScreen.dart';
-import 'package:smart_shop/screens/addreses/provider/address_provider.dart';
-import 'package:smart_shop/screens/addreses/widgets/add_new_address_card.dart';
-import 'package:smart_shop/shared/app/custom_appbar.dart';
-import 'package:smart_shop/shared/app/custom_button.dart';
+import 'package:salla/screens/addreses/AddAddressScreen.dart';
+import 'package:salla/screens/addreses/provider/address_provider.dart';
+import 'package:salla/screens/addreses/widgets/add_new_address_card.dart';
+import 'package:salla/shared/app/custom_appbar.dart';
+import 'package:salla/shared/app/custom_button.dart';
 import '../../shared/app/constants.dart';
 import '../../shared/app/custom_container.dart';
 import '../../shared/app/custom_text.dart';
@@ -39,11 +39,19 @@ class SavedAddressScreen extends StatelessWidget {
               ),
             ),
             kGap10,
-            Padding(
+            addressProvider.getaddress.isEmpty
+                ? const SizedBox.shrink()
+                : Padding(
               padding: const EdgeInsets.symmetric(horizontal: 13.0),
               child: CustomButton(
-                  onPressed: () => Navigator.pop(context),
-                  text: "Select Address",
+                  onPressed: () {
+                    if(addressProvider.getSelectedAddress() != null){
+                      Navigator.pop(context);
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('You Must Select Address')));
+                    }
+                  },
+                  text: "Submit",
                   height: 50,
                   fontSize: 14,
                   borderRadius: 10,

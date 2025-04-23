@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smart_shop/core/app_constans.dart';
-import 'package:smart_shop/shared/app/custom_text.dart';
+import 'package:salla/core/app_constans.dart';
+import 'package:salla/shared/app/custom_text.dart';
 
 class OfferBanner extends StatefulWidget {
   const OfferBanner({super.key});

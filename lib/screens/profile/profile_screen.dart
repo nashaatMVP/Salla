@@ -1,32 +1,23 @@
 import 'dart:ui';
-import 'package:country_flags/country_flags.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/screens/profile/widgets/guest_widget.dart';
-import 'package:smart_shop/screens/profile/widgets/profile_item.dart';
-import 'package:smart_shop/screens/profile/widgets/social_media_card.dart';
-import 'package:smart_shop/shared/app/custom_container.dart';
-import 'package:smart_shop/shared/app/photo_link.dart';
+import 'package:salla/screens/profile/widgets/guest_widget.dart';
+import 'package:salla/screens/profile/widgets/profile_item.dart';
+import 'package:salla/screens/profile/widgets/social_media_card.dart';
+import 'package:salla/shared/app/custom_container.dart';
+import 'package:salla/shared/app/photo_link.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../auth/login.dart';
-import '../../auth/register.dart';
 import '../../shared/app/constants.dart';
 import '../addreses/saved_address_screen.dart';
+import '../auth/login.dart';
 import 'model/user-model.dart';
 import '../../providers/theme_provider.dart';
 import 'provider/user_provider.dart';
 import '../../shared/app/custom_text.dart';
 import '../../shared/theme/app_colors.dart';
-import '../addreses/AddAddressScreen.dart';
-import '../../sideScreens/order_screen.dart';
-import '../../sideScreens/wislist_screen.dart';
+import '../orders/order_screen.dart';
 import '../../shared/app/circular_widget.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -88,23 +79,45 @@ class _ProfileScreenState extends State<ProfileScreen> with AutomaticKeepAliveCl
         flexibleSpace: ClipRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 20,sigmaY : 20),
-            child: Container(color: Colors.transparent,),
+            child: Container(color: Colors.transparent),
           ),
         ),
         title: Row(
           children: [
-            CircleAvatar(
-              radius: 28,
-              backgroundColor: Colors.green.shade500,
+            GestureDetector(
+              onTap: () {
+               showDialog(
+                  barrierDismissible: true,
+                   context: context,
+                   builder: (context) => Padding(
+                     padding: const EdgeInsets.all(20.0),
+                     child: CircleAvatar(
+                       radius: 70,
+                       backgroundImage: NetworkImage(
+                         userModel != null &&
+                             userModel!.userImage !=
+                                 null &&
+                             userModel!.userImage != ""
+                             ? userModel!.userImage.toString()
+                             : PhotoLink.defaultImg,
+                       ),
+                     ),
+                   ),
+               );
+               },
               child: CircleAvatar(
-                radius: 25,
-                backgroundImage: NetworkImage(
-                  userModel != null &&
-                      userModel!.userImage !=
-                          null &&
-                      userModel!.userImage != ""
-                      ? userModel!.userImage.toString()
-                      : PhotoLink.defaultImg,
+                radius: 28,
+                backgroundColor: Colors.green.shade500,
+                child: CircleAvatar(
+                  radius: 25,
+                  backgroundImage: NetworkImage(
+                    userModel != null &&
+                        userModel!.userImage !=
+                            null &&
+                        userModel!.userImage != ""
+                        ? userModel!.userImage.toString()
+                        : PhotoLink.defaultImg,
+                  ),
                 ),
               ),
             ),

@@ -17,6 +17,8 @@ class PhotoLink {
   static const String cartFilledLink = "assets/svg/nav/cartFilled.svg";
   static const String offersLink = "assets/svg/nav/offers.svg";
   static const String offersFilledLink = "assets/svg/nav/offerFilled.svg";
+  static const String grid = "assets/svg/nav/grid.svg";
+  static const String gridFilled = "assets/svg/nav/gridfilled.svg";
 
   // app Bar
   static const String backButtonLink = "assets/svg/global/backButton.svg";

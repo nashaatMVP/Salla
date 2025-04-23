@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_shop/MODELS/viewed_products_model.dart';
+import 'package:salla/MODELS/viewed_products_model.dart';
 import 'package:uuid/uuid.dart';
 
 class ViewedProductProvider with ChangeNotifier {

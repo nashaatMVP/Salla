@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/shared/app/photo_link.dart';
-import 'package:smart_shop/shared/theme/app_colors.dart';
+import 'package:salla/shared/theme/app_colors.dart';
 import '../../../providers/products_provider.dart';
 import '../../../shared/app/custom_container.dart';
 
@@ -23,13 +21,13 @@ class ProductImage extends StatelessWidget {
       children: [
         CustomContainer(
           width: double.infinity,
-          height: 340,
+          height: 200,
           color: whiteColor,
-          padding: const EdgeInsets.symmetric(horizontal: 70 , vertical: 100),
+          padding: const EdgeInsets.symmetric(horizontal: 30 , vertical: 20),
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),
+              topRight: Radius.circular(20),
+              topLeft: Radius.circular(20),
             ),
             boxShadow: [
               BoxShadow(
@@ -40,41 +38,17 @@ class ProductImage extends StatelessWidget {
               ),
             ],
           ),
-
           child: Image.network(
             path,
           ),
         ),
         Positioned(
-            top: 60,
+            top: 20,
             left: 13,
             child: GestureDetector(
               onTap: () => Navigator.pop(context),
-                child: const Icon(Icons.arrow_back_ios_new,size: 26),
+                child: const Icon(Icons.arrow_back,size: 26),
             ),
-        ),
-
-        Positioned(
-          bottom: 20,
-          left: 10,
-          child: Card(
-            elevation: 7,
-            color: blackColor,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 4),
-              child: RatingBarIndicator(
-                rating: getCurrentProduct!.productrating!.toDouble(),
-                itemBuilder: (context, index) => const Icon(
-                  CupertinoIcons.star_fill,
-                  color: Colors.yellow,
-                ),
-                unratedColor: Colors.grey.shade500,
-                itemCount: 5,
-                itemSize: 13.0,
-                direction: Axis.horizontal,
-              ),
-            ),
-          ),
         ),
       ],
     );

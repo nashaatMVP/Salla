@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_shop/shared/app/custom_container.dart';
+import 'package:salla/shared/app/custom_container.dart';
 import '../../../shared/app/constants.dart';
 import '../../../shared/app/custom_text.dart';
 import '../../../shared/theme/app_colors.dart';
@@ -15,46 +15,43 @@ class RatingBarCard extends StatelessWidget {
     final appColors = Theme.of(context).extension<AppColors>()!;
     return Card(
       color: appColors.secondaryColor,
-      elevation: 4,
+      elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            CircleAvatar(
-              backgroundImage:
-              NetworkImage(
-                image,
+      child: Row(
+        children: [
+          CircleAvatar(
+            backgroundImage:
+            NetworkImage(
+              image,
+            ),
+            radius: 14,
+          ),
+          kGap10,
+          Column(
+            crossAxisAlignment:
+            CrossAxisAlignment.start,
+            children: [
+              TextWidgets.subHeading(titleReview,fontSize: 11, color: appColors.primaryColor,fontWeight: FontWeight.w600),
+              const SizedBox(height: 2),
+              SizedBox(
+                  width: 200,
+                  child: TextWidgets.bodyText(subTitleReview, color: appColors.primaryColor,fontSize: 10)),
+            ],
+          ),
+          const Spacer(),
+          Row(
+            children: [
+              TextWidgets.bodyText("${double.parse(ratingNumber)}" , color: appColors.primaryColor),
+              kGap10,
+              const Icon(
+                CupertinoIcons.star_fill,
+                color: Colors.green,
+                size: 16,
               ),
-              radius: 14,
-            ),
-            kGap10,
-            Column(
-              crossAxisAlignment:
-              CrossAxisAlignment.start,
-              children: [
-                TextWidgets.subHeading(titleReview,fontSize: 11, color: appColors.primaryColor,fontWeight: FontWeight.w600),
-                const SizedBox(height: 2),
-                SizedBox(
-                    width: 200,
-                    child: TextWidgets.bodyText(subTitleReview, color: appColors.primaryColor,fontSize: 10)),
-              ],
-            ),
-            const Spacer(),
-            Row(
-              children: [
-                TextWidgets.bodyText("${double.parse(ratingNumber)}" , color: appColors.primaryColor),
-                kGap10,
-                const Icon(
-                  CupertinoIcons.star_fill,
-                  color: Colors.green,
-                  size: 16,
-                ),
-                kGap10,
-              ],
-            ),
-          ],
-        ),
+              kGap10,
+            ],
+          ),
+        ],
       ),
     );
   }

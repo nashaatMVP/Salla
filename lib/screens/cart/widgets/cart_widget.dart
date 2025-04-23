@@ -2,10 +2,10 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/screens/cart/model/cart_model.dart';
-import 'package:smart_shop/screens/cart/widgets/qty_widget.dart';
-import 'package:smart_shop/shared/app/custom_container.dart';
-import 'package:smart_shop/shared/app/photo_link.dart';
+import 'package:salla/screens/cart/model/cart_model.dart';
+import 'package:salla/screens/cart/widgets/qty_widget.dart';
+import 'package:salla/shared/app/custom_container.dart';
+import 'package:salla/shared/app/photo_link.dart';
 import '../../../shared/app/constants.dart';
 import '../../../providers/products_provider.dart';
 import '../../../shared/app/custom_text.dart';
@@ -41,6 +41,7 @@ class CartWidget extends StatelessWidget {
             child: CustomContainer(
 
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,18 +72,21 @@ class CartWidget extends StatelessWidget {
                           /// prices
                           Row(
                             children: [
-                              TextWidgets.subHeading("AED",
-                                  fontSize: 10, color: appColors.primaryColor),
+                              TextWidgets.subHeading(
+                                  "AED",
+                                  fontSize: 10,
+                                  color: appColors.primaryColor,
+                              ),
                               TextWidgets.bodyText1(
                                   " ${getCurrentProduct.productPrice}",
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 15,
+                                  fontSize: 20,
                                   color: appColors.primaryColor,
                               ),
                               kGap10,
                               Text("${getCurrentProduct.productOldPrice}",
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   color: Colors.grey.shade500,
                                   fontWeight: FontWeight.bold,
                                   decoration: TextDecoration.lineThrough,
@@ -97,43 +101,14 @@ class CartWidget extends StatelessWidget {
                               ),
                             ],
                           ),
-                          kGap10,
-                          Row(
-                            children: [
-                              SvgPicture.asset(
-                                PhotoLink.delivery,
-                                width: 13,
-                                color: blueColor,
-                              ),
-                              kGap5,
-                              TextWidgets.subHeading("Fast Delivery", fontSize: 13, color: appColors.primaryColor),
-                            ],
-                          ),
-                          kGap5,
-                          Row(
-                            children: [
-                              SvgPicture.asset(
-                                PhotoLink.check,
-                                width: 13,
-                                color: yellowColor,
-                              ),
-                              kGap5,
-                              TextWidgets.bodyText1("1 year warranty",fontSize: 13, color: appColors.primaryColor),
-                            ],
-                          ),
+                          kGap20,
+                          const QtyWidget(),
                           kGap20,
                         ],
                       ),
                     ],
                   ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      QtyWidget(),
-                      DeleteWidget(),
-                    ],
-                  ),
+
                 ],
               ),
             ),

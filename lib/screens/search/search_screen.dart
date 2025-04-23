@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/screens/search/widgets/search_text_field.dart';
-import 'package:smart_shop/screens/home/widgets/category_widget.dart';
-import 'package:smart_shop/screens/search/widgets/search_widget.dart';
+import 'package:salla/screens/search/widgets/search_text_field.dart';
+import 'package:salla/screens/home/widgets/category_widget.dart';
+import 'package:salla/screens/search/widgets/search_widget.dart';
 
 import '../../core/app_constans.dart';
 import '../../models/product_model.dart';

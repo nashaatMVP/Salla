@@ -2,18 +2,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/root_screen.dart';
-import 'package:smart_shop/screens/splash_screen.dart';
-import 'package:smart_shop/sideScreens/order_screen.dart';
-import 'package:smart_shop/screens/product/product_datails_screen.dart';
-import 'package:smart_shop/sideScreens/viewed_Recent_Screen.dart';
-import 'package:smart_shop/sideScreens/wislist_screen.dart';
-
-import 'AUTH/forot_password_screen.dart';
-import 'AUTH/login.dart';
-import 'AUTH/register.dart';
+import 'package:salla/root_screen.dart';
+import 'package:salla/screens/auth/forot_password_screen.dart';
+import 'package:salla/screens/auth/login.dart';
+import 'package:salla/screens/auth/register.dart';
+import 'package:salla/screens/category/category_items.dart';
+import 'package:salla/screens/product/product_datails_screen.dart';
+import 'package:salla/screens/orders/order_screen.dart';
+import 'package:salla/screens/sideScreens/viewed_Recent_Screen.dart';
+import 'package:salla/screens/sideScreens/wislist_screen.dart';
 import 'screens/addreses/provider/address_provider.dart';
 import 'screens/cart/provider/cart_provider.dart';
 import 'providers/order_provider.dart';
@@ -25,7 +23,6 @@ import 'providers/viewed_product_provider.dart';
 import 'providers/wishList_provider.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/search/search_screen.dart';
-import 'screens/addreses/AddAddressScreen.dart';
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(
@@ -36,13 +33,11 @@ void main() async {
       child: SizedBox(
         height: 100,
         width: 100,
-        child: CupertinoActivityIndicator(),),);
+        child: CupertinoActivityIndicator(),
+      ),
+    );
   };
   WidgetsFlutterBinding.ensureInitialized();
-  // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-  //     .then((_) {
-  //
-  // });
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
@@ -115,18 +110,15 @@ class _MyAppState extends State<MyApp> {
           home: const RootScreen(),
           routes: {
             RootScreen.routeName: (context) => const RootScreen(),
-            ProductDetailsScreen.routName: (context) =>
-            const ProductDetailsScreen(),
+            ProductDetailsScreen.routName: (context) => const ProductDetailsScreen(),
             WishListScreen.routName: (context) => const WishListScreen(),
-            ViewedRecentScreen.routName: (context) =>
-            const ViewedRecentScreen(),
+            ViewedRecentScreen.routName: (context) => const ViewedRecentScreen(),
             RegisterScreen.routName: (context) => const RegisterScreen(),
             LoginScreen.routName: (context) => const LoginScreen(),
-            OrdersScreenFree.routeName: (context) =>
-            const OrdersScreenFree(),
-            ForgotPasswordScreen.routeName: (context) =>
-            const ForgotPasswordScreen(),
+            OrdersScreenFree.routeName: (context) => const OrdersScreenFree(),
+            ForgotPasswordScreen.routeName: (context) => const ForgotPasswordScreen(),
             SearchScreen.routName: (context) => const SearchScreen(),
+            CategoryItems.routName: (context) => const CategoryItems(),
             HomePage.routName: (context) => const HomePage(),
           },
         );

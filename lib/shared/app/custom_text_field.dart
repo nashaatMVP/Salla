@@ -17,6 +17,7 @@ class CustomFormField extends StatelessWidget {
     this.textInputAction,
     this.icon,
     this.label,
+    this.maxLines = 1,
   });
   final TextEditingController controller;
   final FocusNode focusNode;
@@ -30,6 +31,7 @@ class CustomFormField extends StatelessWidget {
   final void Function(String)? onFieldSubmitted;
   String? Function(String?)? validator;
   final String? label;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -41,26 +43,28 @@ class CustomFormField extends StatelessWidget {
         controller: controller,
         focusNode: focusNode,
         obscureText: obscureText,
-        style: TextStyle(
-          fontSize: 10,
-          decorationThickness: 0,
-          color: appColors.primaryColor,
-        ),
         keyboardType: keyboardType,
         textInputAction: textInputAction,
         onFieldSubmitted: onFieldSubmitted,
         validator: validator,
         cursorHeight: 10,
         cursorColor: blueColor,
+        maxLines: maxLines,
+        style: TextStyle(
+          fontSize: 15,
+          decorationThickness: 0,
+          fontWeight: FontWeight.w500,
+          color: appColors.primaryColor,
+        ),
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(10),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.grey.shade300),
+            borderSide: BorderSide(color: Colors.black26),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(9),
-            borderSide:  BorderSide(color: Colors.grey.shade400),
+            borderSide:  BorderSide(color: Colors.green.shade700),
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(9),
@@ -78,7 +82,6 @@ class CustomFormField extends StatelessWidget {
             color: Colors.grey.shade400,
             fontWeight: FontWeight.bold,
           ),
-          // label: Text(label!),
           icon: icon,
           suffixIcon: suffixIcon,
           prefixIcon: Icon(

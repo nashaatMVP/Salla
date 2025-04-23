@@ -3,11 +3,11 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/models/product_model.dart';
-import 'package:smart_shop/screens/offers/widgets/offer_banner.dart';
-import 'package:smart_shop/screens/offers/widgets/offers_card.dart';
-import 'package:smart_shop/shared/app/constants.dart';
-import 'package:smart_shop/shared/theme/app_colors.dart';
+import 'package:salla/models/product_model.dart';
+import 'package:salla/screens/offers/widgets/offer_banner.dart';
+import 'package:salla/screens/offers/widgets/offers_card.dart';
+import 'package:salla/shared/app/constants.dart';
+import 'package:salla/shared/theme/app_colors.dart';
 import '../../providers/products_provider.dart';
 
 

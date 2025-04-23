@@ -9,6 +9,7 @@ import '../../../shared/app/constants.dart';
 import '../../../shared/app/custom_text.dart';
 import '../../../shared/theme/app_colors.dart';
 import '../../search/search_screen.dart';
+import '../../sideScreens/wislist_screen.dart';
 import 'home_categories.dart';
 
 class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -22,8 +23,8 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
     final appColors = Theme.of(context).extension<AppColors>()!;
     return AppBar(
       backgroundColor: appColors.secondaryColor.withAlpha(450),
-      scrolledUnderElevation: 0,
       leadingWidth: 0,
+      scrolledUnderElevation: 0,
       leading: const SizedBox.shrink(),
       flexibleSpace: ClipRect(
         child: BackdropFilter(
@@ -38,13 +39,23 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextWidgets.heading("Salla",color: appColors.primaryColor,fontSize: 17),
-                 GestureDetector(
+                Image.asset("assets/images/logo/logo-bg.png",width: 22),
+                const Spacer(),
+                GestureDetector(
                     onTap: () => context.read<ThemeProvider>().toggleTheme(),
                      child: Icon(Icons.light_mode_outlined,color: appColors.primaryColor,
-                     )),
+                     ),
+                ),
+                kGap15,
+                GestureDetector(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (c) => const WishListScreen())),
+                    child: const Badge(
+                        label: Text('1'),
+                        backgroundColor: Colors.red,
+                        child: Icon(Icons.favorite_border,size: 22),
+                    ),
+                ),
               ],
             ),
           ),

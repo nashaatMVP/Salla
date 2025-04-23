@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_shop/shared/app/photo_link.dart';
+import 'package:salla/shared/app/photo_link.dart';
 import 'constants.dart';
 import 'custom_button.dart';
 import 'custom_text.dart';

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/screens/offers/offers_screen.dart';
-import 'package:smart_shop/shared/app/photo_link.dart';
+import 'package:salla/screens/category/category_screen.dart';
+import 'package:salla/screens/offers/offers_screen.dart';
 import 'screens/profile/model/user-model.dart';
 import 'screens/addreses/provider/address_provider.dart';
 import 'screens/cart/provider/cart_provider.dart';
@@ -15,6 +15,7 @@ import 'screens/cart/cart_screen.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/profile/profile_screen.dart';
 import 'screens/search/search_screen.dart';
+import 'shared/app/photo_link.dart';
 import 'shared/theme/app_colors.dart';
 
 class RootScreen extends StatefulWidget {
@@ -59,7 +60,7 @@ class _RootScreenState extends State<RootScreen> {
     screens = const [
       HomePage(),
       SearchScreen(),
-      OffersScreen(),
+      CategoryScreen(),
       CartScreen(),
       ProfileScreen(),
     ];
@@ -157,14 +158,14 @@ class _RootScreenState extends State<RootScreen> {
             ),
           ),
           BottomNavigationBarItem(
-            label: "Offers",
+            label: "Categories",
             activeIcon: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: SvgPicture.asset(PhotoLink.offersFilledLink,color: blueColor,width: 35),
+              child: SvgPicture.asset(PhotoLink.gridFilled,color: blueColor,width: 30),
             ),
             icon: Padding(
               padding: const EdgeInsets.only(bottom: 2.0),
-              child: SvgPicture.asset(PhotoLink.offersLink,color: appColors.primaryColor),
+              child: SvgPicture.asset(PhotoLink.grid,color: appColors.primaryColor),
             ),
           ),
           BottomNavigationBarItem(

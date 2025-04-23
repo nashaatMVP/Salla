@@ -2,14 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/screens/addreses/saved_address_screen.dart';
-import 'package:smart_shop/shared/app/constants.dart';
-import 'package:smart_shop/shared/app/custom_appbar.dart';
-import 'package:smart_shop/shared/app/custom_button.dart';
-import 'package:smart_shop/shared/app/custom_container.dart';
-import 'package:smart_shop/shared/app/custom_divider.dart';
+import 'package:salla/screens/addreses/saved_address_screen.dart';
+import 'package:salla/shared/app/constants.dart';
+import 'package:salla/shared/app/custom_appbar.dart';
+import 'package:salla/shared/app/custom_button.dart';
+import 'package:salla/shared/app/custom_container.dart';
+import 'package:salla/shared/app/custom_divider.dart';
 import 'package:uuid/uuid.dart';
 import '../addreses/model/address_model.dart';
 import '../addreses/provider/address_provider.dart';
@@ -21,9 +20,8 @@ import '../../shared/app/custom_text.dart';
 import '../../shared/theme/app_colors.dart';
 import '../../shared/app/circular_widget.dart';
 import '../../shared/app/custom_empty_widget.dart';
-import 'widgets/cart_widget.dart';
 import '../addreses/AddAddressScreen.dart';
-import '../../sideScreens/order_screen.dart';
+import '../orders/order_screen.dart';
 import 'widgets/payment_options.dart';
 
 List<AddressModel> address = [];
@@ -95,7 +93,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     )
                         : AddNewAddressCard(
                         onTap: () {
-                          if(addressProvider.selectedaddresses.isNotEmpty ) {
+                          if(addressProvider.selectedaddresses.isNotEmpty) {
                             Navigator.push(context, MaterialPageRoute(builder: (c) => const AddressEditScreen()));
                           } else {
                             Navigator.push(context, MaterialPageRoute(builder: (c) => const SavedAddressScreen()));
@@ -222,6 +220,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           "productId": value.producttID,
           "productTitle": getCurrentProduct!.productTitle,
           "userName": userProvider.userModel!.userName,
+          "userImage": userProvider.userModel!.userImage,
+          "userEmail": userProvider.userModel!.userEmail,
           "price": double.parse(getCurrentProduct.productPrice) * value.cartQty,
           // "totalPrice": cartProvider.getTotal(productProvider: productProvider),
           "ImageUrl": getCurrentProduct.productImage,

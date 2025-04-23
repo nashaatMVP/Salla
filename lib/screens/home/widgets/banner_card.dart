@@ -10,16 +10,19 @@ class BannerCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: CarouselSlider.builder(
+        disableGesture: true,
         itemCount: AppConsts.bannerImages.length,
         options:  CarouselOptions(
-          height: 75.0,
+          height: 70.0,
           autoPlay: true,
           enlargeCenterPage: true,
-          pageSnapping: true,
+          pageSnapping: false,
           viewportFraction: 1,
-          enableInfiniteScroll: true,
+          enableInfiniteScroll: false,
+          autoPlayInterval : const Duration(seconds: 4),
+          autoPlayAnimationDuration : const Duration(milliseconds: 400),
+          autoPlayCurve: Curves.fastEaseInToSlowEaseOut,
         ),
-        disableGesture: true,
         itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) => Image.asset(AppConsts.bannerImages[itemIndex],height: 200,),
       ),
     );

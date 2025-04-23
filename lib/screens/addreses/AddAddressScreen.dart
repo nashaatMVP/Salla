@@ -4,12 +4,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/screens/cart/checkout_screen.dart';
-import 'package:smart_shop/shared/app/constants.dart';
-import 'package:smart_shop/shared/app/custom_appbar.dart';
-import 'package:smart_shop/shared/app/custom_button.dart';
-import 'package:smart_shop/shared/app/custom_container.dart';
-import 'package:smart_shop/shared/app/custom_text_field.dart';
+import 'package:salla/screens/cart/checkout_screen.dart';
+import 'package:salla/shared/app/constants.dart';
+import 'package:salla/shared/app/custom_appbar.dart';
+import 'package:salla/shared/app/custom_button.dart';
+import 'package:salla/shared/app/custom_container.dart';
+import 'package:salla/shared/app/custom_text_field.dart';
 import 'provider/address_provider.dart';
 import '../../core/my_app_functions.dart';
 import '../../shared/app/custom_text.dart';
@@ -196,7 +196,7 @@ class _AddressEditScreenState extends State<AddressEditScreen> {
                               ),
                               kGap30,
                               CustomButton(
-                                  text: "Add Address",
+                                  text: "Save",
                                   backgroundColor: appColors.primaryColor,
                                   textColor: appColors.secondaryColor,
                                   onPressed:() async {
@@ -223,7 +223,8 @@ class _AddressEditScreenState extends State<AddressEditScreen> {
                                       } else {
                                         MyAppFunctions().globalMassage(
                                             context: context,
-                                            message: "Please Fill All Fields");
+                                            message: "Please Fill All Fields",
+                                        );
                                       }
                                     }
                                   },

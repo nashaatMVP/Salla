@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_shop/screens/cart/model/cart_model.dart';
-import 'package:smart_shop/screens/cart/provider/cart_provider.dart';
+import 'package:salla/screens/cart/model/cart_model.dart';
+import 'package:salla/screens/cart/provider/cart_provider.dart';
 import '../../../providers/products_provider.dart';
 import '../../../shared/app/custom_container.dart';
 import '../../../shared/theme/app_colors.dart';
@@ -26,18 +26,17 @@ class QtyWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           _buildButton(
-         cartModel.cartQty == 1  ?  const Icon(
+         cartModel.cartQty == 1  ? Icon(
            CupertinoIcons.delete,
            size: 22,
-           color: Colors.grey,
+           color: Colors.red.shade400,
          )  : const Text(
                 "-",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
              () {
             if (cartModel.cartQty > 1) {
-              cartProvider.updateQty(
-                  Qty: cartModel.cartQty - 1, productId: cartModel.producttID);
+              cartProvider.updateQty(Qty: cartModel.cartQty - 1, productId: cartModel.producttID);
             } else {
               cartProvider.removeOneItem(productId: cartModel.producttID);
               cartProvider.removeCartItemFromFirestor(
@@ -55,8 +54,9 @@ class QtyWidget extends StatelessWidget {
               style: const TextStyle(fontSize: 25, color: Colors.white),
             ),
           ),
-          _buildButton(const Text(
-                "+",
+          _buildButton(
+            const Text(
+              "+",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ), () {
             if(stockValue == cartModel.cartQty.toString()) {
@@ -85,7 +85,7 @@ class DeleteWidget extends StatelessWidget {
     return CustomContainer(
       width: 36,
       radius: 10,
-      height: 40,
+      height: 35,
       color: blueColor,
       child: IconButton(
         onPressed: () {
@@ -98,7 +98,7 @@ class DeleteWidget extends StatelessWidget {
           );
         },
         icon:  const Icon(
-          size: 22,
+          size: 18,
           color: Colors.white,
           CupertinoIcons.delete,
         ),
@@ -106,17 +106,16 @@ class DeleteWidget extends StatelessWidget {
     );
   }
 }
-
 Widget _buildButton(Widget symbol, VoidCallback onPressed) {
   return Material(
-    elevation: 2,
+    elevation: 10,
     borderRadius: BorderRadius.circular(100),
-    color: yellowColor,
+    color: Colors.white70,
     child: ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         shape: const CircleBorder(),
-        padding: const EdgeInsets.all(4),
+        padding: const EdgeInsets.all(2),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
       ),

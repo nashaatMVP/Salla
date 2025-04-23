@@ -1,5 +1,5 @@
-name: smart_shop
-description: A new Flutter project.
+name: salla
+description: SALLA IS AN E_COMMERCE APPLICATION
 publish_to: 'none'
 
 version: 1.0.1+2
@@ -47,15 +47,17 @@ dependencies:
   carousel_slider: ^5.0.0
   flutter_svg: ^2.0.17
   persistent_bottom_nav_bar_v2: ^5.3.1
-  # change_app_package_name: ^1.1.0
+  flutter_launcher_icons: ^0.14.3
+  auto_size_text: ^3.0.0
+  timelines_plus: ^1.0.6
 
-# icons_launcher:
-#   image_path: "assets/AppLogo.png"
-#   platforms:
-#     android:
-#       enable: true
-#     ios:
-#       enable: true
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/salla-logo.png"
+  min_sdk_android: 21
+
   
 dev_dependencies:
   flutter_test:
@@ -72,6 +74,8 @@ flutter:
     - assets/images/bag/
     - assets/images/auth/
     - assets/categories/
+    - assets/images/category/
+    - assets/images/logo/
     - assets/Lottie/
     - assets/svg/
     - assets/svg/nav/
@@ -80,41 +84,12 @@ flutter:
     - assets/svg/global/
 
   fonts:
-    - family: IBMPlexSans
+    - family: 'urbanist'
       fonts:
-        - asset: assets/fonts/IBMPlexSans-Thin.ttf
-          weight: 100
-        - asset: assets/fonts/IBMPlexSans-ThinItalic.ttf
-          weight: 100
-          style: italic
-        - asset: assets/fonts/IBMPlexSans-ExtraLight.ttf
-          weight: 200
-        - asset: assets/fonts/IBMPlexSans-ExtraLightItalic.ttf
-          weight: 200
-          style: italic
-        - asset: assets/fonts/IBMPlexSans-Light.ttf
-          weight: 300
-        - asset: assets/fonts/IBMPlexSans-LightItalic.ttf
-          weight: 300
-          style: italic
-        - asset: assets/fonts/IBMPlexSans-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/IBMPlexSans-Italic.ttf
-          weight: 400
-          style: italic
-        - asset: assets/fonts/IBMPlexSans-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/IBMPlexSans-MediumItalic.ttf
-          weight: 500
-          style: italic
-        - asset: assets/fonts/IBMPlexSans-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/IBMPlexSans-SemiBoldItalic.ttf
-          weight: 600
-          style: italic
-        - asset: assets/fonts/IBMPlexSans-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/IBMPlexSans-BoldItalic.ttf
-          weight: 700
-          style: italic
+        - asset: assets/fonts/urbanist/Urbanist-Italic-VariableFont_wght.ttf
+        - asset: assets/fonts/urbanist/Urbanist-VariableFont_wght.ttf
+    - family: 'Roboto'
+      fonts:
+        - asset: assets/fonts/Roboto_Condensed/static/RobotoCondensed-SemiBold.ttf
+
 

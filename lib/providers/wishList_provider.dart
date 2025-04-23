@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_shop/MODELS/wishList_model.dart';
+import 'package:salla/MODELS/wishList_model.dart';
 import 'package:uuid/uuid.dart';
 
 import '../core/my_app_functions.dart';

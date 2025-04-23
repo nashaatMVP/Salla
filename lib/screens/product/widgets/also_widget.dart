@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../../../models/product_model.dart';
+import '../../../shared/app/constants.dart';
 import '../../../shared/app/custom_text.dart';
 import '../../../shared/theme/app_colors.dart';
 import '../product_datails_screen.dart';
@@ -67,16 +68,13 @@ class AlsoProductList extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 5,
-                    ),
+                    kGap5,
                     Text(
                       "AED ${productModel.productPrice}",
                       style: GoogleFonts.alatsi(
                           fontSize: 15, color: Colors.black87),
                     ),
                     TextWidgets.bodyText1("only ${productModel.productQty} left in stock"),
-
 
                   ],
                 ),

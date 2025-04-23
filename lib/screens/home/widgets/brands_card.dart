@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:smart_shop/shared/theme/app_colors.dart';
-
+import 'package:salla/shared/theme/app_colors.dart';
 import '../../../core/app_constans.dart';
 import '../../../shared/app/custom_container.dart';
 

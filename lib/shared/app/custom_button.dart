@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_shop/shared/app/custom_container.dart';
+import 'package:salla/shared/app/custom_container.dart';
 import '../theme/app_colors.dart';
 import 'custom_text.dart';
 

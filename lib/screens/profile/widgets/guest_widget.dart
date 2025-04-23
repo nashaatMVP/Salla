@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_shop/shared/app/custom_button.dart';
-import 'package:smart_shop/shared/app/custom_text.dart';
-import '../../../AUTH/login.dart';
-import '../../../AUTH/register.dart';
+import 'package:salla/shared/app/custom_button.dart';
+import 'package:salla/shared/app/custom_text.dart';
 import '../../../shared/app/constants.dart';
 import '../../../shared/theme/app_colors.dart';
+import '../../auth/login.dart' show LoginScreen;
+import '../../auth/register.dart' show RegisterScreen;
 
 
 class GuestWidget extends StatelessWidget {
@@ -25,8 +24,7 @@ class GuestWidget extends StatelessWidget {
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: ((context) =>
-                    const RegisterScreen()))),
+                    builder: ((context) => const LoginScreen()))),
               text: "Login",
               arrow: true,
               backgroundColor: appColors.primaryColor,

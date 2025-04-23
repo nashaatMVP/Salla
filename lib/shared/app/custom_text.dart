@@ -42,7 +42,7 @@ class CustomText extends StatelessWidget {
       textAlign: textAlign,
       style: TextStyle(
         color: color,
-        fontFamily: 'IBMPlexSans',
+        fontFamily: 'Roboto',
         height: height,
         shadows: shadows,
         fontSize: fontSize,
@@ -92,11 +92,6 @@ class TextWidgets {
     );
   }
 
-  /// font-family: IBM Plex Sans;
-  /// font-size: 12px;
-  /// font-weight: 500;
-  /// line-height: 15.6px;
-  /// text-align: left;
   static Widget bodyText(
       String text, {
         Color? color,
@@ -206,7 +201,9 @@ class TextWidgets {
                   fontWeight: weight1,
                   fontSize: size1,
                   color: color1,
-                  letterSpacing: letterSpacing1)),
+                  letterSpacing: letterSpacing1,
+              ),
+          ),
 
           TextSpan(
               text: text2,
@@ -214,7 +211,9 @@ class TextWidgets {
                   fontWeight: weight2,
                   fontSize: size2,
                   color: color2,
-                  letterSpacing: letterSpacing2))
+                  letterSpacing: letterSpacing2,
+              ),
+          )
         ]));
   }
 }
