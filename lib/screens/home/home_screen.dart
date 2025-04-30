@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final productsProvider = Provider.of<ProductProvider>(context);
     final appColors = Theme.of(context).extension<AppColors>()!;
-    double productHeight = 260;
+    double productHeight = 270;
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -95,6 +95,7 @@ class _HomePageState extends State<HomePage> {
             ),
             kGap20,
             CustomContainer(
+              color: Colors.green.shade100,
               child: Column(
                 children: [
                   kGap15,
@@ -123,13 +124,14 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            kGap10,
+            kGap40,
             Container(
               color: blueColor.withAlpha(450),
               child: Column(
                 children: [
                   const BrandsCard(),
                   kGap5,
+
 
                   Center(
                     child: Wrap(
@@ -141,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                           value: productsProvider.getproductsproductsVertical[index],
                           child:  const ProductCard(
                               offerBgColor: Colors.black87,
-                              width: 185,
+                              width: 200,
                           ),
                         ),
                       ),

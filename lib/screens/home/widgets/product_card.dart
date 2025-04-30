@@ -19,7 +19,7 @@ class ProductCard extends StatelessWidget {
     required this.offerBgColor,
     this.isOffer = true,
     this.categoryName,
-    this.width = 160,
+    this.width = 200,
   });
   final bool isOffer;
   final Color offerBgColor;
@@ -56,7 +56,7 @@ class ProductCard extends StatelessWidget {
       child: Stack(
         children: [
           Card(
-            elevation: 1.5,
+            elevation: 2,
             shadowColor: Colors.grey.shade900,
             color: appColors.secondaryColor,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

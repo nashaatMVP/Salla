@@ -29,7 +29,7 @@ class CartBottomSheetWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
         child: CustomContainer(
           color: blueColor,
-          height: 55,
+          height: 80,
           radius: 10,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -39,9 +39,10 @@ class CartBottomSheetWidget extends StatelessWidget {
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     kGap5,
-                    TextWidgets.bodyText1("${cartProvider.getQty()} items",fontSize: 12,color: whiteColor),
+                    TextWidgets.bodyText1("${cartProvider.getQty()} items",fontSize: 15,color: whiteColor),
                     TextWidgets.bodyText1(
                       "AED ${cartProvider.getTotal(productProvider: productsProvider).toStringAsFixed(2)}",
                       fontSize: 15,
