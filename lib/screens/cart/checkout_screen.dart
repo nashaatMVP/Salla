@@ -13,6 +13,7 @@ import 'package:uuid/uuid.dart';
 import '../addreses/model/address_model.dart';
 import '../addreses/provider/address_provider.dart';
 import '../addreses/widgets/add_new_address_card.dart';
+import 'model/cart_model.dart';
 import 'provider/cart_provider.dart';
 import '../../providers/products_provider.dart';
 import '../profile/provider/user_provider.dart';
@@ -36,7 +37,9 @@ class CheckoutScreen extends StatefulWidget {
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
   bool isLoading = false;
-  double shippingFee = 10.00;
+  double shippingFee = 10.0;
+
+
 
   /// Shipping Fee
   @override
@@ -60,6 +63,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         : Scaffold(
             appBar: CustomAppBar(
               text: "Check out",
+              isDelete: true,
               onDelete: () async {
                 await cartProvider.clearCartFromFirestore(context: context);
                 cartProvider.clearLocalCart();
@@ -100,10 +104,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           }
                         },
                     ),
-                    kGap10,
+                    kGap20,
                     const CustomDivider(),
-                    kGap10,
+                    kGap20,
                     const PaymentOptions(),
+                    kGap20,
                   ],
                 ),
               ),

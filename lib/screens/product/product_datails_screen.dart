@@ -66,7 +66,9 @@ class ProductDetailsScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   /// image
-                  ProductImage(path: getCurrentProduct.productImage),
+                  GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: ProductImage(path: getCurrentProduct.productImage)),
                   kGap10,
                   Container(
                     decoration: BoxDecoration(
@@ -143,7 +145,7 @@ class ProductDetailsScreen extends StatelessWidget {
                             fontSize: 14,
                             color: appColors.primaryColor,
                           ),
-                          kGap10,
+                          kGap30,
                           const CustomTitles(text: "Overview"),
                           SingleChildScrollView(
                             child: ReadMoreText(
@@ -181,57 +183,57 @@ class ProductDetailsScreen extends StatelessWidget {
                             textColor: appColors.secondaryColor,
                             backgroundColor: appColors.primaryColor,
                           ),
-                          kGap15,
-                          FutureBuilder<List<RatingModelAdvanced>>(
-                            future: ratingProvider.fetchproductreview(productId),
-                            builder: (context, snapshot) {
-                              // if (snapshot.connectionState == ConnectionState.waiting) {
-                              //   return const CupertinoActivityIndicator();
-                              // }
-                              //
-                              // if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                              //   return const Text("No reviews available");
-                              // }
-                              final reviews = snapshot.data!;
-                              return ListView.builder(
-                                shrinkWrap: true,
-                                padding: EdgeInsets.zero,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: reviews.length,
-                                itemBuilder: (ctx, index) {
-                                  final review = reviews[index];
-
-                                  // Cache user details to prevent multiple requests
-                                  userDetailsCache.putIfAbsent(
-                                      review.userId,
-                                          () => ratingProvider
-                                          .getUserDetails(review.userId));
-
-                                  return FutureBuilder<Map<String, dynamic>>(
-                                    future: userDetailsCache[review.userId],
-                                    builder: (context, userSnapshot) {
-                                      // if (userSnapshot.connectionState == ConnectionState.waiting) {
-                                      //   return const CircularProgressIndicator();
-                                      // }
-                                      //
-                                      // if (!userSnapshot.hasData || userSnapshot.data == null) {
-                                      //   return const Text("User data unavailable");
-                                      // }
-
-                                      final user = userSnapshot.data!;
-                                      return RatingBarCard(
-                                        image: user["userImage"] ??  PhotoLink.defaultImg,
-                                        titleReview: review.titlereview,
-                                        subTitleReview:review.review,
-                                        ratingNumber: "${double.tryParse(review.rating) ?? 0.0}",
-                                      );
-                                    },
-                                  );
-                                },
-                              );
-                            },
-                          ),
-                          kGap20,
+                          kGap30,
+                          // FutureBuilder<List<RatingModelAdvanced>>(
+                          //   future: ratingProvider.fetchproductreview(productId),
+                          //   builder: (context, snapshot) {
+                          //     // if (snapshot.connectionState == ConnectionState.waiting) {
+                          //     //   return const CupertinoActivityIndicator();
+                          //     // }
+                          //     //
+                          //     // if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                          //     //   return const Text("No reviews available");
+                          //     // }
+                          //     final reviews = snapshot.data!;
+                          //     return ListView.builder(
+                          //       shrinkWrap: true,
+                          //       padding: EdgeInsets.zero,
+                          //       physics: const NeverScrollableScrollPhysics(),
+                          //       itemCount: reviews.length,
+                          //       itemBuilder: (ctx, index) {
+                          //         final review = reviews[index];
+                          //
+                          //         // Cache user details to prevent multiple requests
+                          //         userDetailsCache.putIfAbsent(
+                          //             review.userId,
+                          //                 () => ratingProvider
+                          //                 .getUserDetails(review.userId));
+                          //
+                          //         return FutureBuilder<Map<String, dynamic>>(
+                          //           future: userDetailsCache[review.userId],
+                          //           builder: (context, userSnapshot) {
+                          //             // if (userSnapshot.connectionState == ConnectionState.waiting) {
+                          //             //   return const CircularProgressIndicator();
+                          //             // }
+                          //             //
+                          //             // if (!userSnapshot.hasData || userSnapshot.data == null) {
+                          //             //   return const Text("User data unavailable");
+                          //             // }
+                          //
+                          //             final user = userSnapshot.data!;
+                          //             return RatingBarCard(
+                          //               image: user["userImage"] ??  PhotoLink.defaultImg,
+                          //               titleReview: review.titlereview,
+                          //               subTitleReview:review.review,
+                          //               ratingNumber: "${double.tryParse(review.rating) ?? 0.0}",
+                          //             );
+                          //           },
+                          //         );
+                          //       },
+                          //     );
+                          //   },
+                          // ),
+                          kGap40,
                           const CustomTitles(text: "You may Also Like"),
                           kGap10,
                           SizedBox(

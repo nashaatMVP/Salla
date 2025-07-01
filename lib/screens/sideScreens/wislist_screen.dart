@@ -1,6 +1,7 @@
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:salla/shared/app/constants.dart';
 import 'package:salla/shared/app/custom_appbar.dart';
 import '../../components/product_widget.dart';
 import '../../providers/wishList_provider.dart';
@@ -26,25 +27,33 @@ class WishListScreen extends StatelessWidget {
             ),
           )
         : Scaffold(
-            appBar: CustomAppBar(onDelete: (){}, text: "Your WishList"),
-            body: Column(
-              children: [
-                const SizedBox(
-                  height: 30,
-                ),
-                Expanded(
-                  child: DynamicHeightGridView(
-                    physics: const BouncingScrollPhysics(),
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 2,
-                    mainAxisSpacing: 2,
-                    builder: (context, index) {
-                      return ProductWidget(productId: wishListProvider.getWishListItems.values.toList()[index].producttID);
-                    },
-                    itemCount: wishListProvider.getWishListItems.length,
+            appBar: CustomAppBar(
+                onDelete: (){
+                  wishListProvider.clearLocalWishList();
+                  wishListProvider.clearWishListFromFirestore(context: context);
+                },
+                isDelete: true,
+                text: "Your WishList",
+            ),
+            body: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: Column(
+                children: [
+                  kGap30,
+                  Expanded(
+                    child: DynamicHeightGridView(
+                      physics: const BouncingScrollPhysics(),
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 2,
+                      mainAxisSpacing: 2,
+                      builder: (context, index) {
+                        return ProductWidget(productId: wishListProvider.getWishListItems.values.toList()[index].producttID);
+                      },
+                      itemCount: wishListProvider.getWishListItems.length,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
   }

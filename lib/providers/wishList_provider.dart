@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:salla/MODELS/wishList_model.dart';
 import 'package:uuid/uuid.dart';
-
 import '../core/my_app_functions.dart';
 
 class WishListProvider with ChangeNotifier {
@@ -22,8 +21,7 @@ class WishListProvider with ChangeNotifier {
   }) async {
     final User? user = _auth.currentUser;
     if (user == null) {
-      MyAppFunctions()
-          .globalMassage(context: context, message: "Please Login First");
+      MyAppFunctions().globalMassage(context: context, message: "Please Login First");
       return;
     }
     final uid = user.uid;

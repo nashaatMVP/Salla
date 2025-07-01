@@ -5,8 +5,9 @@ class AppConsts {
 
   static List bannerImages = [
     PhotoLink.banner,
-    PhotoLink.banner1,
     PhotoLink.banner2,
+    PhotoLink.banner3,
+    PhotoLink.banner4,
   ];
 
   static List brandSvgs = [

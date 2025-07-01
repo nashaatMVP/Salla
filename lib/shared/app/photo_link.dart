@@ -35,6 +35,8 @@ class PhotoLink {
   static const String banner = "assets/images/banners/banner3.gif";
   static const String banner1 = "assets/images/banners/banner1.avif";
   static const String banner2 = "assets/images/banners/banner2.avif";
+  static const String banner3 = "assets/images/banners/bannerr1.avif";
+  static const String banner4 = "assets/images/banners/bannerr2.gif";
 
   // default images
   static const String defaultImg = "https://pbs.twimg.com/media/FBBFtDvVcAQrSAG.png";

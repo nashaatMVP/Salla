@@ -16,7 +16,7 @@ class ListName extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           TextWidgets.bodyText1(text,fontSize: 16,fontWeight: FontWeight.w600,color: appColors.primaryColor),
-          TextWidgets.bodyText3("View All",fontSize: 14,color: Colors.blue.shade800,fontWeight: FontWeight.bold),
+          TextWidgets.bodyText3("See all",fontSize: 14,color: Colors.blue.shade800,fontWeight: FontWeight.w900),
         ],
       ),
     );

@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:salla/providers/wishList_provider.dart';
+import 'package:salla/screens/profile/provider/user_provider.dart';
 import '../../../core/app_constans.dart';
 import '../../../providers/theme_provider.dart';
 import '../../../shared/app/constants.dart';
@@ -21,6 +23,10 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final appColors = Theme.of(context).extension<AppColors>()!;
+    final wisListList = Provider.of<WishListProvider>(context);
+    final user = Provider.of<UserProvider>(context);
+
+
     return AppBar(
       backgroundColor: appColors.secondaryColor.withAlpha(450),
       leadingWidth: 0,
@@ -51,7 +57,7 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
                 GestureDetector(
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (c) => const WishListScreen())),
                     child: const Badge(
-                        label: Text('1'),
+                        smallSize: 10,
                         backgroundColor: Colors.red,
                         child: Icon(Icons.favorite_border,size: 22),
                     ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:salla/shared/theme/app_colors.dart';
 import '../../core/app_constans.dart';
 import '../../shared/app/custom_text.dart';
 import 'category_items.dart';
@@ -9,8 +10,11 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
+
+
     return Scaffold(
-      backgroundColor: const Color(0xffECECEC),
+      backgroundColor: appColors.secondaryColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: Column(
@@ -41,9 +45,9 @@ class CategoryScreen extends StatelessWidget {
 
                     child: Container(
                       decoration: BoxDecoration(
-                        gradient: const LinearGradient(colors: [
-                          Colors.white60,
-                          Colors.white38,
+                        gradient: LinearGradient(colors: [
+                          appColors.secondaryColor,
+                          appColors.secondaryColor,
                         ]),
                         borderRadius: BorderRadius.circular(6),
                       ),
@@ -58,8 +62,9 @@ class CategoryScreen extends StatelessWidget {
                           const SizedBox(height: 20),
                           TextWidgets.bodyText1(
                             category.name,
-                            fontWeight: FontWeight.w900,
-                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            color: appColors.primaryColor,
                           ),
                         ],
                       ),

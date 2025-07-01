@@ -25,14 +25,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  User? user = FirebaseAuth.instance.currentUser;
   UserModel? userModel;
+  User? user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
-    final productsProvider = Provider.of<ProductProvider>(context);
+    double productHeight = 280;
     final appColors = Theme.of(context).extension<AppColors>()!;
-    double productHeight = 270;
+    final productsProvider = Provider.of<ProductProvider>(context);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -73,19 +73,18 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: productHeight,
               child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
                 padding: EdgeInsets.zero,
+                scrollDirection: Axis.horizontal,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8),
                   child: Row(
                     children: List.generate(
                       productsProvider.getProductproductsHorizontal.length,
                       (index) => ChangeNotifierProvider.value(
-                        value: productsProvider
-                            .getProductproductsHorizontal[index],
+                        value: productsProvider.getProductproductsHorizontal[index],
                         child: ProductCard(
-                            offerBgColor: Colors.deepPurple.shade400,
-                            isOffer: false,
+                          isOffer: false,
+                          offerBgColor: Colors.deepPurple.shade400,
                         ),
                       ),
                     ),
@@ -131,26 +130,25 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   const BrandsCard(),
                   kGap5,
-
-
-                  Center(
-                    child: Wrap(
-                      spacing: 0,
-                      runSpacing: 0,
-                      children: List.generate(
-                        productsProvider.getproductsproductsVertical.length,
-                            (index) => ChangeNotifierProvider.value(
-                          value: productsProvider.getproductsproductsVertical[index],
-                          child:  const ProductCard(
-                              offerBgColor: Colors.black87,
-                              width: 200,
-                          ),
+                  GridView.builder(
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    physics: const NeverScrollableScrollPhysics(),
+                      itemCount: productsProvider.getproductsproductsVertical.length,
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 5,
+                          crossAxisSpacing: 0,
+                          childAspectRatio: 0.71,
+                      ),
+                      itemBuilder: (context , index) => ChangeNotifierProvider.value(
+                        value: productsProvider.getproductsproductsVertical[index],
+                        child: ProductCard(
+                          width: 200,
+                          offerBgColor: Colors.red.shade400,
                         ),
                       ),
-                    ),
                   ),
-
-
                 ],
               ),
             ),

@@ -94,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 kGap70,
                 Center(
-                    child: Image.asset("assets/salla-logo.png", width: 140),
+                    child: Image.asset("assets/images/logo/logo-bg.png", width: 140),
                 ),
                 kGap40,
                 Form(

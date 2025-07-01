@@ -27,7 +27,9 @@ class CategoryItems extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(onDelete: () {}, text: selectedCategory),
-      body: GridView.builder(
+      body: filteredProducts.isEmpty
+          ? const Center(child: CustomText(text: "Not Products Now !",color: Colors.black))
+          : GridView.builder(
           padding: const EdgeInsets.only(top: 10),
           itemCount: filteredProducts.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -133,7 +135,7 @@ class CategoryItems extends StatelessWidget {
               ),
             );
           },
-      ),
+      ), 
     );
   }
 }

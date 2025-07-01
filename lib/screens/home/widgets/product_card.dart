@@ -19,7 +19,7 @@ class ProductCard extends StatelessWidget {
     required this.offerBgColor,
     this.isOffer = true,
     this.categoryName,
-    this.width = 200,
+    this.width = 180,
   });
   final bool isOffer;
   final Color offerBgColor;
@@ -55,6 +55,7 @@ class ProductCard extends StatelessWidget {
 
       child: Stack(
         children: [
+
           Card(
             elevation: 2,
             shadowColor: Colors.grey.shade900,
@@ -80,8 +81,11 @@ class ProductCard extends StatelessWidget {
                             child: SizedBox(
                               height: 100,
                               width: 100,
-                              child: FancyShimmerImage(
-                                imageUrl: productModel.productImage,
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: FancyShimmerImage(
+                                  imageUrl: productModel.productImage,
+                                ),
                               ),
                             ),
                           ),
@@ -90,20 +94,25 @@ class ProductCard extends StatelessWidget {
                       ],
                     ),
                   ),
+
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         kGap10,
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10.0),
-                          child: TextWidgets.bodyText1(
-                            productModel.productTitle,
-                            maxLines: 1,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w100,
-                            color: appColors.primaryColor,
+                        SizedBox(
+                          height: 40,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 10.0),
+                            child: TextWidgets.bodyText1(
+                              productModel.productTitle,
+                              maxLines: 2,
+                              fontSize: 13,
+                              overflow: TextOverflow.ellipsis,
+                              fontWeight: FontWeight.w100,
+                              color: appColors.primaryColor,
+                            ),
                           ),
                         ),
                         kGap10,
@@ -179,8 +188,9 @@ class ProductCard extends StatelessWidget {
             right: 5,
             child: Card(
               elevation: 3,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 7.0,vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 10),
                 child: HeartButton(
                   productID: productModel.productID,
                   size: 18,
@@ -213,13 +223,19 @@ class ProductCard extends StatelessWidget {
                 }
               },
               child: Card(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                color: cartProvider.isProdInCart(productId: productModel.productID) ? blueColor  : Colors.white,
                 elevation: 3,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 7.0,vertical: 4),
-                  child: Icon(
-                    cartProvider.isProdInCart(productId: productModel.productID)
-                        ? Icons.check
-                        : Icons.add_shopping_cart,
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 10),
+                  child: cartProvider.isProdInCart(productId: productModel.productID)
+                   ? const Icon(
+                    Icons.check,
+                    size: 19,
+                    color: Colors.white,
+                  )
+                   : const Icon(
+                    Icons.add_shopping_cart,
                     size: 19,
                     color: Colors.black,
                   ),
@@ -236,7 +252,7 @@ class ProductCard extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 4),
                 decoration: BoxDecoration(
-                  color: Colors.black45,
+                  color: Colors.black12.withAlpha(100),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child:  Row(
@@ -257,7 +273,5 @@ class ProductCard extends StatelessWidget {
         ],
       ),
     );
-
-
   }
 }

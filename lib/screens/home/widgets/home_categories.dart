@@ -3,6 +3,8 @@ import 'package:salla/screens/search/search_screen.dart';
 import 'package:salla/shared/app/custom_container.dart';
 import 'package:salla/shared/app/custom_text.dart';
 
+import '../../category/category_items.dart';
+
 class HomeCategories extends StatelessWidget {
   const HomeCategories({super.key, required this.text});
   final String text;
@@ -12,7 +14,7 @@ class HomeCategories extends StatelessWidget {
     return  GestureDetector(
       onTap: () => Navigator.pushNamed(
         context,
-        SearchScreen.routName,
+        CategoryItems.routName,
         arguments: text,
       ),
       child: Padding(
